@@ -1,5 +1,5 @@
 #!/bin/sh
-#Created by richo on GitHub
+#Made by richo on GitHub
 
 HEART_FULL=♥
 HEART_EMPTY=♡
@@ -109,8 +109,4 @@ esac
 BATTERY_STATUS=`battery_status $1`
 [ -z "$BATTERY_STATUS" ] && exit
 
-#if [ -n "$CUTE_BATTERY_INDICATOR" ]; then
-    echo `cutinate $BATTERY_STATUS`
-#else
-    echo ${BATTERY_STATUS}%
-#fi
+echo `cutinate $BATTERY_STATUS`
