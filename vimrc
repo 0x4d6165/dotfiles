@@ -7,7 +7,7 @@ set nu
 set laststatus=2
 "Auto indent
 filetype indent on
-set autoindent
+set autoindent 
 "Tab
 set tabstop=2 shiftwidth=0 expandtab
 set pastetoggle=<F2>
@@ -47,7 +47,7 @@ Bundle 'ervandew/supertab'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
-set runtimepath^=~/.vim/ctrlp
+set runtimepath^=~/.vim/ctrlp 
 
 """"""""Setup Airline""""""""
 let g:airline_theme= 'bubblegum'
@@ -58,15 +58,21 @@ let g:gitgutter_signs = 1
 let g:gitgutter_highlight_lines = 0
 
 """"""""Setup AutoClose""""""""
-let g:AutoClosePairs = "() {} \" ` ' []"
+let g:AutoClosePairs = "() {} \" ` ' [] <>"
 
 """"""""Leader Commands""""""""
 nnoremap <leader>n :NERDTreeToggle <CR>
-nnoremap <leader>w :w <CR>
+nnoremap <leader>w :w <CR> 
 nnoremap <leader>i :PluginInstall<CR>
 nnoremap <leader>g :Gist<CR>
-nnoremap <leader>q :q<CR>
-nnoremap <leader>x :x<CR>
+nnoremap <leader>q :q<CR>  
+nnoremap <leader>x :x<CR>  
 nnoremap <leader>r :%s/
 let g:ctrlp_map = '<leader>p'
 let g:ctrlp_cmd = 'CtrlP'
+
+""""""Remap split movement""""""
+map <c-j> <c-w>j
+map <c-k> <c-w>k
+map <c-h> <c-w>h
+map <c-l> <c-w>l
