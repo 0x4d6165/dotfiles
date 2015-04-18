@@ -47,8 +47,6 @@ Bundle 'ervandew/supertab'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
-set runtimepath^=~/.vim/ctrlp
-
 """"""""Setup Airline""""""""
 let g:airline_theme= 'bubblegum'
 
@@ -58,7 +56,7 @@ let g:gitgutter_signs = 1
 let g:gitgutter_highlight_lines = 0
 
 """"""""Setup AutoClose""""""""
-let g:AutoClosePairs = "() {} \" ` ' []"
+let g:AutoClosePairs = "() {} \" ` ' [] <>"
 
 """"""""Leader Commands""""""""
 nnoremap <leader>n :NERDTreeToggle <CR>
@@ -68,5 +66,18 @@ nnoremap <leader>g :Gist<CR>
 nnoremap <leader>q :q<CR>
 nnoremap <leader>x :x<CR>
 nnoremap <leader>r :%s/
+
+""""""Setup ctlp""""""
 let g:ctrlp_map = '<leader>p'
 let g:ctrlp_cmd = 'CtrlP'
+set runtimepath^=~/.vim/ctrlp
+
+""""""Remap split movement""""""
+map <c-j> <c-w>j
+map <c-k> <c-w>k
+map <c-h> <c-w>h
+map <c-l> <c-w>l
+
+""""""Improve indent in visual mode""""""
+vnoremap < <gv
+vnoremap > >gv
