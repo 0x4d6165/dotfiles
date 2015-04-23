@@ -17,7 +17,7 @@ xterm*wideChars: true
 xterm*wideFont: DejaVuSansMono
 xterm*faceSize: 10
 
-!!!!!!tango color scheme!!!!!!
+!!!!!!!tango color scheme!!!!!!
 xterm*color0: #1e1e1e
 xterm*color1: #cc0000
 xterm*color2: #4e9a06
@@ -34,3 +34,9 @@ xterm*color12: #729fcf
 xterm*color13: #ad7fa8
 xterm*color14: #00f5e9
 xterm*color15: #eeeeec
+
+! Render setting for cairo -> pango -> gtk
+ Xft.dpi:        96
+ Xft.hinting:    true
+ Xft.rgba:       rgb
+ Xft.hintstyle:  hintslight
