@@ -5,6 +5,7 @@ set background=dark
 colorscheme Tomorrow-Night-Eighties
 set nu
 set laststatus=2
+set hlsearch ignorecase
 "Auto indent
 filetype indent on
 set autoindent
@@ -12,7 +13,6 @@ set autoindent
 set tabstop=2 shiftwidth=0 expandtab
 set pastetoggle=<F2>
 let mapleader = ","
-set hlsearch
 "Line wrapping
 set wrap
 set linebreak
