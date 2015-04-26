@@ -68,15 +68,15 @@ nnoremap <leader>x :x<CR>
 nnoremap <leader>r :%s/
 
 """"""Setup ctlp""""""
+set runtimepath^=~/.vim/bundle/ctrlp.vim
 let g:ctrlp_map = '<leader>p'
 let g:ctrlp_cmd = 'CtrlP'
-set runtimepath^=~/.vim/ctrlp
 
 """"""Remap split movement""""""
-map <c-j> <c-w>j
-map <c-k> <c-w>k
-map <c-h> <c-w>h
-map <c-l> <c-w>l
+nmap <c-j> <c-w>j
+nmap <c-k> <c-w>k
+nmap <c-y> <c-w>h
+nmap <c-l> <c-w>l
 
 """"""Improve indent in visual mode""""""
 vnoremap < <gv
