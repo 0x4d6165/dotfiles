@@ -11,10 +11,10 @@ Xft.antialias: true
 
 !!!!!!Font!!!!!!
 xterm*renderFont: true
-xterm*faceName: DejaVuSansMono
-xterm*faceNameDoublesize: DejaVuSansMono
+xterm*faceName: DejaVuSansMonoBook
+xterm*faceNameDoublesize: DejaVuSansMonoBook
 xterm*wideChars: true
-xterm*wideFont: DejaVuSansMono
+xterm*wideFont: DejaVuSansMonoBook
 xterm*faceSize: 10
 
 !!!!!!tango color scheme!!!!!!
