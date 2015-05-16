@@ -9,6 +9,7 @@ set hlsearch ignorecase
 "Auto indent
 filetype indent on
 set autoindent
+set smartindent
 "Tab
 set tabstop=2 shiftwidth=0 expandtab
 set pastetoggle=<F2>
@@ -37,6 +38,9 @@ Plugin 'bling/vim-airline'
 Plugin 'Townk/vim-autoclose'
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'pangloss/vim-javascript'
+Bundle 'kien/ctrlp.vim'
 Bundle 'mattn/webapi-vim'
 Bundle 'mattn/gist-vim'
 Bundle 'vim-ruby/vim-ruby'
@@ -49,6 +53,7 @@ filetype plugin indent on    " required
 
 """"""""Setup Airline""""""""
 let g:airline_theme= 'bubblegum'
+let g:airline_powerline_fonts = 1
 
 """"""""Setup GitGutter""""""""
 let g:gitgutter_enabled = 1
@@ -75,7 +80,7 @@ let g:ctrlp_cmd = 'CtrlP'
 """"""Remap split movement""""""
 nmap <c-j> <c-w>j
 nmap <c-k> <c-w>k
-nmap <c-y> <c-w>h
+nmap <c-b> <c-w>h
 nmap <c-l> <c-w>l
 
 """"""Improve indent in visual mode""""""
