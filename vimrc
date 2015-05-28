@@ -77,10 +77,9 @@ nnoremap <leader>q :q<CR>
 nnoremap <leader>x :x<CR>
 nnoremap <leader>r :%s/
 nnoremap <leader>v :vsplit<CR>
-nnoremap <leader>ba :badd new.txt<CR>
 nnoremap <leader>bd :bd<CR>
-nnoremap <leader>bn :bnext<CR>
-nnoremap <leader>bp :bprevious<CR>
+nnoremap <leader>bn :bnext!<CR>
+nnoremap <leader>bp :bprevious!<CR>
 
 
 """"""Setup ctlp""""""
