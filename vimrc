@@ -7,6 +7,8 @@ set nu
 set laststatus=2
 set hlsearch ignorecase
 "Auto indent
+filetype on
+filetype plugin on
 filetype indent on
 set autoindent
 set smartindent
@@ -40,6 +42,9 @@ Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'pangloss/vim-javascript'
+Plugin 'jelera/vim-javascript-syntax'
+Plugin 'octol/vim-cpp-enhanced-highlight'
+Plugin 'bling/vim-bufferline'
 Bundle 'kien/ctrlp.vim'
 Bundle 'mattn/webapi-vim'
 Bundle 'mattn/gist-vim'
@@ -64,13 +69,19 @@ let g:gitgutter_highlight_lines = 0
 let g:AutoClosePairs = "() {} \" ` ' [] <>"
 
 """"""""Leader Commands""""""""
-nnoremap <leader>n :NERDTreeToggle <CR>
+nnoremap <leader>n :NERDTreeToggle<CR>
 nnoremap <leader>w :w <CR>
 nnoremap <leader>i :PluginInstall<CR>
 nnoremap <leader>g :Gist<CR>
 nnoremap <leader>q :q<CR>
 nnoremap <leader>x :x<CR>
 nnoremap <leader>r :%s/
+nnoremap <leader>v :vsplit<CR>
+nnoremap <leader>ba :badd new.txt<CR>
+nnoremap <leader>bd :bd<CR>
+nnoremap <leader>bn :bnext<CR>
+nnoremap <leader>bp :bprevious<CR>
+
 
 """"""Setup ctlp""""""
 set runtimepath^=~/.vim/bundle/ctrlp.vim
@@ -86,3 +97,16 @@ nmap <c-l> <c-w>l
 """"""Improve indent in visual mode""""""
 vnoremap < <gv
 vnoremap > >gv
+
+""""""Enable Extra Cpp Syntax Highlighting Features""""""
+let g:cpp_class_scope_highlight = 1
+let g:cpp_experimental_template_highlight = 1
+
+""""""Enable Better HTML AutoIndent""""""
+let g:html_indent_inctags = "html,body,head,tbody, div, img, a"
+
+""""""Configure Bufferline""""""
+let g:bufferline_echo = 0
+let g:bufferline_show_bufnr = 0
+let g:bufferline_echo = 0
+  autocmd VimEnter * let &statusline='%{bufferline#refresh_status()}'.bufferline#get_status_string()
