@@ -44,6 +44,8 @@ Plugin 'kchmck/vim-coffee-script'
 Plugin 'pangloss/vim-javascript'
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'octol/vim-cpp-enhanced-highlight'
+Plugin 'tpope/vim-haml'
+Plugin 'hail2u/vim-css3-syntax'
 Plugin 'bling/vim-bufferline'
 Bundle 'kien/ctrlp.vim'
 Bundle 'mattn/webapi-vim'
@@ -88,10 +90,10 @@ let g:ctrlp_map = '<leader>p'
 let g:ctrlp_cmd = 'CtrlP'
 
 """"""Remap split movement""""""
-nmap <c-j> <c-w>j
-nmap <c-k> <c-w>k
-nmap <c-b> <c-w>h
-nmap <c-l> <c-w>l
+nmap <leader>j <c-w>j
+nmap <leader>k <c-w>k
+nmap <leader>h <c-w>h
+nmap <leader>l <c-w>l
 
 """"""Improve indent in visual mode""""""
 vnoremap < <gv
