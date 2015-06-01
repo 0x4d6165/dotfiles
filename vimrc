@@ -15,14 +15,14 @@ set smartindent
 "Tab
 set tabstop=2 shiftwidth=0 expandtab
 set pastetoggle=<F2>
-let mapleader = ","
+let mapleader = ','
 "Line wrapping
 set wrap
 set linebreak
 set nolist
 
-set nocompatible              " be iMproved, required
-filetype off                  " required
+set nocompatible
+filetype off
 
 """"""""Setup Vundle""""""""
 " set the runtime path to include Vundle and initialize
@@ -38,7 +38,6 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'scrooloose/nerdtree'
 Plugin 'bling/vim-airline'
 Plugin 'Townk/vim-autoclose'
-Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'pangloss/vim-javascript'
@@ -46,7 +45,6 @@ Plugin 'jelera/vim-javascript-syntax'
 Plugin 'octol/vim-cpp-enhanced-highlight'
 Plugin 'tpope/vim-haml'
 Plugin 'hail2u/vim-css3-syntax'
-Plugin 'bling/vim-bufferline'
 Bundle 'kien/ctrlp.vim'
 Bundle 'mattn/webapi-vim'
 Bundle 'mattn/gist-vim'
@@ -54,6 +52,7 @@ Bundle 'vim-ruby/vim-ruby'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'tpope/vim-surround'
 Bundle 'ervandew/supertab'
+Bundle 'scrooloose/syntastic'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -82,6 +81,7 @@ nnoremap <leader>v :vsplit<CR>
 nnoremap <leader>bd :bd<CR>
 nnoremap <leader>bn :bnext!<CR>
 nnoremap <leader>bp :bprevious!<CR>
+nnoremap <leader>c :lclose<CR>
 
 
 """"""Setup ctlp""""""
@@ -104,10 +104,23 @@ let g:cpp_class_scope_highlight = 1
 let g:cpp_experimental_template_highlight = 1
 
 """"""Enable Better HTML AutoIndent""""""
-let g:html_indent_inctags = "html,body,head,tbody, div, img, a"
+let g:html_indent_inctags = 'html,body,head,tbody, div, img, a'
 
-""""""Configure Bufferline""""""
-let g:bufferline_echo = 0
-let g:bufferline_show_bufnr = 0
-let g:bufferline_echo = 0
-  autocmd VimEnter * let &statusline='%{bufferline#refresh_status()}'.bufferline#get_status_string()
+""""""Enable vim-airline's tabline""""""
+let g:airline#extensions#tabline#enabled = 1
+
+""""""Config syntastic""""""
+"Configure Error messages and their behavior
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+"Add and configure checkers
+let g:syntastic_html_tidy_exec = 'tidy5'
+let g:syntastic_cpp_cppcheck_exec = 'cppcheck'
+let g:syntastic_cpp_cpplint_exec = 'cpplint'
+let g:syntastic_cpp_checkers = ['gcc', 'cppcheck', 'cpplint']
+let g:syntastic_vim_checkers = ['vint']
