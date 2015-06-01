@@ -125,4 +125,3 @@ let g:syntastic_cpp_cppcheck_exec = 'cppcheck'
 let g:syntastic_cpp_cpplint_exec = 'cpplint'
 let g:syntastic_cpp_checkers = ['gcc', 'cppcheck', 'cpplint']
 let g:syntastic_vim_checkers = ['vint']
-"let g:syntastic_ruby_checkers = ['mri', 'reek']
