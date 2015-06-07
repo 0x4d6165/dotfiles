@@ -84,7 +84,6 @@ nnoremap <leader>bp :bprevious!<CR>
 nnoremap <leader>c :lclose<CR>
 nnoremap <leader>t :!
 
-
 """"""Setup ctlp""""""
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 let g:ctrlp_map = '<leader>p'
