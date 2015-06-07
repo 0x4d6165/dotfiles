@@ -1,7 +1,7 @@
 
 # Dotfiles
 
-![Setup Preview](https://i.imgur.com/MAr424z.png)
+![Setup Preview](https://i.imgur.com/pGzolWf.png)
 
 This repo includes my tmux.conf and vimrc along with the scripts used in said tmux.conf.
 **Note:** my vimrc is using [vundle](https://github.com/gmarik/Vundle.vim) so don't just copy and paste it without installing vundle
