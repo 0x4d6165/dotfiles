@@ -52,7 +52,6 @@ Bundle 'vim-ruby/vim-ruby'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'tpope/vim-surround'
 Bundle 'ervandew/supertab'
-Bundle 'scrooloose/syntastic'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -81,8 +80,8 @@ nnoremap <leader>v :vsplit<CR>
 nnoremap <leader>bd :bd<CR>
 nnoremap <leader>bn :bnext!<CR>
 nnoremap <leader>bp :bprevious!<CR>
-nnoremap <leader>c :lclose<CR>
 nnoremap <leader>t :!
+
 
 """"""Setup ctlp""""""
 set runtimepath^=~/.vim/bundle/ctrlp.vim
@@ -108,19 +107,3 @@ let g:html_indent_inctags = 'html,body,head,tbody, div, img, a'
 
 """"""Enable vim-airline's tabline""""""
 let g:airline#extensions#tabline#enabled = 1
-
-""""""Config syntastic""""""
-"Configure Error messages and their behavior
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-"Add and configure checkers
-let g:syntastic_html_tidy_exec = 'tidy5'
-let g:syntastic_cpp_cppcheck_exec = 'cppcheck'
-let g:syntastic_cpp_cpplint_exec = 'cpplint'
-let g:syntastic_cpp_checkers = ['gcc', 'cppcheck', 'cpplint']
-let g:syntastic_vim_checkers = ['vint']

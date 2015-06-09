@@ -10,13 +10,3 @@ This repo includes my tmux.conf and vimrc along with the scripts used in said tm
 ##Fonts
 
 The vimrc and tmux.conf files require patched fonts in order to be displayed correctly. I recommend [DejaVu Sans Mono for Powerline](https://github.com/powerline/fonts/tree/master/DejaVuSansMono) but you can find patched versions of many more fonts in that repository.
-
-##Syntastic
-One of the vim plugins in the vimrc file, syntastic requires small programs called "checkers" to work properly. These check your code and find any errors or,
-in some cases, inefficiencies or code smells and are specific to one or two programming languages. Here are the checkers used in this vimrc (not including gcc which is found on practically every Unix-based OS on the planet and any other checker included in the command used to compile the language's files):
-* [tidy5](http://www.htacg.org/tidy-html5/)
-* [csslint](https://www.npmjs.com/package/csslint)
-* [jshint](http://jshint.com/)
-* [cppcheck](http://cppcheck.sourceforge.net/)
-* [cpplint](https://gist.github.com/gigavinyl/fcb45d9d50a7287d3eb1)
-* [pylint](http://www.pylint.org/)
