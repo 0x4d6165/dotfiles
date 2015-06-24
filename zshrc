@@ -23,7 +23,7 @@ autoload -U promptinit
 promptinit
 PROMPT="%{$fg[green]%}%m %{$fg_no_bold[blue]%}%1~ %{$reset_color%}%# "
 
-alias cl="clear && archey"
+alias cl="clear && archeyjs"
 alias apts="apt-cache search"
 alias aptsy="sudo apt-fast update"
 alias aptsyu="sudo apt-fast update && sudo apt-fast upgrade"
@@ -47,12 +47,9 @@ eval "$(rbenv init -)"
 #export PATH="$PYENV_ROOT/bin:$PATH"
 #eval "$(pyenv init -)"
 
-export PATH="$HOME/.nenv/bin:$PATH"
-eval "$(nenv init -)"
+#export PATH=/home/gigavinyl/.mongodb/bin:$PATH
 
-export PATH=/home/gigavinyl/.mongodb/bin:$PATH
+. ~/.nvm/nvm.sh
+nvm use 0.12>/dev/null
 
-archey
-
-# added by travis gem
-[ -f /home/gigavinyl/.travis/travis.sh ] && source /home/gigavinyl/.travis/travis.sh
+archeyjs
