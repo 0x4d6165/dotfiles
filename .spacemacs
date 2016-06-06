@@ -23,8 +23,6 @@ values."
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
-     ;; auto-completion
-     ;; better-defaults
      emacs-lisp
      git
      github
@@ -38,15 +36,15 @@ values."
      version-control
      react
      javascript
-     osx
-     ;; company-mode
+     company-mode
      spotify
      emoji
      autocompletion
      colors
      better-defaults
-     mu4e
      shell
+     haskell
+     rcirc
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -57,15 +55,14 @@ values."
                                       ac-js2
                                       tern-auto-complete
                                       git-gutter+
-                                      circe
                                       evil-smartparens
                                       dockerfile-mode
                                       yaml-mode
+                                      nix-mode
                                       )
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '(
                                     company
-                                    aggressive-indent-mode
                                     )
    ;; If non-nil spacemacs will delete any orphan packages, i.e. packages that
    ;; are declared in a layer which is not a member of
@@ -272,6 +269,10 @@ before packages are loaded. If you are unsure, you should try in setting them in
   (setq projectile-switch-project-action 'neotree-projectile-action)
   (setq neo-smart-open t)
   (setq-default git-magit-status-fullscreen t)
+  (setq rcirc-server-alist
+    '(("irc.freenode.net"
+        :port "1337"
+        :channels ("#spacemacs" "#emacs" "nixos"))))
   (setq js2-strict-trailing-comma-warning nil)
   (setq-default indent-tabs-mode nil)
   (setq-default tab-width 2)
@@ -285,14 +286,6 @@ before packages are loaded. If you are unsure, you should try in setting them in
    web-mode-code-indent-offset 2
    web-mode-attr-indent-offset 2)
   (setq projectile-enable-caching t)
-  (setq circe-network-options
-        '(("Gitter"
-           :host "irc.gitter.im"
-           :port 6697
-           :tls t
-           :nick "gigavinyl"
-           :nickserv-password "409b940f62bd71f468ea31f8dbc2927f22bdd8d3"
-           :channels ("#/syl20bnr/spacemacs"))))
   )
 
 (defun dotspacemacs/user-config ()
