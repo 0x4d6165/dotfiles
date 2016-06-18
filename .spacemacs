@@ -59,6 +59,7 @@ values."
                                       dockerfile-mode
                                       yaml-mode
                                       nix-mode
+                                      simpleclip
                                       )
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '(
@@ -262,7 +263,11 @@ executes.
  This function is mostly useful for variables that need to be set
 before packages are loaded. If you are unsure, you should try in setting them in
 `dotspacemacs/user-config' first."
+  (autoload 'nix-mode "nix-mode" "Major mode for editing Nix expressions." t)
+  (push '("\\.nix\\'" . nix-mode) auto-mode-alist)
+  (push '("\\.nix\\.in\\'" . nix-mode) auto-mode-alist)
   (setenv "NODE_NO_READLINE" "1")
+  (setq ispell-list-command "--list")
   (setq-default json-reformat:indent-width 2)
   (setq-default dotspacemacs-configuration-layers
     '(shell :variables shell-default-shell 'eshell))
@@ -296,6 +301,7 @@ before packages are loaded. If you are unsure, you should try in setting them in
   explicitly specified that a variable should be set before a package is loaded,
   you should place your code here."
   (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
+  (simpleclip-mode 1)
   (add-to-list
    'comint-preoutput-filter-functions
    (lambda (output)
