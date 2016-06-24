@@ -58,18 +58,24 @@
   programs.zsh.enable = true;
 
   environment.systemPackages = with pkgs; [
-     cabal-install
      dropbox-cli
      emacs
      feh
      ghc
      git
      google-chrome-beta
+     haskellPackages.ghc-mod
+     haskellPackages.hasktags
+     haskellPackages.hlint
+     haskellPackages.stylish-haskell
      haskellPackages.xmobar
      htop
+     gnumake
+     gcc
      networkmanagerapplet
      nox
-     rofi
+     python
+     python27Packages.udiskie
      rxvt_unicode
      silver-searcher
      sudo
@@ -81,6 +87,7 @@
 
   # List services that you want to enable:
   services = {
+    nixosManual.showManual = true;
     tlp.enable = true;
     openssh.enable = true;
     printing.enable = true;
@@ -88,20 +95,48 @@
       enable = true;
       layout = "us";
       displayManager = {
-        sessionCommands = ''
-          xrandr --output HDMI1 --auto --right-of eDP1
-          dropbox start
-          urxvtd
-          xrdb /home/gigavinyl/.Xresources
-          rofi
-          feh --bg-scale -z Dropbox/blookGalaxy.jpg &
-          xmonad
-        '';
         lightdm = {
           enable = true;
           background = "/home/gigavinyl/Pictures/blook.png";
         };
-      };
+        sessionCommands = ''
+          xrdb "${pkgs.writeText "xrdb.conf" ''
+            !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            !!!!!!!!!!!!!! URXVT !!!!!!!!!!!!!!!!
+            !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+            !!!!!!Setup env.!!!!!!
+            URxvt.*foreground: #FFFFFF
+            URxvt.*background: #262626
+            URxvt.*cursorBlink: true
+            URxvt.perl-ext-common: selection-to-clipboard,default,matcher
+            URxvt.url-launcher: /usr/bin/xdg-open
+            URxvt.matcher.button: 1
+            URxvt*scrollBar: false
+
+            !!!!!!Font!!!!!!
+            URxvt.font: xft:saucecodepowerline:size=11
+            URxvt.letterSpace: -1
+
+            !!!!!!tango color scheme!!!!!!
+            URxvt.*color0: #1e1e1e
+            URxvt.*color1: #cc0000
+            URxvt.*color2: #4e9a06
+            URxvt.*color3: #c4a000
+            URxvt.*color4: #3465a4
+            URxvt.*color5: #75507b
+            URxvt.*color6: #0b939b
+            URxvt.*color7: #d3d7cf
+            URxvt.*color8: #555753
+            URxvt.*color9: #ef2929
+            URxvt.*color10: #8ae234
+            URxvt.*color11: #fce94f
+            URxvt.*color12: #729fcf
+            URxvt.*color13: #ad7fa8
+            URxvt.*color14: #00f5e9
+            URxvt.*color15: #eeeeec
+          ''}"
+      '';
       windowManager = {
         xmonad = {
           enable = true;
@@ -137,26 +172,40 @@
   };
 
   # Enable Emacs Daemon
-  systemd.user.services.emacs = {
-    description = "Emacs Daemon";
-    environment = {
-      GTK_DATA_PREFIX = config.system.path;
-      SSH_AUTH_SOCK = "%t/ssh-agent";
-      GTK_PATH = "${config.system.path}/lib/gtk-3.0:${config.system.path}/lib/gtk-2.0";
-      NIX_PROFILES = "${pkgs.lib.concatStringsSep " " config.environment.profiles}";
-      TERMINFO_DIRS = "/run/current-system/sw/share/terminfo";
-      ASPELL_CONF = "dict-dir /run/current-system/sw/lib/aspell";
-    };
-    serviceConfig = {
-      Type = "forking";
-      ExecStart = "${pkgs.emacs}/bin/emacs --daemon";
-      ExecStop = "${pkgs.emacs}/bin/emacsclient --eval (kill-emacs)";
-      Restart = "always";
-    };
-    wantedBy = [ "default.target" ];
-  };
+  # systemd.user.services.emacs = {
+  #   description = "Emacs Daemon";
+  #   environment = {
+  #     GTK_DATA_PREFIX = config.system.path;
+  #     SSH_AUTH_SOCK = "/run/user/1000/ssh-agent";
+  #     GTK_PATH = "${config.system.path}/lib/gtk-3.0:${config.system.path}/lib/gtk-2.0";
+  #     NIX_PROFILES = "${pkgs.lib.concatStringsSep " " config.environment.profiles}";
+  #     TERMINFO_DIRS = "/run/current-system/sw/share/terminfo";
+  #     ASPELL_CONF = "dict-dir /run/current-system/sw/lib/aspell";
+  #   };
+  #   serviceConfig = {
+  #     Type = "forking";
+  #     ExecStart = "${pkgs.emacs}/bin/emacs --daemon";
+  #     ExecStop = "${pkgs.emacs}/bin/emacsclient --eval (kill-emacs)";
+  #     Restart = "always";
+  #   };
+  #   wantedBy = [ "default.target" ];
+  # };
 
- systemd.services.emacs.enable = true;
+  # Enable Udiskie Daemon
+  systemd.user.services."udiskie" = {
+    enable = true;
+    description = "udiskie to automount removable media";
+    wantedBy = [ "default.target" ];
+    path = with pkgs; [
+      # gnome3.defaultIconTheme
+      # gnome3.gnome_themes_standard
+      pythonPackages.udiskie
+    ];
+    # environment.XDG_DATA_DIRS="${pkgs.gnome3.defaultIconTheme}/share:${pkgs.gnome3.gnome_themes_standard}/share";
+    serviceConfig.Restart = "always";
+    serviceConfig.RestartSec = 2;
+    serviceConfig.ExecStart = "${pkgs.python27Packages.udiskie}/bin/udiskie -a -t -n -F ";
+  };
 
   # Setup custom fonts
   fonts = {

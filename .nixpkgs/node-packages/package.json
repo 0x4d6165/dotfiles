@@ -1,0 +1,12 @@
+[
+    "eslint",
+    "eslint-config",
+    "eslint-config-airbnb",
+    "eslint-plugin-ava",
+    "eslint-plugin-babel",
+    "eslint-plugin-immutable",
+    "eslint-plugin-import-order",
+    "eslint-plugin-jsx-a11y",
+    "eslint-plugin-react",
+    "babel-eslint"
+]
