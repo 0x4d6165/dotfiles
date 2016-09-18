@@ -23,47 +23,42 @@ values."
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
+     auto-completion
+     better-defaults
+     colors
      emacs-lisp
+     emoji
+     gnus
      git
      github
+     haskell
+     javascript
      markdown
+     nixos
      org
-     ;; (shell :variables
-     ;;        shell-default-height 30
-     ;;        shell-default-position 'bottom)
+     perl
+     rcirc
+     react
+     shell
      spell-checking
+     spotify
      syntax-checking
      version-control
-     react
-     javascript
-     company-mode
-     spotify
-     emoji
-     autocompletion
-     colors
-     better-defaults
-     shell
-     haskell
-     rcirc
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
     dotspacemacs-additional-packages '(
-                                      auto-complete
-                                      ac-js2
-                                      tern-auto-complete
                                       git-gutter+
                                       evil-smartparens
                                       dockerfile-mode
                                       yaml-mode
-                                      nix-mode
                                       simpleclip
+                                      tide
                                       )
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '(
-                                    company
                                     )
    ;; If non-nil spacemacs will delete any orphan packages, i.e. packages that
    ;; are declared in a layer which is not a member of
@@ -129,7 +124,7 @@ values."
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font. `powerline-scale' allows to quickly tweak the mode-line
    ;; size to make separators look not too crappy.
-   dotspacemacs-default-font '("Source Code Pro"
+   dotspacemacs-default-font '("Source Code Pro for Powerline"
                                :size 13
                                :weight normal
                                :width normal
@@ -254,6 +249,7 @@ values."
    ;; delete only whitespace for changed lines or `nil' to disable cleanup.
    ;; (default nil)
    dotspacemacs-whitespace-cleanup nil
+
    ))
 
 (defun dotspacemacs/user-init ()
@@ -293,6 +289,17 @@ before packages are loaded. If you are unsure, you should try in setting them in
   (setq projectile-enable-caching t)
   )
 
+(defun setup-tide-mode ()
+  (interactive)
+  (tide-setup)
+  (flycheck-mode +1)
+  (setq flycheck-check-syntax-automatically '(save mode-enabled))
+  (eldoc-mode +1)
+  ;; company is an optional dependency. You have to
+  ;; install it separately via package-install
+  ;; `M-x package-install [ret] company`
+  (company-mode +1))
+
 (defun dotspacemacs/user-config ()
   "Configuration function for user code.
   This function is called at the very end of Spacemacs initialization after
@@ -300,6 +307,12 @@ before packages are loaded. If you are unsure, you should try in setting them in
   This is the place where most of your configurations should be done. Unless it is
   explicitly specified that a variable should be set before a package is loaded,
   you should place your code here."
+  (setq company-tooltip-align-annotations t)
+  (add-hook 'before-save-hook 'tide-format-before-save)
+  (add-hook 'typescript-mode-hook #'setup-tide-mode)
+  (setq tide-format-options '(:insertSpaceAfterFunctionKeywordForAnonymousFunctions t :placeOpenBraceOnNewLineForFunctions nil :BaseIndentSize? 2 :IndentSize 2 :TabSize 2 :ConvertTabsToSpaces t :IndentStyle None :InsertSpaceBeforeAndAfterBinaryOperators t ))
+  (add-hook 'js2-mode-hook #'setup-tide-mode)
+  (global-company-mode)
   (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
   (simpleclip-mode 1)
   (add-to-list
@@ -309,27 +322,57 @@ before packages are loaded. If you are unsure, you should try in setting them in
   (global-git-gutter+-mode)
   (add-to-list 'auto-mode-alist '("Dockerfile\\'" . dockerfile-mode))
   (add-hook 'js2-mode-hook #'smartparens-mode)
-  (add-hook 'web-mode-hook #'smartparens-mode)
+  ;; (add-hook 'web-mode-hook #'smartparens-mode)
   (add-hook 'smartparens-enabled-hook #'evil-smartparens-mode)
   (setq powerline-default-separator 'slant)
-  (add-to-list 'auto-mode-alist '("\\.js[x]?\\'" . web-mode))
-  (setq web-mode-content-types-alist
-    '(("jsx" . "\\.js[x]?\\'")))
+  ;; (add-to-list 'auto-mode-alist '("\\.js[x]?\\'" . web-mode))
+  ;; (setq web-mode-content-types-alist
+  ;;   '(("jsx" . "\\.js[x]?\\'")))
   (with-eval-after-load 'flycheck
     (setq-default flycheck-disabled-checkers
       (append flycheck-disabled-checkers
         '(javascript-jshint)))
   ;; use eslint with web-mode for jsx files
-  (flycheck-add-mode 'javascript-eslint 'web-mode))
+  (flycheck-add-mode 'javascript-eslint 'js2-mode))
+  (flycheck-add-mode 'javascript-eslint 'typescript-mode)
   (evil-leader/set-key "n" 'neotree-toggle)
   (global-git-commit-mode t)
   (global-flycheck-mode)
-  (ac-config-default)
-  (add-to-list 'ac-modes 'web-mode)
-  (setq ac-auto-show-menu 0.05)
-  (setq ac-delay 0.05)
-  (tern-ac-setup)
-  (setq ac-js2-evaluate-calls t)
+  ;; Gnus
+  ;; Get email, and store in nnml
+  (setq gnus-secondary-select-methods
+  '(
+    (nnimap "gmail"
+            (nnimap-address
+              "imap.gmail.com")
+            (nnimap-server-port 993)
+            (nnimap-stream ssl))
+    ))
+
+  ;; Send email via Gmail:
+  (setq message-send-mail-function 'smtpmail-send-it
+    smtpmail-default-smtp-server "smtp.gmail.com")
+
+  ;; Archive outgoing email in Sent folder on imap.gmail.com:
+  (setq gnus-message-archive-method '(nnimap "imap.gmail.com")
+      gnus-message-archive-group "[Gmail]/Sent Mail")
+
+  ;; set return email address based on incoming email address
+  (setq gnus-posting-styles
+      '(((header "to" "address@outlook.com")
+        (address "address@outlook.com"))
+    ((header "to" "address@gmail.com")
+      (address "address@gmail.com"))))
+
+  ;; store email in ~/gmail directory
+  (setq nnml-directory "~/gmail")
+  (setq message-directory "~/gmail")
+
+
+  (with-eval-after-load 'web-mode
+    (add-to-list 'web-mode-indentation-params '("lineup-args" . nil))
+    (add-to-list 'web-mode-indentation-params '("lineup-concats" . nil))
+    (add-to-list 'web-mode-indentation-params '("lineup-calls" . nil)))
 
   ;; Vim key bindings
   (evil-leader/set-key
@@ -352,11 +395,15 @@ before packages are loaded. If you are unsure, you should try in setting them in
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(paradox-github-token t))
+ '(paradox-github-token t)
+ '(send-mail-function (quote smtpmail-send-it))
+ '(smtpmail-smtp-server "smtp.gmail.com")
+ '(smtpmail-smtp-service 25))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(company-tooltip-common ((t (:inherit company-tooltip :weight bold :underline nil))))
+ '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :weight bold :underline nil)))))
 

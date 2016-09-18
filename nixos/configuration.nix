@@ -47,7 +47,9 @@
 
   powerManagement.enable = true;
 
-  virtualisation.docker.enable = true;
+  virtualisation = {
+    docker.enable = true;
+  };
 
   # Set your time zone.
   time.timeZone = "America/Los_Angeles";
@@ -57,31 +59,40 @@
 
   programs.zsh.enable = true;
 
+  security.setuidPrograms = [ "slock" ];
+
   environment.systemPackages = with pkgs; [
      dropbox-cli
      emacs
      feh
+     gcc
      ghc
      git
-     google-chrome-beta
+     gnumake
+     chromium
+     haskellPackages.cabal-install
      haskellPackages.ghc-mod
      haskellPackages.hasktags
      haskellPackages.hlint
+     haskellPackages.stack
      haskellPackages.stylish-haskell
      haskellPackages.xmobar
      htop
-     gnumake
-     gcc
+     kbdlight
      networkmanagerapplet
+     nodejs
      nox
      python
      python27Packages.udiskie
      rxvt_unicode
      silver-searcher
+     slock
+     sublime3
      sudo
      unzip
      vim
      wget
+     xautolock
      xflux
   ];
 
@@ -137,6 +148,7 @@
             URxvt.*color15: #eeeeec
           ''}"
       '';
+      };
       windowManager = {
         xmonad = {
           enable = true;

@@ -5,14 +5,14 @@
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="robbyrussell"
+ZSH_THEME="frisk"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
 # Uncomment the following line to use hyphen-insensitive completion. Case
 # sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE="true"
+HYPHEN_INSENSITIVE="true"
 
 # Uncomment the following line to disable bi-weekly auto-update checks.
 # DISABLE_AUTO_UPDATE="true"
@@ -47,13 +47,13 @@ ZSH_THEME="robbyrussell"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
+# Example format: plugins=(rails git  ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git docker lein npm sudo systemd wd cp)
+plugins=(git docker npm sudo systemd wd cp zsh-autosuggestions sublime zsh-syntax-highlighting zsh-history-substring-search)
 
 # User configuration
 
-  export PATH="/home/gigavinyl/bin:/var/setuid-wrappers:/home/gigavinyl/.nix-profile/bin:/home/gigavinyl/.nix-profile/sbin:/home/gigavinyl/.nix-profile/lib/kde4/libexec:/nix/var/nix/profiles/default/bin:/nix/var/nix/profiles/default/sbin:/nix/var/nix/profiles/default/lib/kde4/libexec:/run/current-system/sw/bin:/run/current-system/sw/sbin:/run/current-system/sw/lib/kde4/libexec"
+export PATH="/home/gigavinyl/bin:/var/setuid-wrappers:/home/gigavinyl/.nix-profile/bin:/home/gigavinyl/.nix-profile/sbin:/home/gigavinyl/.nix-profile/lib/kde4/libexec:/nix/var/nix/profiles/default/bin:/nix/var/nix/profiles/default/sbin:/nix/var/nix/profiles/default/lib/kde4/libexec:/run/current-system/sw/bin:/run/current-system/sw/sbin:/run/current-system/sw/lib/kde4/libexec"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
@@ -65,7 +65,7 @@ source $ZSH/oh-my-zsh.sh
 # if [[ -n $SSH_CONNECTION ]]; then
 #   export EDITOR='vim'
 # else
-#   export EDITOR='mvim'
+  export EDITOR='vim'
 # fi
 
 # Compilation flags
@@ -84,5 +84,13 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias cl="clear && screenfetch"
 alias git="hub"
+alias excerism="/home/gigavinyl/app/excerism"
+# alias ohmyzsh="mate ~/.oh-my-zsh"
+alias cl="clear && screenfetch"
+alias git="hub"
 
 screenfetch
+
+export PATH=$PATH:/home/gigavinyl/apps
+export PATH=$PATH:/home/gigavinyl/apps/.npm-packages/bin
+export PATH=$PATH:/home/gigavinyl/apps/firefox
