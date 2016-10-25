@@ -49,7 +49,7 @@ HYPHEN_INSENSITIVE="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git  ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git docker npm sudo systemd wd cp zsh-autosuggestions sublime zsh-syntax-highlighting zsh-history-substring-search)
+plugins=(git sudo wd cp zsh-autosuggestions sublime zsh-syntax-highlighting zsh-history-substring-search)
 
 # User configuration
 
@@ -65,7 +65,7 @@ source $ZSH/oh-my-zsh.sh
 # if [[ -n $SSH_CONNECTION ]]; then
 #   export EDITOR='vim'
 # else
-  export EDITOR='vim'
+  export EDITOR='nvim'
 # fi
 
 # Compilation flags
@@ -82,15 +82,11 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias cl="clear && screenfetch"
-alias git="hub"
-alias excerism="/home/gigavinyl/app/excerism"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias cl="clear && screenfetch"
-alias git="hub"
+alias cl="clear && /home/gigavinyl/apps/screenFetch/screenfetch-dev"
+eval "$(hub alias -s)"
 
-screenfetch
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
 
-export PATH=$PATH:/home/gigavinyl/apps
-export PATH=$PATH:/home/gigavinyl/apps/.npm-packages/bin
-export PATH=$PATH:/home/gigavinyl/apps/firefox
+/home/gigavinyl/apps/screenFetch/screenfetch-dev
