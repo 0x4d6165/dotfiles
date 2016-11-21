@@ -1,40 +1,45 @@
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-!!!!!!!!!!!!!! URXVT !!!!!!!!!!!!!!!!
+Xft.autohint: 0
+Xft.lcdfilter: lcddefault
+Xft.hintstyle: hintslight
+Xft.hinting: 1
+Xft.antialias: 1
+Xft.rgba: rgb
 
-!!!!!!Setup env.!!!!!!
-URxvt.*foreground: #FFFFFF
-URxvt.*background: #262626
-URxvt.*cursorBlink: true
-URxvt.perl-ext-common: selection-to-clipboard,default,matcher
-URxvt.url-launcher: /usr/bin/xdg-open
-URxvt.matcher.button: 1
-URxvt*scrollBar: false
+st.font:			-*-Source Code Pro-*-*-*-*-15-*-*-*-*-*-*-1
 
-!!!!!!Font!!!!!!
-URxvt.font: xft:saucecodepowerline:size=11
-URxvt.letterSpace: -1
+! special
+*.foreground:   #aeb1b7
+*.background:   #212121
+*.cursorColor:  #c8cbce
 
-!!!!!!tango color scheme!!!!!!
-URxvt.*color0: #1e1e1e
-URxvt.*color1: #cc0000
-URxvt.*color2: #4e9a06
-URxvt.*color3: #c4a000
-URxvt.*color4: #3465a4
-URxvt.*color5: #75507b
-URxvt.*color6: #0b939b
-URxvt.*color7: #d3d7cf
-URxvt.*color8: #555753
-URxvt.*color9: #ef2929
-URxvt.*color10: #8ae234
-URxvt.*color11: #fce94f
-URxvt.*color12: #729fcf
-URxvt.*color13: #ad7fa8
-URxvt.*color14: #00f5e9
-URxvt.*color15: #eeeeec
+! black
+*.color0:       #3c3e42
+*.color8:       #4f5558
 
-!!!!!!!!!!!!!! ROFI !!!!!!!!!!!!!!!!
+! red
+*.color1:       #dd6880
+*.color9:       #de889a
 
-rofi.fuzzy: true
-rofi.key-window: MetaL+w
-rofi.key-run: MetaL+p
-rofi.key-ssh: MetaL+s
+! green
+*.color2:       #83b879
+*.color10:      #99c490
+
+! yellow
+*.color3:       #dec790
+*.color11:      #e7d09a
+
+! blue
+*.color4:       #95b5e4
+*.color12:      #a0beea
+
+! purple
+*.color5:       #c1a3e0
+*.color13:      #cbacea
+
+! cyan
+*.color6:       #64c1d4
+*.color14:      #88d1df
+
+! white
+*.color7:       #9a9da3
+*.color15:      #b4b7bb

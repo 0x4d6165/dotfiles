@@ -18,7 +18,6 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'neovimhaskell/haskell-vim', {'for' : 'haskell'}
 Plug 'scrooloose/nerdtree', {'on' : 'NERDTreeToggle'}
 Plug 'mileszs/ack.vim'
-"Plug 'ctrlpvim/ctrlp.vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'neomake/neomake'
 Plug 'chrisbra/Colorizer'
@@ -42,6 +41,9 @@ Plug 'janko-m/vim-test'
 Plug 'kassio/neoterm'
 Plug 'powerman/vim-plugin-AnsiEsc'
 Plug 'Shougo/denite.nvim'
+Plug 'fmoralesc/vim-tutor-mode', {'on' : 'Tutor'}
+Plug 'Shougo/neosnippet'
+Plug 'Shougo/neosnippet-snippets'
 call plug#end()
 
 let test#strategy = "neoterm"
@@ -57,6 +59,7 @@ set nocompatible
 set lazyredraw
 set path+=**
 set wildmenu
+imap fj <Esc>
 filetype plugin on
 let g:deoplete#enable_at_startup = 1
 if !exists('g:deoplete#omni#input_patterns')
@@ -120,6 +123,16 @@ let g:ackprg = 'ag --nogroup --nocolor --column'
 
 call denite#custom#var('file_rec', 'command',
       \ ['ag', '--follow', '--nocolor', '--nogroup', '-g', ''])
+
+"snippets
+let g:neosnippet#enable_snipmate_compatibility = 1
+let g:neosnippet#snippets_directory='~/.config/nvim/snippets'
+let g:AutoPairsMapCR=0
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#enable_smart_case = 1
+imap <expr><TAB> pumvisible() ? "\<C-n>" : neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+imap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
+inoremap <expr><CR> pumvisible() ? deoplete#mappings#close_popup() : "\<CR>"
 
 set autoindent
 set copyindent
