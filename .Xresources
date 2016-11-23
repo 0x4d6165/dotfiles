@@ -5,7 +5,7 @@ Xft.hinting: 1
 Xft.antialias: 1
 Xft.rgba: rgb
 
-st.font:			-*-Source Code Pro-*-*-*-*-15-*-*-*-*-*-*-1
+UXTerm*faceName: Source Code Pro for Powerline:size=11:antialias=true
 
 ! special
 *.foreground:   #aeb1b7
