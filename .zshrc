@@ -29,7 +29,8 @@ zplug "zsh-users/zsh-syntax-highlighting"
 zplug "zsh-users/zsh-history-substring-search"
 zplug "zsh-users/zsh-completions"
 zplug "zsh-users/zsh-autosuggestions"
-zplug "tylerreckart/odin"
+#zplug "frmendes/geometry"
+zplug "yardnsm/blox-zsh-theme"
 zplug "gusaiani/elixir-oh-my-zsh"
 
 if ! zplug check --verbose; then
@@ -41,11 +42,13 @@ fi
 zplug load
 
 export EDITOR="nvim"
+export BLOX_BLOCK__SYMBOL_SYMBOL=">"
+BLOX_BLOCK__SYMBOL_EXIT_SYMBOL=">"
 
 eval "$(hub alias -s)"
 alias vi="nvim"
 alias vim="nvim"
-alias cl="clear && screenfetch"
+alias cl="clear && $HOME/.apps/screenFetch/screenfetch-dev"
 alias prm=". $HOME/.prm/prm.sh"
 . $HOME/.asdf/asdf.sh
 . $HOME/.asdf/completions/asdf.bash

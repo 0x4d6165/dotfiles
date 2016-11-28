@@ -44,6 +44,7 @@ Plug 'Shougo/denite.nvim'
 Plug 'fmoralesc/vim-tutor-mode', {'on' : 'Tutor'}
 Plug 'Shougo/neosnippet'
 Plug 'Shougo/neosnippet-snippets'
+Plug 'wikitopian/hardmode'
 call plug#end()
 
 let test#strategy = "neoterm"
@@ -73,6 +74,8 @@ let g:deoplete#sources#go#align_class = 1
 let g:elm_detailed_complete = 1
 autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+
+autocmd VimEnter,BufNewFile,BufReadPost * silent! call HardMode()
 
 autocmd FileType typescript nmap <buffer> <Leader>i : <C-u>echo tsuquyomi#hint()<CR>
 autocmd FileType elm nmap <buffer> <Leader>i :ElmShowDocs<CR>
