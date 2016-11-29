@@ -16,7 +16,6 @@ import XMonad.Util.Run(spawnPipe)
 
 myManageHook = composeAll
   [ className =? "chromium" --> doShift "1:web_0"
-  , className =? "emacs" --> doShift "4:emacs"
   , manageDocks
   ]
 
@@ -27,8 +26,8 @@ main = do
             handleEventHook defaultConfig <+> fullscreenEventHook
         , manageHook = manageDocks <+> myManageHook <+> manageHook defaultConfig
         , modMask = mod4Mask
-        , workspaces = ["1:web_0", "2:web_1", "3:terminal", "4:emacs", "5", "6", "7", "8", "9"]
-        , terminal = "urxvtc"
+        , workspaces = ["1:web_0", "2:web_1", "3:terminal", "4:code", "5", "6", "7", "8", "9"]
+        , terminal = "uxterm"
         , layoutHook = avoidStruts  $  layoutHook defaultConfig
         , logHook = dynamicLogWithPP xmobarPP
                         { ppOutput = hPutStrLn xmproc
@@ -37,7 +36,6 @@ main = do
         } `additionalKeys`
         [ ((mod4Mask .|. shiftMask, xK_z), spawn "xscreensaver-command -lock; xset dpms force off")
         , ((controlMask, xK_Print), spawn "sleep 0.2; scrot -s")
-        , ((mod4Mask, xK_u), spawn "urxvt")
         , ((mod4Mask, xK_p), shellPrompt defaultXPConfig)
         , ((mod4Mask, xK_s), sshPrompt defaultXPConfig)
         , ((0, xK_Print), spawn "scrot")
@@ -49,4 +47,8 @@ main = do
         , ((0, xF86XK_AudioLowerVolume), lowerVolume 4 >> return ())
         , ((0, xF86XK_AudioRaiseVolume), raiseVolume 4 >> return ())
         , ((0, xF86XK_AudioMute), toggleMute >> return())
+        , ((0, xF86XK_MonBrightnessUp), spawn "xbacklight -inc 20")
+        , ((0, xF86XK_MonBrightnessDown), spawn "xbacklight -dec 20")
+        , ((0, xF86XK_KbdBrightnessUp), spawn "sudo /usr/bin/kb-brightness up 20")
+        , ((0, xF86XK_KbdBrightnessDown), spawn "sudo /usr/bin/kb-brightness down 20")
         ]
