@@ -60,6 +60,8 @@ set nocompatible
 set lazyredraw
 set path+=**
 set wildmenu
+set ignorecase
+set smartcase
 imap fj <Esc>
 filetype plugin on
 let g:deoplete#enable_at_startup = 1
