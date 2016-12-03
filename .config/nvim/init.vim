@@ -4,7 +4,6 @@ Plug 'HerringtonDarkholme/yats', {'for' : 'typescript'}
 Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'mhartington/deoplete-typescript', {'for' : 'typescript'}
-Plug 'zchee/deoplete-go', {'do': 'make', 'for' : 'go'}
 Plug 'Quramy/tsuquyomi', {'for' : 'typescript'}
 Plug 'pangloss/vim-javascript', {'for' : 'javascript'}
 Plug 'Quramy/vim-js-pretty-template', {'for' : 'javascript'}
@@ -25,7 +24,6 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-fugitive'
 Plug 'nathanaelkane/vim-indent-guides'
-Plug 'fatih/vim-go', {'for' : 'go'}
 Plug 'rust-lang/rust.vim', {'for' : 'rust'}
 Plug 'sebastianmarkow/deoplete-rust', {'for' : 'rust'}
 Plug 'cespare/vim-toml', {'for' : 'toml'}
@@ -45,14 +43,22 @@ Plug 'fmoralesc/vim-tutor-mode', {'on' : 'Tutor'}
 Plug 'Shougo/neosnippet'
 Plug 'Shougo/neosnippet-snippets'
 Plug 'wikitopian/hardmode'
+Plug 'majutsushi/tagbar', {'on' : 'Tagbar'}
+Plug 'chrisbra/improvedft'
+Plug 'haya14busa/incsearch.vim'
+Plug 'haya14busa/incsearch-fuzzy.vim'
+Plug 'haya14busa/incsearch-easymotion.vim'
+Plug 'mhinz/vim-startify'
 call plug#end()
 
+let g:ft_improved_ignorecase = 1
 let test#strategy = "neoterm"
 let g:elm_format_autosave = 1
 "set tags=tags;/
 set tags=./tags,tags;$HOME
 let g:easytags_dynamic_files = 1
 let g:easytags_async = 1
+let g:easytags_events = ['BufWritePost']
 set ttyfast
 set number
 set hidden
@@ -158,6 +164,7 @@ noremap <Leader>q :q<CR>
 noremap <Leader>r :%s/
 noremap <Leader>f :Ack
 noremap <Leader>n :NERDTreeToggle<CR>
+noremap <leader>t :Tagbar<CR>
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
 nmap <silent> <leader>sv :so $MYVIMRC<CR>
 nnoremap <leader>bd :bd<CR>
@@ -187,3 +194,47 @@ au FileType go nmap <leader>rt <Plug>(go-run-tab)
 au FileType go nmap <Leader>rs <Plug>(go-run-split)
 au FileType go nmap <Leader>rv <Plug>(go-run-vertical)
 
+"tagbar
+let g:tagbar_type_elixir = {
+    \ 'ctagstype' : 'elixir',
+    \ 'kinds' : [
+        \ 'f:functions',
+        \ 'functions:functions',
+        \ 'c:callbacks',
+        \ 'd:delegates',
+        \ 'e:exceptions',
+        \ 'i:implementations',
+        \ 'a:macros',
+        \ 'o:operators',
+        \ 'm:modules',
+        \ 'p:protocols',
+        \ 'r:records'
+    \ ]
+\ }
+
+"Incsearch
+function! s:config_fuzzyall(...) abort
+  return extend(copy({
+  \   'converters': [
+  \     incsearch#config#fuzzy#converter(),
+  \     incsearch#config#fuzzyspell#converter()
+  \   ],
+  \ }), get(a:, 1, {}))
+endfunction
+
+noremap <silent><expr> / incsearch#go(<SID>config_fuzzyall())
+noremap <silent><expr> ? incsearch#go(<SID>config_fuzzyall({'command': '?'}))
+noremap <silent><expr> g? incsearch#go(<SID>config_fuzzyall({'is_stay': 1}))
+
+"Easymotion
+function! s:config_easyfuzzymotion(...) abort
+  return extend(copy({
+  \   'converters': [incsearch#config#fuzzyword#converter()],
+  \   'modules': [incsearch#config#easymotion#module({'overwin': 1})],
+  \   'keymap': {"\<CR>": '<Over>(easymotion)'},
+  \   'is_expr': 0,
+  \   'is_stay': 1
+  \ }), get(a:, 1, {}))
+endfunction
+
+noremap <silent><expr> <Space>/ incsearch#go(<SID>config_easyfuzzymotion())
