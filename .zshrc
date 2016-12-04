@@ -22,16 +22,15 @@ bindkey "^[[B" down-line-or-beginning-search # Down
 
 source ~/.zplug/init.zsh
 
-zplug "plugins/git", from:oh-my-zsh
+zplug "plugins/git", from:oh-my-zsh, nice:10
 zplug "plugins/sudo", from:oh-my-zsh
 zplug "lib/theme-and-appearance", from:oh-my-zsh
 zplug "zsh-users/zsh-syntax-highlighting"
 zplug "zsh-users/zsh-history-substring-search"
 zplug "zsh-users/zsh-completions"
 zplug "zsh-users/zsh-autosuggestions"
-#zplug "frmendes/geometry"
-zplug "yardnsm/blox-zsh-theme"
 zplug "gusaiani/elixir-oh-my-zsh"
+zplug "frmendes/geometry"
 
 if ! zplug check --verbose; then
   printf "Install? [y/N]: "
@@ -48,7 +47,7 @@ BLOX_BLOCK__SYMBOL_EXIT_SYMBOL=">"
 eval "$(hub alias -s)"
 alias vi="nvim"
 alias vim="nvim"
-alias cl="clear && $HOME/.apps/screenFetch/screenfetch-dev"
+alias cl="clear && neofetch"
 alias prm=". $HOME/.prm/prm.sh"
 . $HOME/.asdf/asdf.sh
 . $HOME/.asdf/completions/asdf.bash
