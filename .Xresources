@@ -1,11 +1,4 @@
-Xft.autohint: 0
-Xft.lcdfilter: lcddefault
-Xft.hintstyle: hintslight
-Xft.hinting: 1
-Xft.antialias: 1
-Xft.rgba: rgb
-
-UXTerm*faceName: Source Code Pro for Powerline:size=11:antialias=true
+st.font: Gohufont:size=12:antialias=false
 
 ! special
 *.foreground:   #aeb1b7
@@ -43,3 +36,4 @@ UXTerm*faceName: Source Code Pro for Powerline:size=11:antialias=true
 ! white
 *.color7:       #9a9da3
 *.color15:      #b4b7bb
+

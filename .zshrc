@@ -41,8 +41,6 @@ fi
 zplug load
 
 export EDITOR="nvim"
-export BLOX_BLOCK__SYMBOL_SYMBOL=">"
-BLOX_BLOCK__SYMBOL_EXIT_SYMBOL=">"
 
 eval "$(hub alias -s)"
 alias vi="nvim"
@@ -53,3 +51,5 @@ alias prm=". $HOME/.prm/prm.sh"
 . $HOME/.asdf/completions/asdf.bash
 
 export PATH="$HOME/.apps/Elm-Platform/0.18/.cabal-sandbox/bin/":$PATH
+export PATH="$HOME/.apps/admiral/target/release/":$PATH
+export PATH="$HOME/.apps/roller/target/release":$PATH
