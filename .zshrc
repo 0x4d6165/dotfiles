@@ -22,9 +22,10 @@ bindkey "^[[B" down-line-or-beginning-search # Down
 
 source ~/.zplug/init.zsh
 
-zplug "plugins/git", from:oh-my-zsh, nice:10
+zplug "plugins/git", from:oh-my-zsh, defer:3
 zplug "plugins/sudo", from:oh-my-zsh
 zplug "lib/theme-and-appearance", from:oh-my-zsh
+zplug "plugins/taskwarrior", from:oh-my-zsh
 zplug "zsh-users/zsh-syntax-highlighting"
 zplug "zsh-users/zsh-history-substring-search"
 zplug "zsh-users/zsh-completions"
@@ -45,11 +46,14 @@ export EDITOR="nvim"
 eval "$(hub alias -s)"
 alias vi="nvim"
 alias vim="nvim"
-alias cl="clear && neofetch"
+alias cl="clear && neofetch --ascii_distro Gentoo && task list"
 alias prm=". $HOME/.prm/prm.sh"
+alias bar=". $HOME/.scripts/bar.sh"
 . $HOME/.asdf/asdf.sh
 . $HOME/.asdf/completions/asdf.bash
 
 export PATH="$HOME/.apps/Elm-Platform/0.18/.cabal-sandbox/bin/":$PATH
 export PATH="$HOME/.apps/admiral/target/release/":$PATH
 export PATH="$HOME/.apps/roller/target/release":$PATH
+
+task list

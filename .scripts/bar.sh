@@ -2,7 +2,7 @@
 
 pkill admiral
 
-font="Gohufont:size=10"
+font="GohuFont:style=Regular:size=9"
 fallback_font="FontAwesome:size=8"
 background="#cc111314"
 foreground="#bcbdc3"

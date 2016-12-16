@@ -1,0 +1,7 @@
+#!/bin/sh
+
+# Initial import
+notmuch new
+
+# Tagging
+notmuch tag -inbox +archive folder:Archive

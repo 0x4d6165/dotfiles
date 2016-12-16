@@ -1,6 +1,6 @@
 #!/bin/bash
-status="$(cat /sys/class/power_supply/BAT0/status)"
-capacity="$(cat /sys/class/power_supply/BAT0/capacity)"
+status="$(acpi | awk '{orint $3;}' | sed 's/,//g')"
+capacity=$(acpi | awk '{print $4;}' | sed 's/%//g' | sed 's/,//g')
 color=false
 echo -n "%{F#e5c078}"
 if [[ $status == "Charging" ]]; then
@@ -19,7 +19,7 @@ elif [[ $capacity -ge "0" ]]; then
 fi
 echo -n "%{F-}"
 
-echo -n "Bat: $capacity%"
+echo -n "Bat: $capacity% [$(spark $capacity)]"
 
 if [[ color ]]; then
     echo "%{F-}"
