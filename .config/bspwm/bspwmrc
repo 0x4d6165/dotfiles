@@ -25,3 +25,5 @@ xsetroot -cursor_name left_ptr
 ~/.scripts/fehbg.sh
 ~/.scripts/bar.sh
 compton &
+dropbox &
+xautolock -time 15 -locker slock &
