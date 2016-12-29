@@ -50,6 +50,8 @@ Plug 'chrisbra/Colorizer'
 Plug 'itchyny/lightline.vim'
 Plug 'bling/vim-bufferline'
 Plug 'reedes/vim-litecorrect'
+Plug 'xolox/vim-notes'
+Plug 'racer-rust/vim-racer', {'for' : 'rust'}
 call plug#end()
 
 let g:ft_improved_ignorecase = 1
@@ -200,6 +202,20 @@ let g:tagbar_type_elixir = {
     \ ]
 \ }
 
+ let g:tagbar_type_rust = {
+    \ 'ctagstype' : 'rust',
+    \ 'kinds' : [
+        \'T:types,type definitions',
+        \'f:functions,function definitions',
+        \'g:enum,enumeration names',
+        \'s:structure names',
+        \'m:modules,module names',
+        \'c:consts,static constants',
+        \'t:traits,traits',
+        \'i:impls,trait implementations',
+    \]
+    \}
+
 "incsearch
 
 map /  <Plug>(incsearch-forward)
@@ -296,3 +312,13 @@ function! MyBufferline()
     return b . c . a
   endif
 endfunction
+
+let g:notes_directories = ['~/Dropbox/Write']
+
+set list
+set listchars=tab:▸\ ,eol:¬
+
+set hidden
+let g:racer_cmd = "~/.cargo/bin/racer"
+let $RUST_SRC_PATH="~/.multirust/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src"
+let g:racer_experimental_completer = 1

@@ -52,8 +52,13 @@ alias bar=". $HOME/.scripts/bar.sh"
 . $HOME/.asdf/asdf.sh
 . $HOME/.asdf/completions/asdf.bash
 
-export PATH="$HOME/.apps/Elm-Platform/0.18/.cabal-sandbox/bin/":$PATH
-export PATH="$HOME/.apps/admiral/target/release/":$PATH
+export PATH="$HOME/.apps/Elm-Platform/0.18/.cabal-sandbox/bin":$PATH
+export PATH="$HOME/.apps/admiral/target/release":$PATH
 export PATH="$HOME/.apps/roller/target/release":$PATH
+export PATH="$HOME/.local/bin":$PATH
+export PATH="$HOME/.cargo/bin":$PATH
 
-task list
+source $HOME/.cargo/env
+export RUST_SRC_PATH=~/.multirust/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src
+
+fortune -o | cowsay
