@@ -1,7 +1,10 @@
 #!/bin/bash
-status="$(acpi | awk '{orint $3;}' | sed 's/,//g')"
+
+status=$(acpi | awk '{orint $3;}' | sed 's/,//g')
 capacity=$(acpi | awk '{print $4;}' | sed 's/%//g' | sed 's/,//g')
-color=false
+color=true
+sparks=$(spark 0 $capacity 100)
+
 echo -n "%{F#e5c078}"
 if [[ $status == "Charging" ]]; then
     echo -en "\uf0e7"
@@ -19,7 +22,7 @@ elif [[ $capacity -ge "0" ]]; then
 fi
 echo -n "%{F-}"
 
-echo -n "Bat: $capacity% [$(spark $capacity)]"
+echo -n "Bat: $capacity% [${sparks:1:1}]"
 
 if [[ color ]]; then
     echo "%{F-}"

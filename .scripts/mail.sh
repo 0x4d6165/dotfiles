@@ -1,3 +1,4 @@
 #!/bin/sh
-NEWEMAILS=$(ls $HOME/mail/**/archive/new | wc -l)
+
+NEWEMAILS=$(notmuch search tag:unread and not tag:archive | wc -l)
 echo "Mail: $NEWEMAILS"

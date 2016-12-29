@@ -1,13 +1,31 @@
 #!/bin/sh
 
 #run OfflineIMAP once, with quiet interface
-offlineimap -o -q -u quiet
+imapactive=`ps -ef | grep offlineimap | grep -v grep | wc -l`
+mailsync="/usr/bin/offlineimap -u quiet -q"
+username=`whoami`
+mailhost=`cat /home/$username/.offlineimaprc | grep remotehost | awk '{print $3}'`
+online=`host $mailhost | grep "has address" | wc -l`
 
-count new mail for every maildir
+# kill offlineimap if active, in some rare cases it may hang
+case $imapactive in
+'1')
+   killall offlineimap && sleep 5
+;;
+esac
+
+# if you can do a DNS lookup, sync your mail
+case $online in
+'1')
+   $mailsync
+;;
+esac
+
+##count new mail for every maildir
 #maildirnew="$HOME/mail/*/*/new/"
 #new="$(find $maildirnew -type f | wc -l)"
 
-count old mail for every maildir
+##count old mail for every maildir
 #maildirold="$HOME/mail/*/*/cur/"
 #old="$(find $maildirold -type f | wc -l)"
 
