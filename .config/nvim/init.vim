@@ -15,6 +15,8 @@ Plug 'ntpeters/vim-better-whitespace'
 Plug 'jiangmiao/auto-pairs'
 Plug 'scrooloose/nerdcommenter'
 Plug 'neovimhaskell/haskell-vim', {'for' : 'haskell'}
+Plug 'eagletmt/neco-ghc', {'for' : 'haskell'}
+Plug 'Twinside/vim-hoogle', {'for' : 'haskell'}
 Plug 'scrooloose/nerdtree', {'on' : 'NERDTreeToggle'}
 Plug 'mileszs/ack.vim'
 Plug 'easymotion/vim-easymotion'
@@ -31,6 +33,7 @@ Plug 'plasticboy/vim-markdown', {'for' : 'markdown'}
 Plug 'reedes/vim-pencil', {'for' : 'markdown'}
 Plug 'reedes/vim-lexical', {'for' : 'markdown'}
 Plug 'ElmCast/elm-vim', {'for' : 'elm'}
+Plug 'bitterjug/vim-tagbar-ctags-elm', {'for' : 'elm'}
 Plug 'xolox/vim-misc'
 Plug 'xolox/vim-easytags'
 Plug 'janko-m/vim-test'
@@ -216,6 +219,39 @@ let g:tagbar_type_elixir = {
     \]
     \}
 
+ let g:tagbar_type_haskell = {
+    \ 'ctagsbin'  : 'hasktags',
+    \ 'ctagsargs' : '-x -c -o-',
+    \ 'kinds'     : [
+        \  'm:modules:0:1',
+        \  'd:data: 0:1',
+        \  'd_gadt: data gadt:0:1',
+        \  't:type names:0:1',
+        \  'nt:new types:0:1',
+        \  'c:classes:0:1',
+        \  'cons:constructors:1:1',
+        \  'c_gadt:constructor gadt:1:1',
+        \  'c_a:constructor accessors:1:1',
+        \  'ft:function types:1:1',
+        \  'fi:function implementations:0:1',
+        \  'o:others:0:1'
+    \ ],
+    \ 'sro'        : '.',
+    \ 'kind2scope' : {
+        \ 'm' : 'module',
+        \ 'c' : 'class',
+        \ 'd' : 'data',
+        \ 't' : 'type'
+    \ },
+    \ 'scope2kind' : {
+        \ 'module' : 'm',
+        \ 'class'  : 'c',
+        \ 'data'   : 'd',
+        \ 'type'   : 't'
+    \ }
+\ }
+
+
 "incsearch
 
 map /  <Plug>(incsearch-forward)
@@ -322,3 +358,7 @@ set hidden
 let g:racer_cmd = "~/.cargo/bin/racer"
 let $RUST_SRC_PATH="~/.multirust/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src"
 let g:racer_experimental_completer = 1
+
+" Disable haskell-vim omnifunc
+let g:haskellmode_completion_ghc = 0
+autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc

@@ -55,6 +55,7 @@ alias bar=". $HOME/.scripts/bar.sh"
 export PATH="$HOME/.apps/Elm-Platform/0.18/.cabal-sandbox/bin":$PATH
 export PATH="$HOME/.apps/admiral/target/release":$PATH
 export PATH="$HOME/.apps/roller/target/release":$PATH
+export PATH="$HOME/.apps":$PATH
 export PATH="$HOME/.local/bin":$PATH
 export PATH="$HOME/.cargo/bin":$PATH
 
