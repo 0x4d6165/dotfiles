@@ -1,4 +1,5 @@
-st.font: Gohufont:size=12:antialias=false
+*.font: Gohufont:size=12:antialias=false
+st.borderpx: 0
 
 ! special
 *.foreground:   #aeb1b7
