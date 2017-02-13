@@ -29,7 +29,7 @@ reload = 5
 path = "$HOME/.scripts/workspaces.sh"
 
 [title]
-path = "xtitle -s | roller -t 40"
+path = "zscroll -n -u 'xtitle -u'"
 
 [clock]
 path = "date '+%m/%d %H:%M' "

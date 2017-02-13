@@ -17,7 +17,7 @@ XF86MonBrightness{Up,Down}
 
 # terminal emulator
 super + Return
-	st
+	termite
 
 # program launcher
 super + p
