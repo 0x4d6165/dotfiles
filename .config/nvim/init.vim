@@ -15,8 +15,9 @@ Plug 'ntpeters/vim-better-whitespace'
 Plug 'jiangmiao/auto-pairs'
 Plug 'scrooloose/nerdcommenter'
 Plug 'neovimhaskell/haskell-vim', {'for' : 'haskell'}
-Plug 'eagletmt/neco-ghc', {'for' : 'haskell'}
+Plug 'mkasa/neco-ghc-lushtags', {'for' : 'haskell', 'do' : 'cp $HOME/.config/nvim/plugged/neco-ghc-lushtags/bin/ghc-mod-cache $HOME/.local/bin/'}
 Plug 'Twinside/vim-hoogle', {'for' : 'haskell'}
+Plug 'mkasa/lushtags', {'for' : 'haskell'}
 Plug 'scrooloose/nerdtree', {'on' : 'NERDTreeToggle'}
 Plug 'mileszs/ack.vim'
 Plug 'easymotion/vim-easymotion'
@@ -55,6 +56,8 @@ Plug 'bling/vim-bufferline'
 Plug 'reedes/vim-litecorrect'
 Plug 'xolox/vim-notes'
 Plug 'racer-rust/vim-racer', {'for' : 'rust'}
+Plug 'LnL7/vim-nix'
+Plug 'jceb/vim-orgmode'
 call plug#end()
 
 let g:ft_improved_ignorecase = 1
@@ -67,6 +70,7 @@ let g:easytags_async = 1
 let g:easytags_events = ['BufWritePost']
 set ttyfast
 set number
+set relativenumber
 set hidden
 set nocompatible
 set lazyredraw
@@ -103,6 +107,8 @@ endif
 
 let g:vim_markdown_folding_disabled = 1
 
+let g:necoghc_enable_detailed_browse = 1
+
 augroup pencil
   autocmd!
   autocmd FileType markdown,mkd call pencil#init()
@@ -133,6 +139,9 @@ function! neomake#makers#ft#elixir#credo()
       \ }
 endfunction
 
+function! neomake#makers#ft#haskell#EnabledMakers()
+    return ['ghcmod', 'hlint']
+endfunction
 
 function! neomake#makers#ft#elixir#EnabledMakers()
     return ['credo']
@@ -218,38 +227,6 @@ let g:tagbar_type_elixir = {
         \'i:impls,trait implementations',
     \]
     \}
-
- let g:tagbar_type_haskell = {
-    \ 'ctagsbin'  : 'hasktags',
-    \ 'ctagsargs' : '-x -c -o-',
-    \ 'kinds'     : [
-        \  'm:modules:0:1',
-        \  'd:data: 0:1',
-        \  'd_gadt: data gadt:0:1',
-        \  't:type names:0:1',
-        \  'nt:new types:0:1',
-        \  'c:classes:0:1',
-        \  'cons:constructors:1:1',
-        \  'c_gadt:constructor gadt:1:1',
-        \  'c_a:constructor accessors:1:1',
-        \  'ft:function types:1:1',
-        \  'fi:function implementations:0:1',
-        \  'o:others:0:1'
-    \ ],
-    \ 'sro'        : '.',
-    \ 'kind2scope' : {
-        \ 'm' : 'module',
-        \ 'c' : 'class',
-        \ 'd' : 'data',
-        \ 't' : 'type'
-    \ },
-    \ 'scope2kind' : {
-        \ 'module' : 'm',
-        \ 'class'  : 'c',
-        \ 'data'   : 'd',
-        \ 'type'   : 't'
-    \ }
-\ }
 
 
 "incsearch

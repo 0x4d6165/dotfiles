@@ -10,30 +10,73 @@
       ./hardware-configuration.nix
     ];
 
-  nix = {
-    gc = {
-      automatic = true;
-      dates = "12:00";
-    };
-  };
+  nixpkgs.config = {
+    allowUnfree = true;
+    #packageOverrides = pkgs: rec {
+      #st = pkgs.stdenv.lib.overrideDerivation pkgs.st (oldAttrs : {
+         #configFile = ''
+            #static const char *colorname[] = {
 
-  nixpkgs.config.allowUnfree = true;
+              #/* 8 normal colors */
+              #[0] = "#3c3e42", /* black   */
+              #[1] = "#dd6880", /* red     */
+              #[2] = "#83b879", /* green   */
+              #[3] = "#dec790", /* yellow  */
+              #[4] = "#95b5e4", /* blue    */
+              #[5] = "#c1a3e0", /* magenta */
+              #[6] = "#64c1d4", /* cyan    */
+              #[7] = "#9a9da3", /* white   */
+
+              #/* 8 bright colors */
+              #[8]  = "#4f5558", /* black   */
+              #[9]  = "#de889a", /* red     */
+              #[10] = "#99c490", /* green   */
+              #[11] = "#e7d09a", /* yellow  */
+              #[12] = "#a0beea", /* blue    */
+              #[13] = "#cbacea", /* magenta */
+              #[14] = "#88d1df", /* cyan    */
+              #[15] = "#b4b7bb", /* white   */
+
+              #/* special colors */
+              #[256] = "#212121", /* background */
+              #[257] = "#aeb1b7", /* foreground */
+            #};
+
+            #/*
+             #* default colors (colorname index)
+             #* foreground, background, cursor
+             #*/
+            #static unsigned int defaultfg = 257;
+            #static unsigned int defaultbg = 256;
+            #static unsigned int defaultcs = 257;
+
+            #/*
+             #* colors used, when the specific fg == defaultfg. so in reverse mode this
+             #* will reverse too. another logic would only make the simple feature too
+             #* complex.
+             #*/
+            #static unsigned int defaultitalic = 7;
+            #static unsigned int defaultunderline = 7;
+
+            #static char font[] = "GohuFont:pixelsize=12:antialias=false";
+         #'';
+       #});
+     #};
+  };
 
   boot = {
     initrd = {
-      availableKernelModules = [ "xhci_pci" "ehci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" ];
-      kernelModules = [ "fbcon" "wl" "kvm-intel" ];
       luks.devices = [{
         name = "rootfs";
         device = "/dev/sda2";
         preLVM = true;
+	allowDiscards = true;
       }];
     };
     loader = {
-      gummiboot.enable = true;
+      systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
     };
-    extraModulePackages = [ config.boot.kernelPackages.broadcom_sta ];
     extraModprobeConfig = ''
       options hid_apple iso_layout=0
     '';
@@ -42,17 +85,15 @@
   networking = {
     hostName = "Caroyln_MacBookAir_NixOS";
     firewall.enable = true;
-    interfaceMonitor.enable = false;
-    wireless.enable = false; # Don't run wpa_supplicant (wicd will do it when necessary)
-    useDHCP = false; # Don't run dhclient on wlan0
+    wireless.enable = false;
+    useDHCP = false;
     wicd.enable = true;
   };
 
   powerManagement.enable = true;
 
-  virtualisation = {
-    docker.enable = true;
-  };
+  virtualisation.docker.enable = true;
+  virtualisation.virtualbox.host.enable = true;
 
   # Set your time zone.
   time.timeZone = "America/Los_Angeles";
@@ -62,38 +103,76 @@
 
   programs.zsh.enable = true;
 
-  security.setuidPrograms = [ "slock" ];
+  #security.wrappers = [ "slock" ];
 
   environment.systemPackages = with pkgs; [
-     dropbox-cli
-     neovim
+     acpi
+     audacity
+     bar-xft
+     bc
+     bitcoin
+     blueman
      bspwm
-     sxhkd
-     bar
+     cargo
+     chromium
+     compton-git
+     ctags
+     cura
+     cyrus_sasl
+     dropbox-cli
+     electrum
+     elmPackages.elm
      feh
      gcc
-     ghc
+     gimp
      git
+     gitAndTools.hub
      gnumake
-     chromium
+     gnupg1
+     haskellPackages.apply-refact
      haskellPackages.cabal-install
-     haskellPackages.ghc-mod
+     haskellPackages.hakyll
      haskellPackages.hlint
+     haskellPackages.hoogle
+     haskellPackages.shake
      haskellPackages.stack
      haskellPackages.stylish-haskell
      htop
      kbdlight
-     networkmanagerapplet
+     kicad
+     libu2f-host
+     neomutt
+     neovim
+     nodejs
+     ntfs3g
+     openscad
+     pavucontrol
      python
      python27Packages.udiskie
+     rofi
+     rustc
      silver-searcher
      slock
-     st
+     steam
      sudo
+     sxhkd
+     termite
+     transmission
      unzip
+     vlc
+     weechat
      wget
+     wireshark
      xautolock
+     xfce.thunar
      xflux
+     xtitle
+     yubikey-personalization
+     yubikey-personalization-gui
+     zscroll
+     (pkgs.lib.overrideDerivation pkgs.st (attrs: {
+       configFile = builtins.readFile ./st-config.h;
+     }))
   ];
 
   # List services that you want to enable:
@@ -102,18 +181,28 @@
     tlp.enable = true;
     openssh.enable = true;
     printing.enable = true;
+    pcscd.enable = true;
+    udev.extraRules = ''
+      ACTION!="add|change", GOTO="u2f_end"
+      KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="1050", ATTRS{idProduct}=="0113|0114|0115|0116|0120|0402|0403|0406|0407|0410", TAG+="uaccess"
+      KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="2581", ATTRS{idProduct}=="f1d0", TAG+="uaccess"
+      KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="1e0d", ATTRS{idProduct}=="f1d0|f1ae", TAG+="uaccess"
+      KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="096e|2ccf", ATTRS{idProduct}=="0880", TAG+="uaccess"
+      KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="096e", ATTRS{idProduct}=="0850|0852|0853|0854|0856|0858|085a|085b", TAG+="uaccess"
+      KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="24dc", ATTRS{idProduct}=="0101", TAG+="uaccess"
+      KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="10c4", ATTRS{idProduct}=="8acf", TAG+="uaccess"
+      LABEL="u2f_end"
+    '';
+    udev.packages = [
+      pkgs.libu2f-host
+      pkgs.yubikey-personalization
+    ];
     xserver = {
       enable = true;
       layout = "us";
-      displayManager = {
-        lightdm = {
-          enable = true;
-          background = "/home/gigavinyl/Pictures/blook.png";
-        };
+      displayManager.lightdm.enable = true;
       windowManager = {
-        bspwm = {
-          enable = true;
-        };
+        bspwm.enable = true;
         default = "bspwm";
       };
       synaptics = {
@@ -140,7 +229,7 @@
     isNormalUser = true;
     home = "/home/gigavinyl";
     shell = "/run/current-system/sw/bin/zsh";
-    extraGroups = [ "wheel" "networkmanager" "docker" ];
+    extraGroups = [ "wheel" "docker" ];
   };
 
   # Enable Udiskie Daemon
@@ -170,9 +259,20 @@
        powerline-fonts
        gohufont
      ];
-   };
+  };
+
+  hardware = {
+    pulseaudio = {
+      enable = true;
+      support32Bit = true;
+    };
+    opengl.driSupport32Bit = true;
+    facetimehd.enable = true;
+    cpu.intel.updateMicrocode = true;
+    bluetooth.enable = true;
+  };
 
   # The NixOS release to be compatible with for stateful data such as databases.
-  system.stateVersion = "16.09";
-
+  system.stateVersion = "17.03";
+  system.autoUpgrade.enable = true;
 }

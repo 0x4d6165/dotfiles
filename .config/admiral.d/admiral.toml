@@ -29,7 +29,7 @@ reload = 5
 path = "$HOME/.scripts/workspaces.sh"
 
 [title]
-path = "zscroll -n -u 'xtitle -u'"
+path = "zscroll -n -u 'xtitle -s'"
 
 [clock]
 path = "date '+%m/%d %H:%M' "
@@ -48,5 +48,5 @@ path = "$HOME/.scripts/tasks.sh | grep /"
 reload = 5
 
 [bitcoin]
-path = "$HOME/.scripts/wink.sh"
+path = "$HOME/.scripts/bitcoin.sh"
 reload = 20

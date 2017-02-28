@@ -46,7 +46,7 @@ export EDITOR="nvim"
 eval "$(hub alias -s)"
 alias vi="nvim"
 alias vim="nvim"
-alias cl="clear && neofetch --ascii_distro Gentoo && task list"
+alias cl="clear && screenfetch"
 alias prm=". $HOME/.prm/prm.sh"
 alias bar=". $HOME/.scripts/bar.sh"
 . $HOME/.asdf/asdf.sh
@@ -54,7 +54,7 @@ alias bar=". $HOME/.scripts/bar.sh"
 
 export PATH="$HOME/.apps/Elm-Platform/0.18/.cabal-sandbox/bin":$PATH
 export PATH="$HOME/.apps/admiral/target/release":$PATH
-export PATH="$HOME/.apps/roller/target/release":$PATH
+export PATH="$HOME/.apps/icecat":$PATH
 export PATH="$HOME/.apps":$PATH
 export PATH="$HOME/.local/bin":$PATH
 export PATH="$HOME/.cargo/bin":$PATH

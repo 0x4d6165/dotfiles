@@ -8,30 +8,24 @@
     [ <nixpkgs/nixos/modules/installer/scan/not-detected.nix>
     ];
 
-  fileSystems."/" = {
-    device = "/dev/disk/by-uuid/42a13316-4343-4d0b-98d9-fdedd8a6ad92";
-    fsType = "ext4";
-  };
+  boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" ];
+  boot.kernelModules = [ "fbcon" "kvm-intel" "wl" ];
+  boot.extraModulePackages = [ config.boot.kernelPackages.broadcom_sta ];
 
-  fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/AE28-30CF";
-    fsType = "vfat";
-  };
+  fileSystems."/" =
+    { device = "/dev/disk/by-uuid/0a891d7e-a4db-4c93-ab49-1b5c0a464081";
+      fsType = "ext4";
+      options = ["noatime" "nodiratime" "discard"];
+    };
 
-  swapDevices = [
-    { device = "/dev/disk/by-uuid/d499f710-532f-4d4d-bb10-dd080a93f95b"; }
-  ];
+  fileSystems."/boot" =
+    { device = "/dev/disk/by-uuid/6F68-23E6";
+      fsType = "vfat";
+    };
+
+  swapDevices =
+    [ { device = "/dev/disk/by-uuid/1b0eb760-07c0-4919-bc2b-c41cb89fbea2"; }
+    ];
 
   nix.maxJobs = lib.mkDefault 4;
-
-  hardware = {
-    pulseaudio = {
-      enable = true;
-      support32Bit = true;
-    };
-    opengl.driSupport32Bit = true;
-    facetimehd.enable = true;
-    cpu.intel.updateMicrocode = true;
-    bluetooth.enable = true;
-  };
 }
