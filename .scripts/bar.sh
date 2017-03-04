@@ -1,8 +1,8 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 pkill admiral
 
-font="GohuFont:style=Regular:size=9"
+font="GohuFont:style=Regular:size=10"
 fallback_font="FontAwesome:size=8"
 background="#cc111314"
 foreground="#bcbdc3"
@@ -29,11 +29,11 @@ else
     y_offset=15
 fi
 
-for m in $monitors; do
+#for m in $monitors; do
     #admiral | lemonbar -a $a -g "${x}x${y}+${x_offset}+${y_offset}" -f $font -f $fallback_font -B $background -F $foreground | sh &
     admiral | lemonbar -a $a -f $font -f $fallback_font -B $background -F $foreground | sh &
     # the following line gets the width of the current monitor
-    monitor_width=$(xrandr | grep '*' | ruby -e "puts gets.strip.split[0].split('x')" | head -n 1)
-    let x_offset+=$monitor_width
-    echo "Started bar on $m"
-done
+    #monitor_width=$(xrandr | grep '*' | ruby -e "puts gets.strip.split[0].split('x')" | head -n 1)
+    #let x_offset+=$monitor_width
+    #echo "Started bar on $m"
+#done

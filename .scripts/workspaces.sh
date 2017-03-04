@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 chds() {
     echo -en "%{A:bspc desktop -f $1:}$2%{A} "

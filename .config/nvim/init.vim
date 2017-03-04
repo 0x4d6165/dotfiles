@@ -15,7 +15,6 @@ Plug 'ntpeters/vim-better-whitespace'
 Plug 'jiangmiao/auto-pairs'
 Plug 'scrooloose/nerdcommenter'
 Plug 'neovimhaskell/haskell-vim', {'for' : 'haskell'}
-Plug 'mkasa/neco-ghc-lushtags', {'for' : 'haskell', 'do' : 'cp $HOME/.config/nvim/plugged/neco-ghc-lushtags/bin/ghc-mod-cache $HOME/.local/bin/'}
 Plug 'Twinside/vim-hoogle', {'for' : 'haskell'}
 Plug 'mkasa/lushtags', {'for' : 'haskell'}
 Plug 'scrooloose/nerdtree', {'on' : 'NERDTreeToggle'}

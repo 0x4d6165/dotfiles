@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 status=$(acpi | awk '{orint $3;}' | sed 's/,//g')
 capacity=$(acpi | awk '{print $4;}' | sed 's/%//g' | sed 's/,//g')

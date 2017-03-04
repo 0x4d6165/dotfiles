@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 #run OfflineIMAP once, with quiet interface
 imapactive=`ps -ef | grep offlineimap | grep -v grep | wc -l`

@@ -122,6 +122,7 @@
      dropbox-cli
      electrum
      elmPackages.elm
+     emacs
      feh
      gcc
      gimp
@@ -129,11 +130,15 @@
      gitAndTools.hub
      gnumake
      gnupg1
+     guile
      haskellPackages.apply-refact
      haskellPackages.cabal-install
+     haskellPackages.ghc-mod
+     haskellPackages.hakyll
      haskellPackages.hakyll
      haskellPackages.hlint
      haskellPackages.hoogle
+     haskellPackages.pointfree
      haskellPackages.shake
      haskellPackages.stack
      haskellPackages.stylish-haskell
@@ -162,7 +167,6 @@
      vlc
      weechat
      wget
-     wireshark
      xautolock
      xfce.thunar
      xflux
@@ -170,9 +174,6 @@
      yubikey-personalization
      yubikey-personalization-gui
      zscroll
-     (pkgs.lib.overrideDerivation pkgs.st (attrs: {
-       configFile = builtins.readFile ./st-config.h;
-     }))
   ];
 
   # List services that you want to enable:
