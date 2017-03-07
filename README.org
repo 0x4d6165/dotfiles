@@ -3,5 +3,3 @@
 - [[https://wiki.archlinux.org/index.php/rxvt-unicode][URXVT]] config (.Xresources)
 - [[https://davedavenport.github.io/rofi/][Rofi]] config (.Xresoureces)
 - [[https://nixos.org/][NixOS]] config
-- [[http://xmonad.org/][XMonad]] config
-- [[http://projects.haskell.org/xmobar/][xmobar]] config
