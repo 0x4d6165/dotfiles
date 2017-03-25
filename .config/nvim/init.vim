@@ -1,63 +1,66 @@
 call plug#begin('~/.config/nvim/plugged')
-Plug 'tpope/vim-surround'
-Plug 'HerringtonDarkholme/yats', {'for' : 'typescript'}
-Plug 'Shougo/vimproc.vim', {'do' : 'make'}
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'mhartington/deoplete-typescript', {'for' : 'typescript'}
-Plug 'Quramy/tsuquyomi', {'for' : 'typescript'}
-Plug 'pangloss/vim-javascript', {'for' : 'javascript'}
-Plug 'Quramy/vim-js-pretty-template', {'for' : 'javascript'}
-Plug 'jason0x43/vim-js-indent', {'for' : 'javascript'}
-Plug 'sgur/vim-lazygutter'
-Plug 'tyrannicaltoucan/vim-quantum'
-Plug 'othree/yajs.vim'
-Plug 'ntpeters/vim-better-whitespace'
-Plug 'jiangmiao/auto-pairs'
-Plug 'scrooloose/nerdcommenter'
-Plug 'neovimhaskell/haskell-vim', {'for' : 'haskell'}
-Plug 'Twinside/vim-hoogle', {'for' : 'haskell'}
-Plug 'mkasa/lushtags', {'for' : 'haskell'}
-Plug 'scrooloose/nerdtree', {'on' : 'NERDTreeToggle'}
-Plug 'mileszs/ack.vim'
-Plug 'easymotion/vim-easymotion'
-Plug 'neomake/neomake'
-Plug 'chrisbra/Colorizer'
-Plug 'tpope/vim-fugitive'
-Plug 'nathanaelkane/vim-indent-guides'
-Plug 'rust-lang/rust.vim', {'for' : 'rust'}
-Plug 'sebastianmarkow/deoplete-rust', {'for' : 'rust'}
-Plug 'cespare/vim-toml', {'for' : 'toml'}
-Plug 'elixir-lang/vim-elixir', {'for' : 'elixir'}
-Plug 'slashmili/alchemist.vim', {'for' : 'elixir'}
-Plug 'plasticboy/vim-markdown', {'for' : 'markdown'}
-Plug 'reedes/vim-pencil', {'for' : 'markdown'}
-Plug 'reedes/vim-lexical', {'for' : 'markdown'}
 Plug 'ElmCast/elm-vim', {'for' : 'elm'}
-Plug 'bitterjug/vim-tagbar-ctags-elm', {'for' : 'elm'}
-Plug 'xolox/vim-misc'
-Plug 'xolox/vim-easytags'
-Plug 'janko-m/vim-test'
-Plug 'kassio/neoterm'
-Plug 'powerman/vim-plugin-AnsiEsc'
+Plug 'HerringtonDarkholme/yats', {'for' : 'typescript'}
+Plug 'Quramy/tsuquyomi', {'for' : 'typescript'}
+Plug 'Quramy/vim-js-pretty-template', {'for' : 'javascript'}
 Plug 'Shougo/denite.nvim'
-Plug 'fmoralesc/vim-tutor-mode', {'on' : 'Tutor'}
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Shougo/neosnippet'
 Plug 'Shougo/neosnippet-snippets'
-Plug 'majutsushi/tagbar', {'on' : 'Tagbar'}
-Plug 'chrisbra/improvedft'
-Plug 'haya14busa/incsearch.vim'
-Plug 'haya14busa/incsearch-fuzzy.vim'
-Plug 'haya14busa/incsearch-easymotion.vim'
-Plug 'mhinz/vim-startify'
-Plug 'chrisbra/Colorizer'
-Plug 'itchyny/lightline.vim'
+Plug 'Shougo/vimproc.vim', {'do' : 'make'}
+Plug 'Twinside/vim-hoogle', {'for' : 'haskell'}
+Plug 'bitterjug/vim-tagbar-ctags-elm', {'for' : 'elm'}
 Plug 'bling/vim-bufferline'
-Plug 'reedes/vim-litecorrect'
-Plug 'xolox/vim-notes'
-Plug 'racer-rust/vim-racer', {'for' : 'rust'}
-Plug 'LnL7/vim-nix'
+Plug 'cespare/vim-toml', {'for' : 'toml'}
+Plug 'chrisbra/Colorizer'
+Plug 'chrisbra/Colorizer'
+Plug 'chrisbra/improvedft'
+Plug 'easymotion/vim-easymotion'
+Plug 'elixir-lang/vim-elixir', {'for' : 'elixir'}
+Plug 'fmoralesc/vim-tutor-mode', {'on' : 'Tutor'}
+Plug 'godlygeek/tabular'
+Plug 'haya14busa/incsearch-easymotion.vim'
+Plug 'haya14busa/incsearch-fuzzy.vim'
+Plug 'haya14busa/incsearch.vim'
+Plug 'itchyny/lightline.vim'
+Plug 'janko-m/vim-test'
+Plug 'jason0x43/vim-js-indent', {'for' : 'javascript'}
 Plug 'jceb/vim-orgmode'
+Plug 'jiangmiao/auto-pairs'
+Plug 'kassio/neoterm'
+Plug 'majutsushi/tagbar', {'on' : 'Tagbar'}
+Plug 'mhartington/deoplete-typescript', {'for' : 'typescript'}
+Plug 'mhinz/vim-startify'
+Plug 'mileszs/ack.vim'
+Plug 'mkasa/lushtags', {'for' : 'haskell'}
+Plug 'nathanaelkane/vim-indent-guides'
+Plug 'neomake/neomake'
+Plug 'neovimhaskell/haskell-vim', {'for' : 'haskell'}
+Plug 'ntpeters/vim-better-whitespace'
+Plug 'othree/yajs.vim'
+Plug 'pangloss/vim-javascript', {'for' : 'javascript'}
+Plug 'plasticboy/vim-markdown', {'for' : 'markdown'}
+Plug 'powerman/vim-plugin-AnsiEsc'
+Plug 'racer-rust/vim-racer', {'for' : 'rust'}
+Plug 'reedes/vim-lexical', {'for' : 'markdown'}
+Plug 'reedes/vim-litecorrect'
+Plug 'reedes/vim-pencil', {'for' : 'markdown'}
+Plug 'rust-lang/rust.vim', {'for' : 'rust'}
+Plug 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdtree', {'on' : 'NERDTreeToggle'}
+Plug 'sebastianmarkow/deoplete-rust', {'for' : 'rust'}
+Plug 'sgur/vim-lazygutter'
+Plug 'slashmili/alchemist.vim', {'for' : 'elixir'}
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-surround'
+Plug 'tyrannicaltoucan/vim-quantum'
+Plug 'xolox/vim-easytags'
+Plug 'xolox/vim-misc'
+Plug 'xolox/vim-notes'
 call plug#end()
+
+set exrc
+set secure
 
 let g:ft_improved_ignorecase = 1
 let test#strategy = "neoterm"
@@ -171,8 +174,6 @@ set smartcase
 "Leader keys
 let mapleader="\<Space>"
 "neoterm
-noremap <leader>mt :T mix test<CR>
-
 noremap <leader>p :Denite file_rec buffer<CR>
 noremap <Leader>w :w<CR>
 noremap <Leader>W :w !sudo tee % > /dev/null
@@ -338,3 +339,6 @@ let g:racer_experimental_completer = 1
 " Disable haskell-vim omnifunc
 let g:haskellmode_completion_ghc = 0
 autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
+
+hi! Normal ctermbg=NONE guibg=NONE
+hi! NonText ctermbg=NONE guibg=NONE
