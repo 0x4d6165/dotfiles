@@ -1,3 +1,6 @@
+#Nix
+if [ -e /home/gigavinyl/.nix-profile/etc/profile.d/nix.sh ]; then . /home/gigavinyl/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
 HISTSIZE=1000
@@ -46,20 +49,17 @@ export EDITOR="nvim"
 eval "$(hub alias -s)"
 alias vi="nvim"
 alias vim="nvim"
-alias cl="clear && screenfetch"
+alias cl="clear && neofetch --ascii_distro Gentoo"
 alias prm=". $HOME/.prm/prm.sh"
 alias bar=". $HOME/.scripts/bar.sh"
+alias pipes="clear; pipes.sh -r 4000; clear"
 . $HOME/.asdf/asdf.sh
 . $HOME/.asdf/completions/asdf.bash
 
 export PATH="$HOME/.apps/Elm-Platform/0.18/.cabal-sandbox/bin":$PATH
-export PATH="$HOME/.apps/admiral/target/release":$PATH
 export PATH="$HOME/.apps/icecat":$PATH
 export PATH="$HOME/.apps":$PATH
 export PATH="$HOME/.local/bin":$PATH
 export PATH="$HOME/.cargo/bin":$PATH
-
-source $HOME/.cargo/env
-export RUST_SRC_PATH=~/.multirust/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src
 
 fortune -o | cowsay
