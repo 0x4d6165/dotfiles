@@ -1,5 +1,2 @@
 * Dotfiles
-- [[https://github.com/syl20bnr/spacemacs][Spacemacs]] config
-- [[https://wiki.archlinux.org/index.php/rxvt-unicode][URXVT]] config (.Xresources)
-- [[https://davedavenport.github.io/rofi/][Rofi]] config (.Xresoureces)
-- [[https://nixos.org/][NixOS]] config
+My emacs configuration is not in this repo. You can find it [[https://github.com/gigavinyl/.emacs.d][here]].
