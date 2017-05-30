@@ -53,6 +53,7 @@ alias cl="clear && neofetch --ascii_distro Gentoo"
 alias prm=". $HOME/.prm/prm.sh"
 alias bar=". $HOME/.scripts/bar.sh"
 alias pipes="clear; pipes.sh -r 4000; clear"
+alias tor="cd $HOME/.apps/tor-browser_en-US; ./start-tor-browser.desktop; cd"
 . $HOME/.asdf/asdf.sh
 . $HOME/.asdf/completions/asdf.bash
 
@@ -62,4 +63,17 @@ export PATH="$HOME/.apps":$PATH
 export PATH="$HOME/.local/bin":$PATH
 export PATH="$HOME/.cargo/bin":$PATH
 
+export JOBS="5"
+
+# Tools
+function countdown(){
+   date1=$((`date +%s` + $1));
+   while [ "$date1" -ge `date +%s` ]; do
+     echo -ne "$(date -u --date @$(($date1 - `date +%s`)) +%H:%M:%S)\r";
+     sleep 0.1
+   done
+   notify-send "Timer's done!"
+}
+
 fortune -o | cowsay
+
