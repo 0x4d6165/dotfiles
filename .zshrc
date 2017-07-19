@@ -49,19 +49,21 @@ export EDITOR="nvim"
 eval "$(hub alias -s)"
 alias vi="nvim"
 alias vim="nvim"
-alias cl="clear && neofetch --ascii_distro Gentoo"
+alias cl="clear && ufetch"
 alias prm=". $HOME/.prm/prm.sh"
 alias bar=". $HOME/.scripts/bar.sh"
 alias pipes="clear; pipes.sh -r 4000; clear"
 alias tor="cd $HOME/.apps/tor-browser_en-US; ./start-tor-browser.desktop; cd"
-. $HOME/.asdf/asdf.sh
-. $HOME/.asdf/completions/asdf.bash
+alias reboot="sudo /sbin/reboot"
+#. $HOME/.asdf/asdf.sh
+#. $HOME/.asdf/completions/asdf.bash
 
 export PATH="$HOME/.apps/Elm-Platform/0.18/.cabal-sandbox/bin":$PATH
 export PATH="$HOME/.apps/icecat":$PATH
 export PATH="$HOME/.apps":$PATH
 export PATH="$HOME/.local/bin":$PATH
 export PATH="$HOME/.cargo/bin":$PATH
+export PATH="/usr/local/bin":$PATH
 
 export JOBS="5"
 
@@ -75,5 +77,12 @@ function countdown(){
    notify-send "Timer's done!"
 }
 
-fortune -o | cowsay
+# Colored output
+alias grep='grep --color=auto'
+alias diff='diff --color=auto'
+alias ls='ls --color=auto'
+alias make='colormake'
 
+ufetch
+echo "-------------------------\n"
+fortune -o
