@@ -1,5 +1,6 @@
-*.font: Gohufont:size=12:antialias=false
-st.borderpx: 0
+*.font: ProggyCleanTT:size=12:antialias=false
+st.borderpx: 1
+st.opacity: 160
 
 ! special
 *.foreground:   #aeb1b7
