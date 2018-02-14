@@ -3,7 +3,6 @@ Plug 'ElmCast/elm-vim', {'for' : 'elm'}
 Plug 'HerringtonDarkholme/yats', {'for' : 'typescript'}
 Plug 'Quramy/tsuquyomi', {'for' : 'typescript'}
 Plug 'Quramy/vim-js-pretty-template', {'for' : 'javascript'}
-Plug 'Shougo/denite.nvim'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Shougo/neosnippet'
 Plug 'Shougo/neosnippet-snippets'
@@ -31,7 +30,6 @@ Plug 'kassio/neoterm'
 Plug 'majutsushi/tagbar', {'on' : 'Tagbar'}
 Plug 'mhartington/deoplete-typescript', {'for' : 'typescript'}
 Plug 'mhinz/vim-startify'
-Plug 'mileszs/ack.vim'
 Plug 'mkasa/lushtags', {'for' : 'haskell'}
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'neomake/neomake'
@@ -47,16 +45,20 @@ Plug 'reedes/vim-litecorrect'
 Plug 'reedes/vim-pencil', {'for' : 'markdown'}
 Plug 'rust-lang/rust.vim', {'for' : 'rust'}
 Plug 'scrooloose/nerdcommenter'
-Plug 'scrooloose/nerdtree', {'on' : 'NERDTreeToggle'}
 Plug 'sebastianmarkow/deoplete-rust', {'for' : 'rust'}
 Plug 'sgur/vim-lazygutter'
 Plug 'slashmili/alchemist.vim', {'for' : 'elixir'}
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
-Plug 'tyrannicaltoucan/vim-quantum'
-Plug 'xolox/vim-easytags'
 Plug 'xolox/vim-misc'
 Plug 'xolox/vim-notes'
+Plug 'junegunn/goyo.vim'
+Plug 'lervag/vimtex', {'for' : 'tex'}
+Plug 'tpope/vim-vinegar'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+Plug 'l04m33/vlime', {'rtp': 'vim/', 'for' : 'lisp'}
+Plug 'hecal3/vim-leader-guide'
 call plug#end()
 
 set exrc
@@ -67,9 +69,6 @@ let test#strategy = "neoterm"
 let g:elm_format_autosave = 1
 "set tags=tags;/
 set tags=./tags,tags;$HOME
-let g:easytags_dynamic_files = 1
-let g:easytags_async = 1
-let g:easytags_events = ['BufWritePost']
 set ttyfast
 set number
 set relativenumber
@@ -80,7 +79,10 @@ set path+=**
 set wildmenu
 set ignorecase
 set smartcase
+set spelllang=en
 imap fj <Esc>
+colorscheme shblah
+
 filetype plugin on
 let g:deoplete#enable_at_startup = 1
 if !exists('g:deoplete#omni#input_patterns')
@@ -100,12 +102,8 @@ let g:bufferline_echo = 0
 autocmd FileType typescript nmap <buffer> <Leader>i : <C-u>echo tsuquyomi#hint()<CR>
 autocmd FileType elm nmap <buffer> <Leader>i :ElmShowDocs<CR>
 
-let g:quantum_black = 1
 
-colorscheme quantum
-if has("termguicolors")
-  set termguicolors
-endif
+set runtimepath+=$HOME/.config/nvim/localplug
 
 let g:vim_markdown_folding_disabled = 1
 
@@ -149,10 +147,6 @@ function! neomake#makers#ft#elixir#EnabledMakers()
     return ['credo']
 endfunction
 
-let g:ackprg = 'ag --nogroup --nocolor --column'
-
-call denite#custom#var('file_rec', 'command',
-      \ ['ag', '--follow', '--nocolor', '--nogroup', '-g', ''])
 
 "snippets
 let g:neosnippet#enable_snipmate_compatibility = 1
@@ -171,26 +165,36 @@ set smarttab
 set smartcase
 
 :imap fd <Esc>
+
+command! -bang -nargs=* Rg
+      \ call fzf#vim#grep(
+      \   'rg --column --line-number --hidden  --no-heading --color=always --ignore-case -g "!{.git*,node_modules,Wallpapers,,icons,.themes,.fonts,*quicklisp*}" '.shellescape(<q-args>), 1,
+      \   <bang>0 ? fzf#vim#with_preview('up:60%')
+      \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+      \   <bang>0)
+
 "Leader keys
 let mapleader="\<Space>"
 "neoterm
-noremap <leader>p :Denite file_rec buffer<CR>
 noremap <Leader>w :w<CR>
 noremap <Leader>W :w !sudo tee % > /dev/null
 noremap <Leader>q :q<CR>
 noremap <Leader>r :%s/
-noremap <Leader>f :Ack
-noremap <Leader>n :NERDTreeToggle<CR>
+noremap <Leader>f :Rg
 noremap <leader>t :Tagbar<CR>
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
 nmap <silent> <leader>sv :so $MYVIMRC<CR>
+nnoremap <leader>bb :Buffers<CR>
 nnoremap <leader>bd :bd<CR>
 nnoremap <leader>bn :bnext!<CR>
 nnoremap <leader>bp :bprevious!<CR>
 vnoremap < <gv
 vnoremap > >gv
-nnoremap <leader>v :vsplit<CR>
-" " Remap split movement
+nnoremap <leader>v  : vsplit<CR>
+nnoremap <leader>p  : Files .<CR>
+nnoremap <leader>gp : GFiles<CR>
+nnoremap <leader>ls : setlocal spell<CR>
+"" Remap split movement
 nmap <leader>j <c-w>j
 nmap <leader>k <c-w>k
 nmap <leader>h <c-w>h
