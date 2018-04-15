@@ -1,0 +1,21 @@
+!   __  __                                   
+!   \ \/ /_ _ ___ ___ ___ _  _ _ _ __ ___ ___
+!  _ >  <| '_/ -_|_-</ _ \ || | '_/ _/ -_|_-<
+! (_)_/\_\_| \___/__/\___/\_,_|_| \__\___/__/
+
+#include ".cache/wal/colors.Xresources"
+
+URxvt.font: xft:scientifica:size=12
+URxvt.scrollBar: False
+URxvt.internalBorder: 25
+URxvt.perl-ext-common: default,matcher
+URxvt.url-launcher: surf
+URxvt.matcher.button: 1
+
+twobwm.enable_compton: true
+twobwm.border_width: 8
+twobwm.outer_border: 5
+twobwm.inverted_colors: false
+
+rofi.font: scientifica 12
+rofi.theme: colors-rofi-dark

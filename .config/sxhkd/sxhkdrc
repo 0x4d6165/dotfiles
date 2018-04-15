@@ -1,0 +1,23 @@
+# increase / decrease volume
+XF86Audio{Raise,Lower}Volume
+  amixer -q sset Master {2%+,2%-} unmute
+
+# Mute volume
+XF86AudioMute
+  amixer -q sset Master toggle
+
+# brightness
+XF86MonBrightness{Up,Down}
+  xbacklight -time 1 -steps 1 -{inc,dec} 5
+
+super + r
+    rofi -show run
+
+super + Return
+    urxvtc
+
+super + p
+    rofi-pass
+
+super + control + q
+    pkill xwait
