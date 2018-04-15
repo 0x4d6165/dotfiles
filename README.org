@@ -1,2 +1,0 @@
-* Dotfiles
-My emacs configuration is not in this repo. You can find it [[https://github.com/gigavinyl/.emacs.d][here]].
