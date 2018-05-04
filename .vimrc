@@ -1,17 +1,24 @@
+"  __   __   __     __    __     ______     ______    
+" /\ \ / /  /\ \   /\ "-./  \   /\  == \   /\  ___\   
+" \ \ \'/   \ \ \  \ \ \-./\ \  \ \  __<   \ \ \____  
+"  \ \__|    \ \_\  \ \_\ \ \_\  \ \_\ \_\  \ \_____\ 
+"   \/_/      \/_/   \/_/  \/_/   \/_/ /_/   \/_____/ 
+                                                    
 call plug#begin('~/.vim/plugged')
 
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-vinegar'
-Plug 'lervag/vimtex'
 Plug 'Shougo/deoplete.nvim'
 Plug 'roxma/nvim-yarp'
 Plug 'roxma/vim-hug-neovim-rpc'
 Plug 'w0rp/ale'
-Plug 'lervag/vimtex'
+Plug 'lervag/vimtex', { 'for' : 'tex' }
 Plug 'ervandew/supertab'
 Plug 'dylanaraps/wal.vim'
 Plug 'airblade/vim-gitgutter'
+Plug '~/.fzf'
+Plug 'junegunn/fzf.vim'
 
 call plug#end()
 
@@ -115,17 +122,43 @@ hi User9 ctermfg=007
 
 
 """" LaTeX
-let g:vimtex_complete_enabled = 1
-if !exists('g:deoplete#omni#input_patterns')
-    let g:deoplete#omni#input_patterns = {}
-endif
-let g:deoplete#omni#input_patterns.tex = g:vimtex#re#deoplete
-let g:vimtex_compiler_latexmk = {
-    \ 'callback': 0,
-    \ 'backend' : 'jobs'
-    \}
-nmap <leader>lw :VimtexCountWords<CR>
+autocmd FileType tex call s:latex_config()
+function! s:latex_config()
+    let g:tex_fast = "cMmprs"
+    let g:tex_flavor = "latex"
+    let g:tex_fold_enabled = 0
+    let g:tex_comment_nospell = 1
+    setlocal nocursorline
+    let g:tex_conceal = ""
+    let g:vimtex_complete_enabled = 1
+    let g:vimtex_view_automatic = 1
+    let g:vimtex_compiler_progname = 'latexmk'
+    let g:vimtex_view_method = 'zathura'
+    if !exists('g:deoplete#omni#input_patterns')
+        let g:deoplete#omni#input_patterns = {}
+    endif
+    let g:deoplete#omni#input_patterns.tex = g:vimtex#re#deoplete
+    let g:vimtex_compiler_latexmk = {
+        \ 'callback': 1,
+        \ 'backend' : 'jobs'
+        \}
+    nmap <leader>lw :VimtexCountWords<CR>
+endfunction
 
 """" Colors
 colorscheme wal
 highlight SignColumn ctermbg=black
+
+"""" fzf
+command! -bang -nargs=* Rg
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --no-heading --color=always '.shellescape(<q-args>), 1,
+  \   <bang>0 ? fzf#vim#with_preview('up:60%')
+  \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+  \   <bang>0)
+
+"""" Splits
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>

@@ -1,10 +1,14 @@
+# 
+#  ______     __  __     __  __     __  __     _____     ______     ______    
+# /\  ___\   /\_\_\_\   /\ \_\ \   /\ \/ /    /\  __-.  /\  == \   /\  ___\   
+# \ \___  \  \/_/\_\/_  \ \  __ \  \ \  _"-.  \ \ \/\ \ \ \  __<   \ \ \____  
+#  \/\_____\   /\_\/\_\  \ \_\ \_\  \ \_\ \_\  \ \____-  \ \_\ \_\  \ \_____\ 
+#   \/_____/   \/_/\/_/   \/_/\/_/   \/_/\/_/   \/____/   \/_/ /_/   \/_____/ 
+
+                                                                            
 # increase / decrease volume
 XF86Audio{Raise,Lower}Volume
-  amixer -q sset Master {2%+,2%-} unmute
-
-# Mute volume
-XF86AudioMute
-  amixer -q sset Master toggle
+  mixerctl outputs.master={+10\,+10,-10\,-10}
 
 # brightness
 XF86MonBrightness{Up,Down}
@@ -13,6 +17,9 @@ XF86MonBrightness{Up,Down}
 super + r
     rofi -show run
 
+super + w
+    rofi -show window
+
 super + Return
     urxvtc
 
@@ -20,4 +27,13 @@ super + p
     rofi-pass
 
 super + control + q
-    pkill xwait
+    pkill xinit
+
+super + shift + s
+    slock
+
+super + s
+    rofi -show ssh
+
+super + o
+    ~/.scripts/youtube-rofi
