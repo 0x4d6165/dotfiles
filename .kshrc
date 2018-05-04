@@ -9,9 +9,17 @@ export EDITOR="vim"
 set -o emacs
 
 alias gpg=gpg2
-alias vi=vim
+alias vim="vim --servername VIM"
+alias vi="vim --servername VIM"
 
 GPG_TTY=$(tty)
 export GPG_TTY
+SSH_AGENT_PID=""
+export SSH_AGENT_PID
+SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+export SSH_AUTH_SOCK
+
+FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!{.git}"'
+export FZF_DEFAULT_COMMAND
 
 ufetch
