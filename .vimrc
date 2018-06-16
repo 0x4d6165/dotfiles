@@ -19,6 +19,8 @@ Plug 'dylanaraps/wal.vim'
 Plug 'airblade/vim-gitgutter'
 Plug '~/.fzf'
 Plug 'junegunn/fzf.vim'
+Plug 'mhinz/vim-startify'
+Plug 'l04m33/vlime', { 'rtp': 'vim/', 'for': 'lisp' }
 
 call plug#end()
 
@@ -162,3 +164,15 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
+
+
+set viminfo='100,n$HOME/.vim/files/info/viminfo
+let g:startify_custom_header = [
+            \ '        ___       ___            ___       ___       ___   ', 
+            \ '       /\  \     /\__\          /\  \     /\  \     /\__\  ',  
+            \ '      _\:\  \   /::L_L_        /::\  \   /::\  \   |::L__L ',   
+            \ '     /\/::\__\ /:/L:\__\      /:/\:\__\ /::\:\__\  |:::\__\',   
+            \ '     \::/\/__/ \/_/:/  /      \:\:\/__/ \/\::/  /  /:;;/__/',  
+            \ '      \:\__\     /:/  /        \::/  /    /:/  /   \/__/   ', 
+            \ '       \/__/     \/__/          \/__/     \/__/            ', 
+            \ ]
