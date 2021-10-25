@@ -4,7 +4,7 @@
                                                    
 #include ".cache/wal/colors.Xresources"
 
-URxvt.font: xft:scientifica:size=12
+URxvt.font: xft:scientifica:size=13
 URxvt.letterSpace: 1
 URxvt.scrollBar: False
 URxvt.internalBorder: 25
@@ -17,5 +17,5 @@ twobwm.border_width: 12
 twobwm.outer_border: 8
 twobwm.inverted_colors: false
 
-rofi.font: scientifica 12
+rofi.font: scientifica 13
 rofi.theme: ~/.cache/wal/colors-rofi-dark.rasi
