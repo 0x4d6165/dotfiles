@@ -1,5 +1,7 @@
 eval "$(starship init zsh)"
 
+. "$HOME/.cargo/env"
+
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
 HISTSIZE=1000
