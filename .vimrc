@@ -15,10 +15,10 @@ Plug 'roxma/vim-hug-neovim-rpc'
 Plug 'w0rp/ale'
 Plug 'lervag/vimtex', { 'for' : 'tex' }
 Plug 'ervandew/supertab'
-Plug 'dylanaraps/wal.vim'
+"Plug 'dylanaraps/wal.vim'
 Plug 'airblade/vim-gitgutter'
-Plug '~/.fzf'
-Plug 'junegunn/fzf.vim'
+"Plug '~/.fzf'
+"Plug 'junegunn/fzf.vim'
 Plug 'mhinz/vim-startify'
 Plug 'l04m33/vlime', { 'rtp': 'vim/', 'for': 'lisp' }
 
@@ -148,16 +148,16 @@ function! s:latex_config()
 endfunction
 
 """" Colors
-colorscheme wal
+"colorscheme wal
 highlight SignColumn ctermbg=black
 
 """" fzf
-command! -bang -nargs=* Rg
-  \ call fzf#vim#grep(
-  \   'rg --column --line-number --no-heading --color=always '.shellescape(<q-args>), 1,
-  \   <bang>0 ? fzf#vim#with_preview('up:60%')
-  \           : fzf#vim#with_preview('right:50%:hidden', '?'),
-  \   <bang>0)
+"command! -bang -nargs=* Rg
+"  \ call fzf#vim#grep(
+"  \   'rg --column --line-number --no-heading --color=always '.shellescape(<q-args>), 1,
+"  \   <bang>0 ? fzf#vim#with_preview('up:60%')
+"  \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+"  \   <bang>0)
 
 """" Splits
 nnoremap <C-J> <C-W><C-J>

@@ -1,7 +1,7 @@
-eval "$(starship init zsh)"
-
+#rustup
 . "$HOME/.cargo/env"
 
+GUIX_LOCPATH=$HOME/.guix-profile/lib/locale
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
 HISTSIZE=1000
@@ -17,6 +17,8 @@ zstyle :compinstall filename '/home/maeday/.zshrc'
 autoload -Uz compinit
 compinit
 # End of lines added by compinstall
+autoload -U promptinit
+promptinit; prompt gentoo
 
 ### Added by Zinit's installer
 if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
@@ -43,3 +45,11 @@ bindkey '^[[B' history-substring-search-down
 if [[ -o interactive ]] then
 	afetch
 fi
+
+export PATH="$HOME/.poetry/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/.gem/ruby/2.6.0/bin:$PATH"
+
+fpath+=~/.zfunc
+
+eval "$(starship init zsh)"

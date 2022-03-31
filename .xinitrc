@@ -14,9 +14,9 @@ sysresources=/etc/X11/xinit/.Xresources
 sysmodmap=/etc/X11/xinit/.Xmodmap
 
 # pshuf and wal.sh can found in github.com/gigavinyl/.scripts
-wallpaper=$(find "$HOME"/Wallpapers/* | pshuf | head -n1)
-wal -b 0f0f0f -i "$wallpaper" -n --backend colorz
-wal.sh
+#wallpaper=$(find "$HOME"/Wallpapers/* | pshuf | head -n1)
+#wal -b 0f0f0f -i "$wallpaper" -n --backend colorz
+#wal.sh
 
 # merge in defaults and keymaps
 
@@ -36,25 +36,32 @@ if [ -f "$usermodmap" ]; then
     xmodmap "$usermodmap"
 fi
 
+
+
 # UTF8
 setxkbmap -option compose:ralt
 
 # Get fonts all setup
-xset +fp "$HOME/.fonts"
-xset fp rehash
+#xset +fp "$HOME/.fonts"
+#xset fp rehash
 
 # start some nice programs
 
-if [ -d /etc/X11/xinit/xinitrc.d ] ; then
- for f in /etc/X11/xinit/xinitrc.d/?*.sh ; do
-  [ -x "$f" ] && . "$f"
- done
- unset f
-fi
+#if [ -d /etc/X11/xinit/xinitrc.d ] ; then
+# for f in /etc/X11/xinit/xinitrc.d/?*.sh ; do
+#  [ -x "$f" ] && . "$f"
+# done
+# unset f
+#fi
 
-feh --bg-fill "$wallpaper"
+gnome-keyring-daemon -d
 
-compton &
-sxhkd &
-urxvtd &
-exec 2bwm
+pgrep -x mpd > /dev/null || mpd &
+
+"$HOME/scripts/polybar-init.sh"
+
+dunst &
+
+#wpg -m
+
+exec bspwm

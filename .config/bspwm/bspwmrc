@@ -1,0 +1,26 @@
+#! /bin/sh
+#  ______     ______     ______   __     __     __    __     ______     ______    
+# /\  == \   /\  ___\   /\  == \ /\ \  _ \ \   /\ "-./  \   /\  == \   /\  ___\   
+# \ \  __<   \ \___  \  \ \  _-/ \ \ \/ ".\ \  \ \ \-./\ \  \ \  __<   \ \ \____  
+#  \ \_____\  \/\_____\  \ \_\    \ \__/".~\_\  \ \_\ \ \_\  \ \_\ \_\  \ \_____\ 
+#   \/_____/   \/_____/   \/_/     \/_/   \/_/   \/_/  \/_/   \/_/ /_/   \/_____/ 
+
+pgrep -x sxhkd > /dev/null || sxhkd &
+pgrep -x picom > /dev/null || picom -b &
+
+bspc monitor -d I II III IV V VI VII VIII
+
+bspc config border_width         2
+bspc config window_gap          12
+
+bspc config top_padding         45
+
+bspc config split_ratio          0.52
+bspc config borderless_monocle   true
+bspc config gapless_monocle      true
+
+bspc rule -a firefox-bin desktop='^2'
+
+"$HOME/scripts/polybar-init.sh"
+
+bash /home/maeday/.config/bspwm/bspwm_colors.sh &
