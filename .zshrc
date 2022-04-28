@@ -1,6 +1,8 @@
 #rustup
 . "$HOME/.cargo/env"
 
+export TERM=xterm-kitty
+
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
 HISTSIZE=1000
@@ -39,12 +41,14 @@ bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
 
 if [[ -o interactive ]] then
-	afetch
+#	afetch
+	ufetch
 fi
 
 export PATH="$HOME/.poetry/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.gem/ruby/2.6.0/bin:$PATH"
+export PATH="$HOME/go/bin:$PATH"
 
 fpath+=~/.zfunc
 
