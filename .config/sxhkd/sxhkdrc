@@ -10,23 +10,23 @@
 
 # increase / decrease volume
 XF86Audio{Raise,Lower}Volume
-  sh -c "pactl set-sink-mute 0 false ; pactl set-sink-volume 0 {+,-}5%"
+	sh -c "pactl set-sink-mute 0 false ; pactl set-sink-volume 0 {+,-}5%"
 
 XF86AudioMute
-  sh -c "pactl set-sink-mute 0 toggle"
+	sh -c "pactl set-sink-mute 0 toggle"
 
 # brightness
 XF86MonBrightness{Up,Down}
-  xbacklight -time 1 -steps 1 -{inc,dec} 5
+	brightnessctl s 10%{+,-}
 
 XF86Audio{Prev,Next}
 	mpc -q {prev,next}
 
 XF86AudioPlay
-    mpc toggle
+	mpc -q toggle
 
-super + w
-    rofi -show window
+super + l
+    i3lock
 
 # terminal emulator
 super + Return
@@ -35,6 +35,18 @@ super + Return
 # program launcher
 super + r
 	rofi -show run
+
+#rofi calc
+super + c
+	rofi -show calc
+
+#rofi emoji
+#super + ;
+#	rofi -show emoji
+
+#rofi bluetooth
+super + b
+	rofi-bluetooth
 
 # make sxhkd reload its configuration files:
 super + Escape
@@ -89,7 +101,7 @@ super + {p,b,comma,period}
 	bspc node -f @{parent,brother,first,second}
 
 # focus the next/previous window in the current desktop
-super + {_,shift + }c
+super + {_,shift + }m
 	bspc node -f {next,prev}.local.!hidden.window
 
 # focus the next/previous desktop in the current monitor

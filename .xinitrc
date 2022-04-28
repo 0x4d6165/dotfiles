@@ -13,10 +13,11 @@ usermodmap=$HOME/.Xmodmap
 sysresources=/etc/X11/xinit/.Xresources
 sysmodmap=/etc/X11/xinit/.Xmodmap
 
-# pshuf and wal.sh can found in github.com/gigavinyl/.scripts
-#wallpaper=$(find "$HOME"/Wallpapers/* | pshuf | head -n1)
-#wal -b 0f0f0f -i "$wallpaper" -n --backend colorz
-#wal.sh
+# set wallpaper and colorscheme
+randwall="$(find ~/wallpapers -regextype posix-egrep -regex ".*\.(jpg|png|gif)$" | shuf | head -n1)"
+wal -b 2b2b2b -i "$randwall" -n
+
+hsetroot -cover "$randwall"
 
 # merge in defaults and keymaps
 
@@ -54,14 +55,15 @@ setxkbmap -option compose:ralt
 # unset f
 #fi
 
-gnome-keyring-daemon -d
+pipewire &
+pipewire-pulse &
 
 pgrep -x mpd > /dev/null || mpd &
+pgrep -x wylt > /dev/null || wylt &
 
 "$HOME/scripts/polybar-init.sh"
 
+"$HOME/scripts/gendunstrc.sh" > "$HOME/.config/dunst/dunstrc"
 dunst &
 
-#wpg -m
-
-exec bspwm
+exec dbus-run-session bspwm
