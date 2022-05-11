@@ -55,15 +55,15 @@ setxkbmap -option compose:ralt
 # unset f
 #fi
 
-pipewire &
-pipewire-pulse &
+#pgrep -x mpd > /dev/null || mpd &
+#pgrep -x wylt > /dev/null || wylt &
 
-pgrep -x mpd > /dev/null || mpd &
-pgrep -x wylt > /dev/null || wylt &
+eval $(gnome-keyring-daemon --start)
+export SSH_AUTH_SOCK
 
 "$HOME/scripts/polybar-init.sh"
 
 "$HOME/scripts/gendunstrc.sh" > "$HOME/.config/dunst/dunstrc"
 dunst &
 
-exec dbus-run-session bspwm
+exec bspwm

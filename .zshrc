@@ -2,6 +2,7 @@
 . "$HOME/.cargo/env"
 
 export TERM=xterm-kitty
+export GOPATH=~/.go
 
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
@@ -41,14 +42,13 @@ bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
 
 if [[ -o interactive ]] then
-#	afetch
-	ufetch
+	afetch
 fi
 
 export PATH="$HOME/.poetry/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.gem/ruby/2.6.0/bin:$PATH"
-export PATH="$HOME/go/bin:$PATH"
+export PATH=$PATH:$(go env GOPATH)/bin
 
 fpath+=~/.zfunc
 
