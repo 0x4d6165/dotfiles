@@ -15,9 +15,7 @@ sysmodmap=/etc/X11/xinit/.Xmodmap
 
 # set wallpaper and colorscheme
 randwall="$(find ~/wallpapers -regextype posix-egrep -regex ".*\.(jpg|png|gif)$" | shuf | head -n1)"
-wal -b 2b2b2b -i "$randwall" -n
-
-hsetroot -cover "$randwall"
+wal -b 2b2b2b -i "$randwall"
 
 # merge in defaults and keymaps
 
@@ -57,6 +55,8 @@ setxkbmap -option compose:ralt
 
 #pgrep -x mpd > /dev/null || mpd &
 #pgrep -x wylt > /dev/null || wylt &
+
+pgrep -x powerkit > /dev/null || powerkit &
 
 eval $(gnome-keyring-daemon --start)
 export SSH_AUTH_SOCK

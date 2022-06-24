@@ -2,7 +2,7 @@
 . "$HOME/.cargo/env"
 
 export TERM=xterm-kitty
-export GOPATH=~/.go
+export GOPATH=~/go
 
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
@@ -42,7 +42,7 @@ bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
 
 if [[ -o interactive ]] then
-	afetch
+	ufetch
 fi
 
 export PATH="$HOME/.poetry/bin:$PATH"
