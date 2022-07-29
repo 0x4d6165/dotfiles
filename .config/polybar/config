@@ -223,7 +223,7 @@ content = " "
 
 [module/logo]
 type = custom/text 
-content = "  "
+content = "  "
 content-foreground = ${colors.background}
 content-background = ${colors.color6}
 click-left = rofi -show run
