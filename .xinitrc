@@ -15,7 +15,8 @@ sysmodmap=/etc/X11/xinit/.Xmodmap
 
 # set wallpaper and colorscheme
 randwall="$(find ~/wallpapers -regextype posix-egrep -regex ".*\.(jpg|png|gif)$" | shuf | head -n1)"
-wal -b 2b2b2b -i "$randwall"
+wal -b 2b2b2b -i "$randwall" -n
+hsetroot -cover "$randwall"
 
 # merge in defaults and keymaps
 
@@ -56,9 +57,10 @@ setxkbmap -option compose:ralt
 #pgrep -x mpd > /dev/null || mpd &
 #pgrep -x wylt > /dev/null || wylt &
 
-pgrep -x powerkit > /dev/null || powerkit &
+pgrep -x nextcloud > /dev/null || nextcloud &
 
-eval $(gnome-keyring-daemon --start)
+#pgrep -x powerkit > /dev/null || powerkit &
+
 export SSH_AUTH_SOCK
 
 "$HOME/scripts/polybar-init.sh"

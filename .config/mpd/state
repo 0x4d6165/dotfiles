@@ -1,0 +1,19 @@
+sw_volume: 100
+audio_device_state:1:Pulse Audio
+audio_device_state:1:mpdFIFO
+state: pause
+current: 3
+time: 24.762000
+random: 1
+repeat: 0
+single: 0
+consume: 0
+crossfade: 0
+mixrampdb: 0.000000
+mixrampdelay: -1.000000
+playlist_begin
+0:advantage Lucy – Oolt Cloud (2001).opus
+1:Molchat Doma/Etazhi/1.молчат дома - на дне 1.mp3
+2:Molchat Doma/Etazhi/8.молчат дома - коммерсанты 1.mp3
+3:Molchat Doma/Etazhi/7.молчат дома - судно (Борис Рыжий) 1.mp3
+playlist_end

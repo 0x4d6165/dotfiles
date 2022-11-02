@@ -41,8 +41,8 @@ super + c
 	rofi -show calc
 
 #rofi emoji
-#super + ;
-#	rofi -show emoji
+super + ;
+	rofi -show emoji
 
 #rofi bluetooth
 super + b

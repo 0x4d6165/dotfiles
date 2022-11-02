@@ -80,13 +80,13 @@ function! ReadOnly()
     return ''
 endfunction
 
-function! GitInfo()
-  let git = fugitive#head()
-  if git != ''
-    return ' '.fugitive#head()
-  else
-    return ''
-endfunction
+" function! GitInfo()
+"   let git = fugitive#head()
+"   if git != ''
+"     return ' '.fugitive#head()
+"   else
+"     return ''
+" endfunction
 
 function! LinterStatus() abort
     let l:counts = ale#statusline#Count(bufnr(''))
@@ -105,7 +105,7 @@ set statusline=
 set statusline+=%{ChangeStatuslineColor()}               " Changing the statusline color
 set statusline+=%0*\ %{toupper(g:currentmode[mode()])}   " Current mode
 set statusline+=%8*\ [%n]                                " buffernr
-set statusline+=%8*\ %{GitInfo()}                        " Git Branch name
+"set statusline+=%8*\ %{GitInfo()}                        " Git Branch name
 set statusline+=%8*\ %<%F\ %{ReadOnly()}\ %m\ %w\        " File+path
 set statusline+=%#warningmsg#
 set statusline+=%*
