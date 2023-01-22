@@ -1,8 +1,10 @@
-#. "$HOME/.cargo/env"
+. "$HOME/.cargo/env"
+
+set -o noclobber
+alias cp='cp -i'
+alias mv='mv -i'
 
 export TERM=xterm-256color
-export GOPATH=~/go
-
 fpath+=~/.zfunc
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
@@ -41,10 +43,15 @@ zinit load zsh-users/zsh-history-substring-search
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
 
-export PATH="$HOME/.poetry/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
-export PATH="$HOME/.gem/ruby/2.6.0/bin:$PATH"
-export PATH=$PATH:$(go env GOPATH)/bin
+export PATH="/sbin:$PATH"
+export PATH="$HOME/.poetry/bin:$PATH"
+export PATH="$PATH:$(go env GOPATH)/bin"
+export PATH="$HOME/.cask/bin:$PATH"
+
+export GOPATH=~/go
+
+[ -f "/home/maeday/.ghcup/env" ] && source "/home/maeday/.ghcup/env" # ghcup-env
 
 if [[ -o interactive ]] then
 	afetch

@@ -9,7 +9,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-vinegar'
-Plug 'Shougo/deoplete.nvim'
+"Plug 'Shougo/deoplete.nvim'
 Plug 'roxma/nvim-yarp'
 Plug 'roxma/vim-hug-neovim-rpc'
 Plug 'w0rp/ale'
@@ -176,3 +176,4 @@ let g:startify_custom_header = [
             \ '      \:\__\     /:/  /        \::/  /    /:/  /   \/__/   ', 
             \ '       \/__/     \/__/          \/__/     \/__/            ', 
             \ ]
+
