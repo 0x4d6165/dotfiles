@@ -6,7 +6,7 @@
     // Choose the order of the modules idle_inhibitor
     "modules-left": ["custom/launcher","sway/workspaces", "sway/mode", "sway/window"],
     "modules-center": ["clock"],
-    "modules-right": ["backlight", "battery", "network", "bluetooth", "pulseaudio","tray", "custom/power"], 
+    "modules-right": ["backlight", "battery", "network", "bluetooth", "wireplumber","tray", "custom/power"], 
     
  // Modules configuration
  
@@ -66,25 +66,22 @@
         "format-disconnected": "⚠ Disconnected",
         "on-click": "rofi-wifi-menu.sh"
     },
-    "pulseaudio": {
-        "scroll-step": 5,
-        "format": "{icon} {volume: >3}%",
-        "format-bluetooth": "{icon} {volume: >3}%",
-        "format-muted":" muted",
-        "format-icons": {
-            "default": ["", ""]
-        },
-        "on-click": "pavucontrol"
+    "wireplumber": {
+        "format": "{icon} {volume}%",
+        "format-muted": "",
+        "on-click": "pavucontrol",
+        "format-icons": ["󰕾", "󰕾", "󰕾"]
     },
     "bluetooth": {
-	"format": " {status}",
-	"format-connected": " {device_alias}",
-	"format-connected-battery": " {device_alias} {device_battery_percentage}%",
-	// "format-device-preference": [ "device1", "device2" ], // preference list deciding the displayed device
-	"tooltip-format": "{num_connections} connected",
-	"tooltip-format-connected": "{num_connections} connected\n\n{device_enumerate}",
-	"tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
-	"tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%"
+        "format": " {status}",
+        "format-connected": " {device_alias}",
+        "format-connected-battery": " {device_alias} {device_battery_percentage}%",
+        "format-device-preference": [ "WH-CH710N", "MX Master" ], // preference list deciding the displayed device
+        "tooltip-format": "{num_connections} connected",
+        "tooltip-format-connected": "{num_connections} connected\n\n{device_enumerate}",
+        "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+	    "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%",
+        "on-click": "rofi-bluetooth"
    },
    // "custom/power": {
    //   	"format":"⏻",

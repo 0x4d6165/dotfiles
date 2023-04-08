@@ -1,0 +1,3 @@
+[submodule ".config/sway/swaymonad"]
+	path = .config/sway/swaymonad
+	url = git@github.com:nicolasavru/swaymonad.git
