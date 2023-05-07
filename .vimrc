@@ -148,7 +148,6 @@ function! s:latex_config()
 endfunction
 
 """" Colors
-"colorscheme wal
 highlight SignColumn ctermbg=black
 
 """" fzf
