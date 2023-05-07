@@ -100,9 +100,9 @@ window#waybar {
 }
 
 #clock,
+#cava,
 #custom-swap,
 #custom-background,
-#custom-cava-internal,
 #battery,
 #cpu,
 #memory,
@@ -177,6 +177,15 @@ window#waybar {
     animation-direction: alternate;
 }
 
+#cava {
+    color: @sky;
+    /* border-bottom: 2px solid @sky; */
+}
+
+#cpu {
+    color: @sky;
+    /* border-bottom: 2px solid @sky; */
+}
 #cpu {
     color: @sky;
     /* border-bottom: 2px solid @sky; */
