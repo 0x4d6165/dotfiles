@@ -7,7 +7,7 @@
     "margin": "0 0 0 0",
     //"width": 1350, // Waybar width
     // Choose the order of the modules idle_inhibitor
-    "modules-left": ["custom/launcher", "clock","sway/mode", "sway/window"],
+    "modules-left": ["clock","sway/mode", "sway/window"],
     "modules-center": ["sway/workspaces"],
     "modules-right": ["backlight", "pulseaudio", "bluetooth", "battery", "network", "tray", "custom/power"], 
     
@@ -148,9 +148,9 @@
        	"on-click": "exec rofi -show power-menu -modi power-menu:rofi-power-menu",
       	"tooltip": false,
    },
-     "custom/launcher": {
-    	"format":"    ",
-    	"on-click": "exec rofi -show drun",
-    	"tooltip": false,
-},
+    // "custom/launcher": {
+    //	"format":"    ",
+    //	"on-click": "exec rofi -show drun",
+    //	"tooltip": false,
+    // },
 }
