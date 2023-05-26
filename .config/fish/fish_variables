@@ -1,7 +1,9 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
 SETUVAR --export EDITOR:vim
+SETUVAR --export MOZ_ENABLE_WAYLAND:1
 SETUVAR --export --path PATH:/home/maedayscout/\x2espicetify
+SETUVAR --export QT_STYLE_OVERRIDE:kvantum
 SETUVAR __fish_initialized:3400
 SETUVAR fish_color_autosuggestion:555\x1ebrblack
 SETUVAR fish_color_cancel:\x2dr

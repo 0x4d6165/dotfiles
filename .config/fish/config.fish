@@ -6,6 +6,9 @@ fish_add_path "$HOME/.cargo/bin"
 
 set -Ux EDITOR "vim"
 
+set -Ux MOZ_ENABLE_WAYLAND 1
+set -Ux QT_STYLE_OVERRIDE "kvantum"
+
 alias cp "cp -i"
 alias mv "mv -i"
 

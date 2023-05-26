@@ -11,7 +11,7 @@ configuration{
     hide-scrollbar: true;
     display-drun: "   ";
     display-run: "  ";
-    display-window: " 﩯";
+    display-window: "   ";
     display-Network: " 󰤨 ";
     sidebar-mode: true;
 }
