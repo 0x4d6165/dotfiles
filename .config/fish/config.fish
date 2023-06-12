@@ -8,13 +8,14 @@ set -Ux EDITOR "vim"
 
 set -Ux MOZ_ENABLE_WAYLAND 1
 set -Ux QT_STYLE_OVERRIDE "kvantum"
+set -Ux GTK_THEME "Catppuccin-Macchiato-Standard-Mauve-Dark"
 
 alias cp "cp -i"
 alias mv "mv -i"
 
 if status is-interactive
     # Commands to run in interactive sessions can go here
-    fastfetch
+    ufetch
 end
 
 starship init fish | source
