@@ -15,7 +15,7 @@ alias mv "mv -i"
 
 if status is-interactive
     # Commands to run in interactive sessions can go here
-    ufetch
+    afetch
 end
 
 starship init fish | source
