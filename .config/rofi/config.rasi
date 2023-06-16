@@ -13,6 +13,9 @@ configuration{
     display-run: "  ";
     display-window: "   ";
     display-Network: " 󰤨 ";
+    display-ssh: "  ";
+    display-emoji: " 󰞅 ";
+    display-calc: " 󰃬 ";
     sidebar-mode: true;
 }
 

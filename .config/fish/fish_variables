@@ -5,6 +5,7 @@ SETUVAR --export GTK_THEME:Catppuccin\x2dMacchiato\x2dStandard\x2dMauve\x2dDark
 SETUVAR --export MOZ_ENABLE_WAYLAND:1
 SETUVAR --export --path PATH:/home/maedayscout/\x2espicetify
 SETUVAR --export QT_STYLE_OVERRIDE:kvantum
+SETUVAR --export _JAVA_AWT_WM_NONREPARENTING:1
 SETUVAR __fish_initialized:3400
 SETUVAR fish_color_autosuggestion:555\x1ebrblack
 SETUVAR fish_color_cancel:\x2dr

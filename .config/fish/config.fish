@@ -9,6 +9,7 @@ set -Ux EDITOR "vim"
 set -Ux MOZ_ENABLE_WAYLAND 1
 set -Ux QT_STYLE_OVERRIDE "kvantum"
 set -Ux GTK_THEME "Catppuccin-Macchiato-Standard-Mauve-Dark"
+set -Ux _JAVA_AWT_WM_NONREPARENTING "1"
 
 alias cp "cp -i"
 alias mv "mv -i"
