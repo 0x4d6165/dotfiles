@@ -13,6 +13,7 @@ set -Ux _JAVA_AWT_WM_NONREPARENTING "1"
 
 alias cp "cp -i"
 alias mv "mv -i"
+alias s "kitty +kitten ssh"
 
 if status is-interactive
     # Commands to run in interactive sessions can go here
