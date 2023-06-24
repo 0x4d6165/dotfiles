@@ -27,15 +27,3 @@ set -Ux PATH /home/maedayscout/.spicetify
 set -q GHCUP_INSTALL_BASE_PREFIX[1]; or set GHCUP_INSTALL_BASE_PREFIX $HOME ; set -gx PATH $HOME/.cabal/bin $PATH /home/maedayscout/.ghcup/bin # ghcup-env
 
 
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-if test -f /home/maedayscout/.mambaforge/bin/conda
-    eval /home/maedayscout/.mambaforge/bin/conda "shell.fish" "hook" $argv | source
-end
-
-if test -f "/home/maedayscout/.mambaforge/etc/fish/conf.d/mamba.fish"
-    source "/home/maedayscout/.mambaforge/etc/fish/conf.d/mamba.fish"
-end
-# <<< conda initialize <<<
-

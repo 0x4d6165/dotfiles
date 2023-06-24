@@ -44,7 +44,7 @@
     "clock": {
         "tooltip-format": "{:%A %B %d %Y | %H:%M}",
         "format": "{: %a %m/%d  %H:%M}",	//24 hour format
-        "format-alt": " {:%m/d%/%Y  %H:%M:%S}",
+        "format-alt": " {:%m/%d/%Y  %H:%M:%S}",
         //"timezones": [ "Kolkata" ],
         //"max-length": 200
         "interval": 1,
@@ -107,7 +107,7 @@
         "tooltip-format-connected": "{num_connections} connected\n\n{device_enumerate}",
         "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
        "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%",
-        "on-click": "rofi-bluetooth"
+        "on-click": "blueberry"
    },
     "backlight": {
         // "device": "acpi_video1",
