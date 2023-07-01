@@ -33,6 +33,9 @@ client.background        $base
 gaps outer 5
 gaps inner 10
 
+shadows enable
+corner_radius 3
+
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
@@ -210,12 +213,18 @@ bindsym XF86AudioPlay exec playerctl --player=%any play-pause
 bindsym XF86AudioPrev exec playerctl --player=%any previous
 bindsym XF86AudioNext exec playerctl --player=%any next
 
+assign [app_id="firefox*"] workspace number 1
+assign [app_id="emacs"] workspace number 3
+assign [app_id="obsidian"] workspace number 4
+assign [app_id="keepassxc"] workspace number 5
+
+
 #
 # Status Bar:
 #
 # Read `man 5 sway-bar` for more information about this section.
-bar { 
-     swaybar_command waybar
+bar {
+    swaybar_command waybar
 }
 
 ## rules
@@ -224,6 +233,7 @@ bar {
 exec wlsunset -l 33.8 -L -117.9
 exec seafile-applet
 exec udiskie
+exec kdeconnectd && kdeconnect-indicator
 
 # Notification Daemon
 exec swaync
