@@ -33,6 +33,9 @@ client.background        $base
 gaps outer 5
 gaps inner 10
 
+shadows enable
+corner_radius 3
+
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
@@ -93,7 +96,7 @@ bindsym $mod+w kill
 bindsym $mod+r exec $menu
 
 #app bindings
-bindsym $mod+e exec "rofi -show emoji"
+bindsym $mod+e exec "rofimoji"
 bindsym $mod+m exec "rofi -show calc"
 bindsym $mod+c exec "hyprpicker | wl-copy"
 bindsym $mod+s exec "wayshot"
@@ -228,9 +231,9 @@ bar {
 
 ## autostarts
 exec wlsunset -l 33.8 -L -117.9
-exec seafile-applet
+exec nextcloud
 exec udiskie
-exec kdeconnect-indicator
+exec kdeconnectd
 
 # Notification Daemon
 exec swaync

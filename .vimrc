@@ -20,9 +20,12 @@ Plug 'airblade/vim-gitgutter'
 "Plug '~/.fzf'
 "Plug 'junegunn/fzf.vim'
 Plug 'mhinz/vim-startify'
+Plug 'catppuccin/vim', { 'as': 'catppuccin' }
 Plug 'l04m33/vlime', { 'rtp': 'vim/', 'for': 'lisp' }
 
 call plug#end()
+
+colorscheme catppuccin_macchiato
 
 map <space> <leader>
 map <space><space> <leader><leader>
