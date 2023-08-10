@@ -63,9 +63,7 @@ pgrep -x nextcloud > /dev/null || nextcloud &
 
 export SSH_AUTH_SOCK
 
-"$HOME/scripts/polybar-init.sh"
-
 "$HOME/scripts/gendunstrc.sh" > "$HOME/.config/dunst/dunstrc"
 dunst &
 
-exec bspwm
+exec dbus-run-session qtile start

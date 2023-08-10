@@ -1,10 +1,10 @@
 configuration{
-    modi: "drun,run,ssh,calc";
-    font: "FiraCode Nerd Font 12";
+    modi: "drun,run,ssh";
+    font: "FiraCode Nerd Font 16";
     icon-theme: "Papirus-Dark";
     show-icons: true;
     fuzzy: true;
-    terminal: "kitty";
+    terminal: "foot";
     drun-display-format: "{icon} {name}";
     location: 0;
     disable-history: false;
