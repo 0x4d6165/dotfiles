@@ -8,18 +8,26 @@ import subprocess
 
 # Qtile imports:
 from libqtile import qtile, hook
+from libqtile.backend.wayland import InputConfig
 
-if qtile.core.name == "x11":
-    from lib.x11 import wmname
-    term = "foot"
-elif qtile.core.name == "wayland":
-    from lib.wayland import wl_input_rules
-    term = "foot"
+wl_input_rules = {
+    "type:touchpad": InputConfig(
+        drag=True,
+        dwt=False,
+        natural_scroll=True,
+        pointer_accel=0.3,
+        click_method="clickfinger",
+        tap=True,
+        tap_button_Map="lrm",
+    )
+}
+
 
 auto_fullscreen = True
 auto_minimize = False
 bring_front_click = False
 cursor_warp = True
+dpi_scale = 1.2
 
 dgroups_app_rules = []  # type: List
 dgroups_key_binder = None
@@ -27,6 +35,7 @@ dgroups_key_binder = None
 focus_on_window_activation = "smart"
 follow_mouse_focus = True
 reconfigure_screens = True
+
 
 @hook.subscribe.startup_once
 def autostart():

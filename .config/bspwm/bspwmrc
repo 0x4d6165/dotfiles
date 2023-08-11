@@ -23,7 +23,7 @@ bspc config automatic_scheme spiral
 
 bspc rule -a "*Firefox" desktop='^1'
 
-"$HOME/scripts/polybar-init.sh"
+"$HOME/.config/eww/bar/launch_bar"
 
 # source the colors.
 . "${HOME}/.cache/wal/colors.sh"

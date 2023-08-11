@@ -48,7 +48,8 @@ windowname = [
         "fontsize": fontinfo["fontsize"],
         "format": "{name}",
         "max_chars": 35,
-        "padding": 3,
+        "rounded": True,
+        "padding": 4,
     },
 ]
 
@@ -89,7 +90,6 @@ layout = [
         **fontinfo,
         "background": palette[3],
         "foreground": palette[1],
-        "custom_icon_paths": "./icons",
         "scale": 0.63,
     },
 ]
@@ -99,7 +99,7 @@ wlan = [
     widget.Wlan,
     {
         **fontinfo,
-        "format": '{essid} {percent:2.0%}',
+        "format": '󰖩 {essid}',
         "background": palette[4],
         "foreground": palette[1],
         "interface": "wlo1",
@@ -111,7 +111,7 @@ mem = [
     widget.Memory,
     {
         **fontinfo,
-        "format": "{MemUsed:.2f}/{MemTotal:.2f}{mm}",
+        "format": "󰍛 {MemUsed:.2f}/{MemTotal:.2f}{mm}",
         "measure_mem": "G",
         "update_interval": 1.0,
     },
@@ -139,7 +139,7 @@ batt = [
         "discharge_char": "󰂀 ",
         "empty_char": "󱃍 ",
         "full_char": "󰁹 ",
-        "format": "{char} {percent:2.0%}",
+        "format": "{char} {percent:2.0%} ",
         "low_background": palette[7],
         "low_foreground": palette[1],
         "low_percentage": 0.30,
@@ -154,6 +154,8 @@ datetime = [
         "background": palette[6],
         "foreground": palette[1],
         "format": " %a, %B %e, %H:%M",
+        "mouse_callbacks": {'Button1': lambda:
+   qtile.cmd_spawn('gsimplecal')},
     },
 ]
 
@@ -163,6 +165,7 @@ volume = [
             **fontinfo,
             "background": palette[10],
             "foreground": palette[1],
+            "fmt": "󰕾 {}"
         },
 ]
 
@@ -178,7 +181,6 @@ def widgetlist():
         volume,
         wlan,
         mem,
-        systray,
         datetime,
         batt,
     ]

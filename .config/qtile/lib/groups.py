@@ -6,13 +6,12 @@ from libqtile import bar, layout, widget
 from libqtile.command import lazy
 from libqtile.config import DropDown, EzClick, EzKey, Group, Match, ScratchPad
 
-# Requires CJK-font (using: Sarasa Gothic)
 groups = [
-    Group("1", label="I"),
+    Group("1", label="I", matches=['Firefox*']),
     Group("2", label="II"),
-    Group("3", label="III"),
-    Group("4", label="IV"),
-    Group("5", label="V"),
+    Group("3", label="III", matches=['Emacs']),
+    Group("4", label="IV", matches=['obsidian']),
+    Group("5", label="V", matches=['keepassxc']),
     Group("6", label="VI"),
     Group("7", label="VII"),
     Group("8", label="VIII"),
@@ -31,12 +30,14 @@ for i in groups:
 
 borderline = dict(
     border_focus=palette[8],
-    border_normal=palette[1],
+    border_normal=palette[2],
     border_width=4,
     margin=10,
+    border_on_single=True,
 )
 
 layouts = [
+    layout.Bsp(**borderline),
     layout.MonadTall(**borderline),
     layout.MonadThreeCol(**borderline),
     layout.MonadWide(**borderline, ratio=0.65),

@@ -1,0 +1,248 @@
+(include "./workspaces.yuck")
+
+(defwidget titlewidget []
+    (label
+     :class "title"
+     :show-truncated true
+     :limit-width 25
+     :text "${workspace_str['title']}"))
+
+(defpoll timestr
+  :interval "1s"
+  :initial-value ""
+  "date '+%H:%M'")
+
+(defpoll datestr
+  :interval "1m"
+  :initial-value ""
+  "date '+%A %B %d'")
+
+(defpoll batterystr
+  :interval "1m"
+  :initial-value ""
+  "scripts/battery.py -c")
+
+(defpoll batterystatus
+  :interval "5s"
+  :initial-value ""
+  "scripts/battery.py -s")
+
+(defpoll volume
+  :interval "1s"
+  "amixer -D pipewire sget Master | grep 'Left:' | awk -F'[][]' '{ print $2 }' | tr -d '%' | head -1")
+
+(defpoll ssid
+				 :interval "10s"
+				 "nmcli -f IN-USE,SSID device wifi | awk '/^\*/{if (NR!=1) {print $2}}'")
+
+
+(defvar timewidget-hover false)
+(defvar batterywidget-hover false)
+(defvar volumewidget-hover false)
+(defvar statswidget-hover false)
+(defvar netwidget-hover false)
+
+
+(defpoll clock_date :interval "10h" "date '+%d/%m'")
+(defwidget timewidget []
+    ;; (hoverwidget
+    ;;     :class "time"
+    ;;     :hover-var "timewidget-hover"
+    ;;     :hover-cond timewidget-hover
+    ;;     (label
+    ;;      :class "shown"
+    ;;      :text "${timestr}")
+    ;;     (label
+    ;;      :class "hidden"
+    ;;      :text "  ${datestr}"))
+    (eventbox
+        :onhover "${EWW_EXECUTABLE} update timewidget-hover=true"
+        :onhoverlost "${EWW_EXECUTABLE} update timewidget-hover=false"
+				:onclick "$HOME/.config/eww/scripts/pop calendar ${clock_date}"
+        (box
+						:class "time"
+            :orientation "h"
+            :halign "end"
+            :height 30
+            :space-evenly false
+            :spacing 5
+            (revealer
+                :reveal timewidget-hover
+                :transition "slideleft"
+								(label
+								:class "hidden"
+								:text "  ${datestr}"))
+        (label
+         :class "shown"
+         :text "${timestr}")
+            ))
+		
+		)
+
+(defwidget batterywidget []
+    (hoverwidget
+        :class "battery"
+        :hover-var "batterywidget-hover"
+        :hover-cond batterywidget-hover
+        (label :text "${batterystr}")
+        (label
+         :style "padding-left: 5px;"
+         :text "${batterystatus}")))
+
+(defwidget ramwidget []
+    (label
+     :class "ram"
+     :text "   ${round(EWW_RAM.used_mem_perc, 1)}%  "))
+
+(defwidget cpuwidget []
+    (label
+     :class "cpu"
+     :text "   ${round(EWW_CPU.avg, 1)}%  "))
+
+(defwidget tempwidget []
+    (label
+     :class "temp"
+     ;; :text "   ${round(EWW_NET.wlp2s0.up, 1)}%  "))
+     :text "  ${EWW_TEMPS['CORETEMP_PACKAGE_ID_0']}°  "))
+
+(defwidget netwidget []
+    (hoverwidget
+        :class "net"
+        :hover-var "netwidget-hover"
+        :hover-cond netwidget-hover
+        :onclick "rofi-wifi-menu.sh"
+        (label :text "")
+        (label
+            ;; :text "   ${round(EWW_NET.wlp2s0.up, 1)}%  "))
+            :style "padding-left: 5px; padding-right: 5px;"
+            :text "${ssid} ${EWW_NET['wlo1']['NET_UP']} B  ${EWW_NET['wlo1']['NET_DOWN']} B ")))
+
+(defwidget statswidget []
+    (hoverwidget
+        :class "stats"
+        :hover-var "statswidget-hover"
+        :hover-cond statswidget-hover
+        (ramwidget)
+        (box
+         :orientation "h"
+         :space-evenly false
+         (cpuwidget))))
+
+(defwidget volumewidget []
+    (metric
+        :class "volume"
+        :label " ${volume}"
+        :value "${volume}"
+        :onchange "amixer -D pipewire sset Master {}%"))
+
+(deflisten bluetooth "scripts/bluetooth")
+(defwidget bluetooth []
+  (button
+    :class "bluetooth module"
+    :onclick "blueberry"
+    :tooltip "${bluetooth.text} ${bluetooth.batt_icon}"
+    "${bluetooth.icon}  ${bluetooth.text}"))
+
+(defwidget metric [class label value onchange]
+  (box :orientation "h"
+       :class "metric ${class}"
+       :space-evenly false
+    (box :class "label" label)
+    (scale :min 0
+           :max 101
+           :active {onchange != ""}
+           :value value
+           :onchange onchange)))
+
+(defwidget hoverwidget [class hover-var hover-cond]
+    (eventbox
+        :onhover "${EWW_EXECUTABLE} update ${hover-var}=true"
+        :onhoverlost "${EWW_EXECUTABLE} update ${hover-var}=false"
+        (box
+            :class "hover-widget ${class}"
+            :orientation "h"
+            :halign "end"
+            :height 30
+            :space-evenly false
+            :spacing 5
+            (revealer
+                :reveal hover-cond
+                :transition "slideleft"
+                (children :nth 1))
+            (children :nth 0))))
+
+(defwidget barcontent []
+    (centerbox
+        (bar-left)
+        (bar-center)
+        (bar-right)))
+
+(defwidget bar-left []
+  (box
+    :class "bar-left"
+    (workspaces)))
+
+(defwidget bar-center []
+  (box
+    :class "bar-center"
+    (titlewidget)))
+
+(defwidget bar-right []
+  (box
+   :valign "center"
+   :space-evenly false
+   :halign "end"
+    :class "bar-right"
+   (volumewidget)
+   (netwidget)
+   (bluetooth)
+   (statswidget)
+   (batterywidget)
+   (timewidget)))
+
+
+(defwindow bar
+    :monitor 0
+    :geometry (geometry :x "0%"
+                        :y "10px"
+                        :width "95%"
+                        :height "30px"
+                        :anchor "top center")
+    :stacking "fg"
+    :reserve (struts :distance "40px" :side "top")
+    :windowtype "dock"
+    :wm-ignore false
+    :focusable false
+    :exclusive true
+    (barcontent))
+
+;; Use this window for a non-eww bar
+;; (defwindow workspaceoverlay
+;;     :monitor 0
+;;     :geometry (geometry :x "0%"
+;;                         :y "10px"
+;;                         :width "35%"
+;;                         :height "30px"
+;;                         :anchor "top center")
+;;     :stacking "fg"
+;;     :reserve (struts :distance "40px" :side "top")
+;;     :windowtype "dock"
+;;     :wm-ignore true
+;;     (workspaces))
+
+(defpoll calendar_day :interval "20h" "date '+%d'")
+(defpoll calendar_year :interval "20h" "date '+%Y'")
+(defwidget cal []
+	(box :class "cal" :orientation "v"
+	(box :class "cal-in"
+	(calendar :class "cal" 
+			  :day calendar_day 
+			  :year calendar_year))))
+(defwindow calendar
+	:monitor 0
+	:geometry (geometry :x "20px" 
+						:y "3%" 
+                        :anchor "top right"
+						:width "270px" 
+						:height "60px")
+(cal))

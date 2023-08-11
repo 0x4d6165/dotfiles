@@ -57,13 +57,9 @@ setxkbmap -option compose:ralt
 #pgrep -x mpd > /dev/null || mpd &
 #pgrep -x wylt > /dev/null || wylt &
 
-pgrep -x nextcloud > /dev/null || nextcloud &
 
 #pgrep -x powerkit > /dev/null || powerkit &
 
 export SSH_AUTH_SOCK
 
-"$HOME/scripts/gendunstrc.sh" > "$HOME/.config/dunst/dunstrc"
-dunst &
-
-exec dbus-run-session qtile start
+exec dbus-run-session bspwm
