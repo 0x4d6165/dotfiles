@@ -20,12 +20,12 @@
 (defpoll batterystr
   :interval "1m"
   :initial-value ""
-  "scripts/battery.py -c")
+  "scripts/battery.lua -c")
 
 (defpoll batterystatus
   :interval "5s"
   :initial-value ""
-  "scripts/battery.py -s")
+  "scripts/battery.lua -s")
 
 (defpoll volume
   :interval "1s"
@@ -129,11 +129,16 @@
          (cpuwidget))))
 
 (defwidget volumewidget []
-    (metric
-        :class "volume"
-        :label " ${volume}"
-        :value "${volume}"
-        :onchange "amixer -D pipewire sset Master {}%"))
+					(hoverwidget
+						:class "volume"
+						:hover-var "volumewidget-hover"
+						:hover-cond volumewidget-hover
+						(label :text " ${volume}")
+						(metric
+								:class "volume"
+								:label ""
+								:value "${volume}"
+								:onchange "amixer -D pipewire sset Master {}%")))
 
 (deflisten bluetooth "scripts/bluetooth")
 (defwidget bluetooth []
@@ -246,3 +251,4 @@
 						:width "270px" 
 						:height "60px")
 (cal))
+

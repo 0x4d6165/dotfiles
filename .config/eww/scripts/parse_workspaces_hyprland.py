@@ -64,16 +64,19 @@ def main():
                 else:
                     icon = icon_map['no-icon']
 
-                if workspace in icons:
+                if workspace in icons and workspace != -1:
+                    print(workspace)
                     icons[workspace]["icons"].append(icon)
-                else:
+                elif workspace != -1:
+                    print(workspace)
                     icons[workspace] = {
                         "icons": [icon],
                         "workspace": workspace,
                         "process": processname,
                         "current": True if current_workspace == workspace else False
                     }
-            if current_workspace not in icons:
+            if current_workspace not in icons and current_workspace != -1:
+                print(current_workspace)
                 icons[current_workspace] = {
                     "icons": [icon_map["default"]],
                     "workspace": current_workspace,

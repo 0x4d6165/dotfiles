@@ -100,8 +100,8 @@ scale > contents > trough > slider {
 
 .net {
   background-color: $green;
-  border-top-left-radius: 30px;
-  border-bottom-left-radius: 30px;
+ // border-top-left-radius: 30px;
+ // border-bottom-left-radius: 30px;
   color: $mantle;
   padding-left: 5px;
   padding-right: 15px;
@@ -119,8 +119,10 @@ scale > contents > trough > slider {
 }
 
 .volume {
-  padding-left: 10px;
-  // background-color: $crust;
+		padding-left: 10px;
+		padding-right: 10px;
+		background-color: $sky;
+		color: $mantle;
   border-top-left-radius: 30px;
   border-bottom-left-radius: 30px;
 }
