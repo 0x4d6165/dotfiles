@@ -47,7 +47,7 @@ while true do
 						icon = v
 				 end
 				 if icons['workspace'] ~= nil and workspace ~= -1 then
-						icons['workspace']['icons'] = icon
+						table.insert(icons['workspace']['icons'], icon)
 				 elseif workspace ~= -1 then
 						if currentWorkspace == workspace then
 						icons[workspace] = {
