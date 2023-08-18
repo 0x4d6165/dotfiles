@@ -35,12 +35,19 @@
 				 :interval "10s"
 				 "nmcli -f IN-USE,SSID device wifi | awk '/^\*/{if (NR!=1) {print $2}}'")
 
+(defpoll playicon
+				 :interval "10s"
+				 "scripts/music.lua -p")
+(defpoll musictitle
+				 :interval "10s"
+				 "scripts/music.lua -t")
 
 (defvar timewidget-hover false)
 (defvar batterywidget-hover false)
 (defvar volumewidget-hover false)
 (defvar statswidget-hover false)
 (defvar netwidget-hover false)
+(defvar musicwidget-hover false)
 
 
 (defpoll clock_date :interval "10h" "date '+%d/%m'")
@@ -128,6 +135,30 @@
          :space-evenly false
          (cpuwidget))))
 
+(defwidget musicwidget []
+    (eventbox
+        :onhover "${EWW_EXECUTABLE} update musicwidget-hover=true"
+        :onhoverlost "${EWW_EXECUTABLE} update musicwidget-hover=false"
+				;; :onclick "$HOME/.config/eww/scripts/pop calendar ${clock_date}"
+        (box
+						:class "music"
+            :orientation "h"
+            :halign "end"
+            :height 30
+            :space-evenly false
+            :spacing 5
+            (revealer
+                :reveal musicwidget-hover
+                :transition "slideleft"
+								(label
+								:class "hidden"
+								:text "${musictitle}"))
+        (label
+         :class "shown"
+         :text "${playicon}")
+            ))
+					 )
+
 (defwidget volumewidget []
 					(hoverwidget
 						:class "volume"
@@ -197,7 +228,8 @@
    :valign "center"
    :space-evenly false
    :halign "end"
-    :class "bar-right"
+   :class "bar-right"
+	 (musicwidget)
    (volumewidget)
    (netwidget)
    (bluetooth)

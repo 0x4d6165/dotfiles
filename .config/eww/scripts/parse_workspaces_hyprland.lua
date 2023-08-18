@@ -47,22 +47,25 @@ while true do
 						icon = v
 				 end
 				 if icons['workspace'] ~= nil and workspace ~= -1 then
-						table.insert(icons['workspace']['icons'], icon)
+                        print("here" .. workspace)
+						table.insert(icons['workspace']['icons'], {icon})
 				 elseif workspace ~= -1 then
 						if currentWorkspace == workspace then
-						icons[workspace] = {
-													 icons = {icon},
-													 workspace = workspace,
-													 process = processname,
-													 current = true
-						}
+                            print("there" .. workspace)
+                            icons[workspace] = {
+                                                         icons = {icon},
+                                                         workspace = workspace,
+                                                         process = processname,
+                                                         current = true
+                            }
 						else
-						icons[workspace] = {
-													 icons = {icon},
-													 workspace = workspace,
-													 process = processname,
-													 current = false
-						}
+                            print("everywhere" ..  workspace)
+                            icons[workspace] = {
+                                                         icons = {icon},
+                                                         workspace = workspace,
+                                                         process = processname,
+                                                         current = false
+                            }
 						end
 				 end
 			end
@@ -77,7 +80,7 @@ while true do
 	 end
 	 local payload = {title = currentwindowtitle, icons = {}}
 	 for k,v in pairs(icons) do
-			payload['icons'][k] = {v}
+			payload['icons'][k] = v
 	 end
 	 print(json.encode(payload))
 	 assert(socket.recv(fd,1024))

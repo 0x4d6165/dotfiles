@@ -14,7 +14,7 @@
 ;; Implementation
 (deflisten workspace_str
     :initial_value "{}"
-    "$HOME/.config/eww/scripts/parse_workspaces_hyprland.lua")
+    "$HOME/.config/eww/scripts/parse_workspaces_hyprland.py")
 
 (defwidget workspaces []
     (box
