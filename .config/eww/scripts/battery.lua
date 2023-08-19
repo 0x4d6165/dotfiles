@@ -27,7 +27,7 @@ if arg[1] == "-c" then
 	 if batcapacity == 100 then
 			print(battery_icons[4] .. "   " .. batcapacity .. "%")
 	 else
-			print(battery_icons[1+(batcapacity // 20)] .. "   " .. batcapacity .. "%")
+			print(battery_icons[(batcapacity // 20)] .. "   " .. batcapacity .. "%")
 	 end
 elseif arg[1] == "-s" then
 	 local handlebat = io.popen("cat /sys/class/power_supply/BAT1/status")

@@ -19,6 +19,7 @@ icon_map = {
         "emacs": "",
         "dolphin": "",
         "plasma-systemmo": "",
+        "keepassxc": "󰌆",
         "no-icon": "",
         "default": ""
 }

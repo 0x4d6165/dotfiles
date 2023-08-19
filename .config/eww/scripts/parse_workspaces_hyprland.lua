@@ -46,12 +46,10 @@ while true do
 				 if k == processname then
 						icon = v
 				 end
-				 if icons['workspace'] ~= nil and workspace ~= -1 then
-                        print("here" .. workspace)
-						table.insert(icons['workspace']['icons'], {icon})
+				 if icons[workspace] ~= nil and workspace ~= -1 then
+						table.insert(icons[workspace]['icons'], icon)
 				 elseif workspace ~= -1 then
 						if currentWorkspace == workspace then
-                            print("there" .. workspace)
                             icons[workspace] = {
                                                          icons = {icon},
                                                          workspace = workspace,
@@ -59,7 +57,6 @@ while true do
                                                          current = true
                             }
 						else
-                            print("everywhere" ..  workspace)
                             icons[workspace] = {
                                                          icons = {icon},
                                                          workspace = workspace,
