@@ -14,7 +14,7 @@ And returns a JSON list of text for each workspace, usually a Nerd font icon
 # ex:
 # /bin/plasma-systemmonitor => plasma-systemmo
 icon_map = {
-        "firefox": "",
+        "Firefox-esr": "",
         "foot": "",
         "emacs": "",
         "dolphin": "",

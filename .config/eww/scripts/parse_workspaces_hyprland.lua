@@ -1,10 +1,10 @@
-#!/usr/bin/env lua
+#!/usr/bin/env lua5.4
 local socket = require("posix.sys.socket")
 local unistd = require("posix.unistd")
 local json = require("json")
 
 local icon_map = {
-	 firefox = "",
+	 Firefox = "",
 	 foot = "",
 	 emacs = "",
 	 Dolphin = "",
@@ -43,7 +43,7 @@ while true do
 			local processname = clientJson[i]['class']
 			local icon = icon_map['noicon']
 			for k,v in pairs(icon_map) do
-				 if k == processname then
+				 if string.find(processname, k) then
 						icon = v
 				 end
 				 if icons[workspace] ~= nil and workspace ~= -1 then

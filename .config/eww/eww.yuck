@@ -28,26 +28,30 @@
   "scripts/battery.lua -s")
 
 (defpoll volume
-  :interval "1s"
+  :interval "0.5s"
   "amixer -D pipewire sget Master | grep 'Left:' | awk -F'[][]' '{ print $2 }' | tr -d '%' | head -1")
 
 (defpoll ssid
 				 :interval "10s"
-				 "nmcli -f IN-USE,SSID device wifi | awk '/^\*/{if (NR!=1) {print $2}}'")
+				 "nmcli -f IN-USE,SSID device wifi | awk '/^\\*/{if (NR!=1) {print $2}}'")
 
-(defpoll playicon
-				 :interval "10s"
-				 "scripts/music.lua -p")
-(defpoll musictitle
-				 :interval "10s"
-				 "scripts/music.lua -t")
+;; (defpoll playicon
+;; 				 :interval "10s"
+;; 				 "scripts/music.lua -p")
+;; (defpoll musictitle
+;; 				 :interval "10s"
+;; 				 "scripts/music.lua -t")
+
+(defpoll mail
+				 :interval "1m"
+				 "scripts/mail.lua")
 
 (defvar timewidget-hover false)
 (defvar batterywidget-hover false)
 (defvar volumewidget-hover false)
 (defvar statswidget-hover false)
 (defvar netwidget-hover false)
-(defvar musicwidget-hover false)
+;; (defvar musicwidget-hover false)
 
 
 (defpoll clock_date :interval "10h" "date '+%d/%m'")
@@ -85,6 +89,11 @@
             ))
 		
 		)
+
+(defwidget mailwidget []
+					 (label
+						:class "mail"
+						:text "${mail}"))
 
 (defwidget batterywidget []
     (hoverwidget
@@ -135,29 +144,29 @@
          :space-evenly false
          (cpuwidget))))
 
-(defwidget musicwidget []
-    (eventbox
-        :onhover "${EWW_EXECUTABLE} update musicwidget-hover=true"
-        :onhoverlost "${EWW_EXECUTABLE} update musicwidget-hover=false"
-				;; :onclick "$HOME/.config/eww/scripts/pop calendar ${clock_date}"
-        (box
-						:class "music"
-            :orientation "h"
-            :halign "end"
-            :height 30
-            :space-evenly false
-            :spacing 5
-            (revealer
-                :reveal musicwidget-hover
-                :transition "slideleft"
-								(label
-								:class "hidden"
-								:text "${musictitle}"))
-        (label
-         :class "shown"
-         :text "${playicon}")
-            ))
-					 )
+;; (defwidget musicwidget []
+;;     (eventbox
+;;         :onhover "${EWW_EXECUTABLE} update musicwidget-hover=true"
+;;         :onhoverlost "${EWW_EXECUTABLE} update musicwidget-hover=false"
+;; 				;; :onclick "$HOME/.config/eww/scripts/pop calendar ${clock_date}"
+;;         (box
+;; 						:class "music"
+;;             :orientation "h"
+;;             :halign "end"
+;;             :height 30
+;;             :space-evenly false
+;;             :spacing 5
+;;             (revealer
+;;                 :reveal musicwidget-hover
+;;                 :transition "slideleft"
+;; 								(label
+;; 								:class "hidden"
+;; 								:text "${musictitle}"))
+;;         (label
+;;          :class "shown"
+;;          :text "${playicon}")
+;;             ))
+;; 					 )
 
 (defwidget volumewidget []
 					(hoverwidget
@@ -229,11 +238,11 @@
    :space-evenly false
    :halign "end"
    :class "bar-right"
-	 (musicwidget)
    (volumewidget)
    (netwidget)
    (bluetooth)
    (statswidget)
+	 (mailwidget)
    (batterywidget)
    (timewidget)))
 

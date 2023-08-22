@@ -38,6 +38,8 @@ set ttyfast
 set lazyredraw
 set number
 
+autocmd FileType mail set spell
+
 """"" Statusline """""
 let g:currentmode = {
     \ 'n'  : 'N ',
