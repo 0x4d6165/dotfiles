@@ -1,11 +1,11 @@
 (include "./workspaces.yuck")
 
-(defwidget titlewidget []
-    (label
-     :class "title"
-     :show-truncated true
-     :limit-width 25
-     :text "${workspace_str['title']}"))
+;; (defwidget titlewidget []
+;;     (label
+;;      :class "title"
+;;      :show-truncated true
+;;      :limit-width 25
+;;      :text "${workspace_str['title']}"))
 
 (defpoll timestr
   :interval "1s"
@@ -41,6 +41,9 @@
 ;; (defpoll musictitle
 ;; 				 :interval "10s"
 ;; 				 "scripts/music.lua -t")
+(defpoll weather
+				 :interval "5m"
+				 "weather")
 
 (defpoll mail
 				 :interval "1m"
@@ -168,6 +171,11 @@
 ;;             ))
 ;; 					 )
 
+(defwidget weatherwidget []
+    (label
+     :class "weather"
+     :text "${weather}"))
+
 (defwidget volumewidget []
 					(hoverwidget
 						:class "volume"
@@ -230,7 +238,7 @@
 (defwidget bar-center []
   (box
     :class "bar-center"
-    (titlewidget)))
+    (weatherwidget)))
 
 (defwidget bar-right []
   (box

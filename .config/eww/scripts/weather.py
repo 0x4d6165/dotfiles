@@ -48,8 +48,7 @@ if res["cod"] != "404":
 
    # Storing the weather description
    weather_description = desc[0]["description"]
-   print("Temperature: " + str(live_temperature))
-   print("Description: " + str(weather_description) + icon_map[weather_description])
+   print(icon_map[weather_description] + " " + str(live_temperature) + "°")
 
 else:
    # If the city is not found,
