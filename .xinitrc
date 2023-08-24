@@ -15,7 +15,6 @@ sysmodmap=/etc/X11/xinit/.Xmodmap
 
 # set wallpaper and colorscheme
 randwall="$(find ~/wallpapers -regextype posix-egrep -regex ".*\.(jpg|png|gif)$" | shuf | head -n1)"
-wal -b 2b2b2b -i "$randwall" -n
 hsetroot -cover "$randwall"
 
 # merge in defaults and keymaps

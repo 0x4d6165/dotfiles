@@ -1,5 +1,5 @@
 configuration{
-    modi: "drun,run,ssh";
+    modi: "drun,run,window,calc,emoji,ssh";
     font: "FiraCode Nerd Font 12";
     icon-theme: "Papirus-Dark";
     show-icons: true;
@@ -12,6 +12,7 @@ configuration{
     display-drun: "   ";
     display-run: "  ";
     display-Network: " 󰤨 ";
+    display-window: " 󰖲 ";
     display-ssh: "  ";
     display-emoji: " 󰞅 ";
     display-calc: " 󰃬 ";
