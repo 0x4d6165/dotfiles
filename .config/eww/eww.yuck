@@ -184,7 +184,7 @@
 (defwidget bluetooth []
   (button
     :class "bluetooth module"
-    :onclick "blueberry"
+    :onclick "rofi-bluetooth"
     :tooltip "${bluetooth.text} ${bluetooth.batt_icon}"
     "${bluetooth.icon}  ${bluetooth.text}"))
 

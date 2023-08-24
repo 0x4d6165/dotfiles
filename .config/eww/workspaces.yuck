@@ -26,7 +26,7 @@
         (for workspace in "${workspace_str['icons']}"
             (eventbox
                 :cursor "pointer"
-                :onclick "hyprctl dispatch workspace ${workspace.workspace}"
+                :onclick "swaymsg workspace ${workspace.workspace}"
                 (box
                     :spacing 10
                     :space-evenly false

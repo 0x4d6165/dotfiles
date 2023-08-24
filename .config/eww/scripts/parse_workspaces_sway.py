@@ -19,7 +19,7 @@ icon_map = {
         "emacs": "",
         "dolphin": "",
         "plasma-systemmo": "",
-        "keepassxc": "󰌆",
+        "org.keepassxc.KeePassXC": "󰌆",
         "no-icon": "",
         "default": ""
 }
@@ -38,7 +38,7 @@ i3 = Connection()
 def get_workspaces(i3, e):
     current_workspace = i3.get_tree().find_focused().workspace().num
     focused = i3.get_tree().find_focused()
-    current_window_title = focused.name
+    current_window_title = focused.ipc_data['name']
     if current_window_title == str(current_workspace):
         current_window_title = ""
     icons = {}
@@ -48,6 +48,8 @@ def get_workspaces(i3, e):
         try:
             processname = i3.get_tree().ipc_data['nodes'][1]['nodes'][workspace-1]['nodes'][0]['app_id']
         except IndexError:
+            processname = ""
+        except KeyError:
             processname = ""
         if workspace == None or processname == None:
             break
@@ -66,7 +68,6 @@ def get_workspaces(i3, e):
                 "current": True if current_workspace == workspace else False
             }
     if current_workspace not in icons and current_workspace != -1:
-        #print(current_workspace)
         icons[current_workspace] = {
             "icons": [icon_map["default"]],
             "workspace": current_workspace,
@@ -88,6 +89,7 @@ def main():
     i3.send_tick()
     i3.on(Event.WINDOW_NEW, get_workspaces)
     i3.on(Event.WINDOW_CLOSE, get_workspaces)
+    i3.on(Event.WINDOW_MOVE, get_workspaces)
     i3.on(Event.WORKSPACE_FOCUS, get_workspaces)
     i3.main()
 
