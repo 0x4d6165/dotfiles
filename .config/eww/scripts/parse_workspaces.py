@@ -45,8 +45,7 @@ def main():
     for (workspace, pid) in workspace_pids:
         workspace = int(workspace)
 
-        result = subprocess.run(["ps", "-p", f"{pid}", "-o", "comm="],
-                                capture_output=True)
+        result = subprocess.run(["ps", "-p", f"{id}", "-o", "comm="], capture_output=True)
         processname = str(result.stdout.strip())[2:-1]
 
         if processname in icon_map:

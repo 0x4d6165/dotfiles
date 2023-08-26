@@ -19,7 +19,7 @@ icon_map = {
         "emacs": "",
         "dolphin": "",
         "plasma-systemmo": "",
-        "keepassxc": "󰌆",
+        "org.keepassxc.KeePassXC": "󰌆",
         "no-icon": "",
         "default": ""
 }
@@ -66,10 +66,8 @@ def main():
                     icon = icon_map['no-icon']
 
                 if workspace in icons and workspace != -1:
-                    #print(workspace)
                     icons[workspace]["icons"].append(icon)
                 elif workspace != -1:
-                    #print(workspace)
                     icons[workspace] = {
                         "icons": [icon],
                         "workspace": workspace,
@@ -77,7 +75,6 @@ def main():
                         "current": True if current_workspace == workspace else False
                     }
             if current_workspace not in icons and current_workspace != -1:
-                #print(current_workspace)
                 icons[current_workspace] = {
                     "icons": [icon_map["default"]],
                     "workspace": current_workspace,

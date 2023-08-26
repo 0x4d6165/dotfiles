@@ -14,7 +14,7 @@
 ;; Implementation
 (deflisten workspace_str
     :initial_value "{}"
-    "$HOME/.config/eww/scripts/parse_workspaces_sway.py")
+    "$HOME/.config/eww/scripts/parse_workspaces_hyprland.py")
 
 (defwidget workspaces []
     (box
@@ -26,7 +26,7 @@
         (for workspace in "${workspace_str['icons']}"
             (eventbox
                 :cursor "pointer"
-                :onclick "swaymsg workspace ${workspace.workspace}"
+                :onclick "hyprctl dispatch workspace ${workspace.workspace}"
                 (box
                     :spacing 10
                     :space-evenly false

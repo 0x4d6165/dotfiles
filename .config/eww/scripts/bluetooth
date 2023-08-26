@@ -34,7 +34,7 @@ else
         icon="󰂯"
         color="#b4befe"
       else
-        icon=""
+        icon="󰂲"
         text="Disconnected"
         color="#45475a"
       fi

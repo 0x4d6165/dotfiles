@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 
 """
-parse_workspaces_hyprland.py
+parse_workspaces_sway.py
 
-Goes through all workspaces with windows using hyprctrl
+Goes through all workspaces with windows using i3ipc
 And returns a JSON list of text for each workspace, usually a Nerd font icon
 """
 
@@ -42,32 +42,30 @@ def get_workspaces(i3, e):
     if current_window_title == str(current_workspace):
         current_window_title = ""
     icons = {}
-    clients = i3.get_workspaces()
+    clients = i3.get_tree().workspaces()
     for client in clients:
         workspace = client.num
         try:
-            processname = i3.get_tree().ipc_data['nodes'][1]['nodes'][workspace-1]['nodes'][0]['app_id']
+            processname = clients[workspace-1].ipc_data['nodes'][0]['app_id']
         except IndexError:
             processname = ""
         except KeyError:
             processname = ""
-        if workspace == None or processname == None:
-            break
         if processname in icon_map:
             icon = icon_map[processname]
         else:
             icon = icon_map['no-icon']
 
-        if workspace in icons and workspace != -1:
-            icons[workspace]["icons"].append(icon)
-        elif workspace != -1:
+        if workspace in icons:
+            icons[workspace]["icons"] = [icon]
+        else:
             icons[workspace] = {
                 "icons": [icon],
                 "workspace": workspace,
                 "process": processname,
                 "current": True if current_workspace == workspace else False
             }
-    if current_workspace not in icons and current_workspace != -1:
+    if current_workspace not in icons:
         icons[current_workspace] = {
             "icons": [icon_map["default"]],
             "workspace": current_workspace,
@@ -91,6 +89,10 @@ def main():
     i3.on(Event.WINDOW_CLOSE, get_workspaces)
     i3.on(Event.WINDOW_MOVE, get_workspaces)
     i3.on(Event.WORKSPACE_FOCUS, get_workspaces)
+    i3.on(Event.WORKSPACE_INIT, get_workspaces)
+    i3.on(Event.WORKSPACE_MOVE, get_workspaces)
+    i3.on(Event.WORKSPACE_EMPTY, get_workspaces)
+    i3.on(Event.WORKSPACE_RESTORED, get_workspaces)
     i3.main()
 
 if __name__ == "__main__":
