@@ -1,0 +1,14 @@
+[database]
+path=/home/maedayscout/.local/share/email
+[user]
+name=Mae Miller
+primary_email=posteo
+[new]
+tags=unread;inbox;
+ignore=
+[search]
+exclude_tags=deleted;spam;
+[maildir]
+synchronize_flags=true
+[crypto]
+gpg_path=gpg
