@@ -223,3 +223,28 @@ font-weight: bold;
 calendar:indeterminate {
 color: $teal;
 }
+
+weather {
+    color: $teal;
+}
+weather:selected {
+  color: $green;
+}
+
+weather.header {
+color: $teal;
+font-weight: bold;
+}
+
+weather.button {
+color: $green;
+}
+
+weather.highlight {
+color: $teal;
+font-weight: bold;
+}
+
+weather:indeterminate {
+color: $teal;
+}

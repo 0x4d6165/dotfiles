@@ -59,6 +59,5 @@ setxkbmap -option compose:ralt
 
 #pgrep -x powerkit > /dev/null || powerkit &
 
-export SSH_AUTH_SOCK
 
-exec dbus-run-session bspwm
+exec dbus-run-session wmaker

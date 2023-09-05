@@ -1,0 +1,17 @@
+(deflisten weather_str
+    :initial_value "{}"
+    "forecastEww")
+
+(defwidget weatherwidget []
+    (box
+        :class "weather"
+        :spacing 16
+        :orientation "h"
+        :space-evenly false
+        :valign "center"
+        (label :class "cond" "${weather_str.today.condition}")
+        (label :class "temp" "${weather_str.today.temp}")
+        (label :class "high" "${weather_str.today.high}")
+        (label :class "low" "${weather_str.today.low}")))
+             
+

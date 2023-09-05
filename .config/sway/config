@@ -35,10 +35,10 @@ client.background        $base
 gaps outer 5
 gaps inner 10
 
-shadows enable
-shadow_blur_radius 10
-corner_radius 4
-blur enable
+#shadows enable
+#shadow_blur_radius 10
+#corner_radius 4
+#blur enable
 
 ### Output configuration
 #
@@ -208,8 +208,8 @@ mode "resize" {
 }
 bindsym $mod+z mode "resize"
 
-bindgesture swipe:right workspace prev
-bindgesture swipe:left workspace next
+#bindgesture swipe:right workspace prev
+#bindgesture swipe:left workspace next
 
 ##launchers and such
 bindsym XF86AudioRaiseVolume exec wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+
@@ -252,7 +252,7 @@ exec swaync
 # Toggle control center
 bindsym $mod+Shift+n exec swaync-client -t -sw
 
-layer_effects "eww" blur enable; shadows enable;
+#layer_effects "eww" blur enable; shadows enable;
 
 
 
