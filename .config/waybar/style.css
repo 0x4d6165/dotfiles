@@ -137,19 +137,22 @@ window#waybar {
 
 #clock {
     /* background-color:#a3be8c; */
-    color: @sky;
+    background-color: @sky;
+    color: @base;
     border-radius: 10px;
     margin: 8px 10px;
 }
 
 #backlight {
-    color: @yellow;
+    background-color: @yellow;
+    color: @base;
     /* border-bottom: 2px solid @yellow; */
     border-radius: 10px 0 0 10px;
 }
 
 #battery {
-    color: #d8dee9;
+    background-color: @lavender;
+    color: @base;
     /* border-bottom: 2px solid #d8dee9; */
     border-radius: 0 10px 10px 0;
     margin-right: 10px;
@@ -201,12 +204,13 @@ window#waybar {
 }
 
 #network.disabled {
-    color: #bf616a;
+    background-color: #bf616a;
     /* border-bottom: 2px solid #bf616a; */
 }
 
 #network {
-    color: @green;
+    background-color: @green;
+    color: @base;
     /* border-bottom: 2px solid @green; */
     border-radius: 10px;
     margin-right: 5px;
@@ -218,7 +222,8 @@ window#waybar {
 }
 
 #pulseaudio {
-    color: @flamingo;
+    background-color: @flamingo;
+    color: @base
     /* border-bottom: 2px solid @flamingo; */
 }
 
@@ -278,6 +283,19 @@ window#waybar {
     padding: 5px 10px;
     color: @lavender;
     background-color: shade(@base, 1.1);
+}
+#taskbar {
+    /*border-style: hidden;*/
+    border-radius: 10px;
+    margin: 10px 10px;
+    padding: 5px 10px;
+    color: @lavender;
+    background-color: shade(@base, 1.1);
+}
+
+#bluetooth {
+    background-color: @mauve;
+    color: @base;
 }
 
 #mode {
