@@ -1,13 +1,13 @@
 {
     "Layer": "top", // Waybar at top layer
     "position": "top", // Waybar position (top|bottom|left|right)
-    "height": 20,
+    "height": 15,
     "margin": "0 0 0 0",
     //"width": 1350, // Waybar width
     // Choose the order of the modules idle_inhibitor
-    "modules-left": ["clock","sway/mode", "wlr/taskbar"],
+    "modules-left": ["clock", "custom/music", "custom/weather","sway/mode"],
     "modules-center": ["sway/workspaces"],
-    "modules-right": ["backlight", "pulseaudio", "bluetooth", "battery", "network", "tray", "custom/power"], 
+    "modules-right": ["custom/mail", "memory", "pulseaudio", "bluetooth", "battery", "network", "tray"], 
     
  // Modules configuration
  
@@ -18,16 +18,17 @@
 		  // "format": "< %g >",
 		  // "format_focused" : "< %g ● >",
 		  "format-icons": {
-		  		"1": "I",
-		  		"2": "II",
-		  		"3": "III",
-		  		"4": "IV",
-		  		"5": "V",
-		  		"6": "VI",
-		  		"7": "VII",
-		  		"8": "VIII",
-		  		"9": "IX",
-		  		"10": "X",
+		  		"1": "",
+		  		"2": "",
+		  		"3": "",
+		  		"4": "󰭻",
+		  		"5": "󰌆",
+                "6": "󰲪",
+                "7": "󰲬",
+                "8": "󰲮",
+                "9": "󰲰",
+                "10": "󰿬",
+                "default": "",
   	  }
     },
     "sway/mode": {
@@ -107,16 +108,21 @@
         "tooltip-format-connected": "{num_connections} connected\n\n{device_enumerate}",
         "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
        "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%",
-        "on-click": "blueberry"
+        "on-click": "blueman-manager"
    },
-    "backlight": {
-        // "device": "acpi_video1",
-        "format": "{icon} {percent: >3}%",
-        "format-icons": ["", ""],
-        // "on-scroll-down": "brightnessctl -c backlight set 5%-",
-        "on-scroll-up": "light -A 5 && light -G | cut -d'.' -f1 > $SWAYSOCK.wob",
-        // "on-scroll-up": "brightnessctl -c backlight set +5%"
-        "on-scroll-down": "light -U 5 && light -G | cut -d'.' -f1 > $SWAYSOCK.wob"
+   // "backlight": {
+   //     // "device": "acpi_video1",
+   //     "format": "{icon} {percent: >3}%",
+   //     "format-icons": ["", ""],
+   //     // "on-scroll-down": "brightnessctl -c backlight set 5%-",
+   //     "on-scroll-up": "light -A 5 && light -G | cut -d'.' -f1 > $SWAYSOCK.wob",
+   //     // "on-scroll-up": "brightnessctl -c backlight set +5%"
+   //     "on-scroll-down": "light -U 5 && light -G | cut -d'.' -f1 > $SWAYSOCK.wob"
+   // },
+    "memory": {
+        "interval": 30,
+        "format": " {}%",
+        "max-length": 10
     },
     "battery": {
         "states": {
@@ -156,17 +162,27 @@
         "on-scroll-up": "pamixer -ui 2 && pamixer --get-volume > $WOBSOCK",
         "on-scroll-down": "pamixer -ud 2 && pamixer --get-volume > $WOBSOCK"
     },
-    "custom/power": {
-      	"format":"⏻",
-       	"on-click": "exec rofi -show power-menu -modi power-menu:rofi-power-menu",
-      	"tooltip": false,
-   },
+    //"custom/power": {
+    //  	"format":"⏻",
+    //   	"on-click": "exec rofi -show power-menu -modi power-menu:rofi-power-menu",
+    //  	"tooltip": false,
+   //},
     // "custom/launcher": {
     //	"format":"    ",
     //	"on-click": "exec rofi -show drun",
     //	"tooltip": false,
     // },
-
+    "custom/mail": {
+        "exec": "~/.config/sway/mail.lua",
+        "interval": "30",
+    },
+    "custom/weather": {
+        "exec": "~/.local/bin/weather",
+        "interval": "90",
+    },
+    "custom/music": {
+        "exec": "~/.config/sway/music.sh",
+    },
     "wlr/taskbar": {
         "format": "{icon}",
         "icon-size": 14,
@@ -184,7 +200,7 @@
             "Firefox Web Browser": "Firefox",
             "Foot Server": "Terminal"
         }
-}
+    },
 }
 
 

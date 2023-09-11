@@ -65,6 +65,7 @@ window#waybar {
     background: transparent;
 }
 
+
 #workspaces button {
     color: @base;
     border-radius: 50%;
@@ -99,6 +100,9 @@ window#waybar {
     color: #ebcb8b;
 }
 
+#custom-music,
+#custom-mail,
+#custom-weather,
 #clock,
 #cava,
 #custom-swap,
@@ -135,6 +139,26 @@ window#waybar {
     padding: 5px 14px 5px 5px;
 }
 
+#custom-mail {
+    background-color: @peach;
+    color: @base;
+    border-radius: 10px 0 0 10px;
+}
+
+#custom-weather {
+    background-color: @teal;
+    color: @base;
+    border-radius: 10px;
+    margin: 8px 10px;
+}
+
+#custom-music {
+    background-color: @sapphire;
+    color: @base;
+    border-radius: 10px;
+    margin: 8px 10px;
+}
+
 #clock {
     /* background-color:#a3be8c; */
     background-color: @sky;
@@ -147,7 +171,6 @@ window#waybar {
     background-color: @yellow;
     color: @base;
     /* border-bottom: 2px solid @yellow; */
-    border-radius: 10px 0 0 10px;
 }
 
 #battery {
@@ -159,7 +182,7 @@ window#waybar {
 }
 
 #battery.charging {
-    color: #81a1c1;
+    background-color: #81a1c1;
     /* border-bottom: 2px solid #81a1c1; */
 }
 
@@ -171,7 +194,7 @@ window#waybar {
 }
 
 #battery.critical:not(.charging) {
-    color: #bf616a;
+    background-color: #bf616a;
     /* border-bottom: 2px solid #bf616a; */
     animation-name: blink;
     animation-duration: 0.5s;
@@ -336,15 +359,15 @@ window#waybar {
  }
  
  #battery {
-     color: #d8dee9;
+     background-color: #d8dee9;
  }
  
  #battery.charging {
-     color: #b48ead;
+     background-color: #b48ead;
  }
  
  #battery.critical:not(.charging) {
-     color: #bf616a;
+     background-color: #bf616a;
  }
  
  #cpu {

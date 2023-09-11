@@ -59,5 +59,8 @@ setxkbmap -option compose:ralt
 
 #pgrep -x powerkit > /dev/null || powerkit &
 
+export VISUAL=emacsclient
+export EDITOR="$VISUAL"
 
-exec dbus-run-session wmaker
+# Finally launch emacs.
+exec dbus-launch --exit-with-session emacs

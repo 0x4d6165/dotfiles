@@ -260,10 +260,10 @@
     :geometry (geometry :x "0%"
                         :y "10px"
                         :width "95%"
-                        :height "30px"
-                        :anchor "top center")
+                        :height "20px"
+                        :anchor "bottom center")
     :stacking "fg"
-    :reserve (struts :distance "40px" :side "top")
+    :reserve (struts :distance "40px" :side "bottom")
     :windowtype "dock"
     :wm-ignore false
     :focusable false
