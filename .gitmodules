@@ -1,6 +1,0 @@
-[submodule ".config/sway/swaymonad"]
-	path = .config/sway/swaymonad
-	url = git@github.com:nicolasavru/swaymonad.git
-[submodule ".config/sway/i3-alternating-layout"]
-	path = .config/sway/i3-alternating-layout
-	url = https://github.com/olemartinorg/i3-alternating-layout
