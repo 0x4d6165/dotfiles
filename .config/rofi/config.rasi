@@ -1,6 +1,6 @@
 configuration{
     modi: "drun,run,calc,emoji,ssh";
-    font: "FiraCode Nerd Font 12";
+    font: "JetBrainsMono Nerd Font 20";
     icon-theme: "Papirus-Dark";
     show-icons: true;
     fuzzy: true;

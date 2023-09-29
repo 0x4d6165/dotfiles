@@ -8,8 +8,10 @@
     fg-col2: #ed8796;
     grey: #6e738d;
 
-    width: 500;
+    width: 800;
 }
+
+element-icon { size: 1.5ch ; }
 
 element-text, element-icon , mode-switcher {
     background-color: inherit;
@@ -17,7 +19,7 @@ element-text, element-icon , mode-switcher {
 }
 
 window {
-    height: 300px;
+    height: 500px;
     border: 3px;
     border-color: @border-col;
     background-color: @bg-col;
@@ -70,9 +72,6 @@ element {
     text-color: @fg-col  ;
 }
 
-element-icon {
-    size: 12px;
-}
 
 element selected {
     background-color:  @selected-col ;

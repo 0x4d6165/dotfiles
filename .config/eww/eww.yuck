@@ -43,11 +43,12 @@
 ;; 				 "scripts/music.lua -t")
 (defpoll weather
 				 :interval "5m"
-				 "weather")
+				 "scripts/weather.sh")
 
 (defpoll mail
 				 :interval "1m"
 				 "scripts/mail.lua")
+
 
 (defvar timewidget-hover false)
 (defvar batterywidget-hover false)
@@ -88,7 +89,7 @@
 								:text "  ${datestr}"))
         (label
          :class "shown"
-         :text "${timestr}")
+         :text " ${timestr}")
             ))
 		
 		)
@@ -261,9 +262,9 @@
                         :y "10px"
                         :width "95%"
                         :height "20px"
-                        :anchor "bottom center")
+                        :anchor "top center")
     :stacking "fg"
-    :reserve (struts :distance "40px" :side "bottom")
+    :reserve (struts :distance "40px" :side "top")
     :windowtype "dock"
     :wm-ignore false
     :focusable false

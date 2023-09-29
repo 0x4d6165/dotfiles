@@ -1,13 +1,13 @@
 {
     "Layer": "top", // Waybar at top layer
     "position": "top", // Waybar position (top|bottom|left|right)
-    "height": 15,
+    "height": 5,
     "margin": "0 0 0 0",
     //"width": 1350, // Waybar width
     // Choose the order of the modules idle_inhibitor
     "modules-left": ["clock", "custom/music", "custom/weather","sway/mode"],
     "modules-center": ["sway/workspaces"],
-    "modules-right": ["custom/mail", "memory", "pulseaudio", "bluetooth", "battery", "network", "tray"], 
+    "modules-right": ["custom/todo", "custom/mail", "memory", "pulseaudio", "bluetooth", "battery", "network", "tray"], 
     
  // Modules configuration
  
@@ -108,7 +108,7 @@
         "tooltip-format-connected": "{num_connections} connected\n\n{device_enumerate}",
         "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
        "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%",
-        "on-click": "blueman-manager"
+        "on-click": "blueberry"
    },
    // "backlight": {
    //     // "device": "acpi_video1",
@@ -174,11 +174,16 @@
     // },
     "custom/mail": {
         "exec": "~/.config/sway/mail.lua",
-        "interval": "30",
+        "interval": 30,
+    },
+    "custom/todo": {
+        "exec": "emacsclient --eval \"(count-todos-in-org-files)\"",
+        "format": " {}",
+        "interval": 90,
     },
     "custom/weather": {
         "exec": "~/.local/bin/weather",
-        "interval": "90",
+        "interval": 90,
     },
     "custom/music": {
         "exec": "~/.config/sway/music.sh",
@@ -200,6 +205,12 @@
             "Firefox Web Browser": "Firefox",
             "Foot Server": "Terminal"
         }
+    },
+    "river/tags": {
+         "num-tags": 9,
+		  "tag-labels": [
+                        "", "", "", "󰭻", "󰌆", "󰲪", "󰲬", "󰲮", "󰲰"
+                        ]
     },
 }
 

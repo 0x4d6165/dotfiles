@@ -28,12 +28,14 @@ $crust: #181926;
 
 * {
   all: unset; //Unsets everything so you can style everything from scratch
-  font-size: 15px;
-  font-family: Inter, FiraCode Nerd Font;
+  font-size: 22px;
+  font-family: Inter, JetBrainsMono Nerd Font;
+  padding-top: 1px;
+  padding-bottom: 1px;
 }
 
-.bar {
-  border-radius: 30px;
+.bar { 
+  border-radius: 20px;
   background-color: $mantle;
   color: $subtext1;
 }
@@ -51,7 +53,6 @@ scale > contents > trough {
   background-color: $surface2;
   border-radius: 50px;
   min-height: 3px;
-  // max-height: 8px;
   min-width: 75px;
   margin-left: 10px;
   margin-right: 20px;
@@ -60,7 +61,7 @@ scale > contents > trough {
 scale > contents > trough > slider {
   background-color: $text;
   border-radius: 50px;
-  min-height: 15px;
+  min-height: 10px;
   min-width: 15px;
 }
 
@@ -166,7 +167,7 @@ scale > contents > trough > slider {
 }
 
 .selected {
-  color: $text;
+  color: $lavender;
 }
 
 .selected .number {

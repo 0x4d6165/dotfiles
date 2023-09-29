@@ -2,7 +2,7 @@ IMAPStore posteo-remote
 Host posteo.de
 Port 993
 User maeborow@posteo.net
-PassCmd "gpg -d .mail-pass.gpg"
+PassCmd "cat /home/maedayscout/.mail-pass"
 SSLType IMAPS
 
 MaildirStore posteo-local
@@ -12,9 +12,9 @@ INBOX ~/.local/share/email/posteo/INBOX
 Flatten .
 
 Channel posteo
-Master :posteo-remote:
-Slave :posteo-local:
-Patterns INBOX Drafts Sent Trash
+Far :posteo-remote:
+Near :posteo-local:
+Patterns INBOX Drafts Sent Trash Archive
 SyncState *
 Create Both
 Expunge Both

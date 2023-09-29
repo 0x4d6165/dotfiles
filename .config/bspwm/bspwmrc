@@ -8,12 +8,12 @@
 pgrep -x sxhkd > /dev/null || sxhkd &
 pgrep -x picom > /dev/null || picom -b &
 
-bspc monitor -d I II III IV V VI VII VIII IX
+bspc monitor -d 1 2 3 4 5 6 7 8 9 10
 
 bspc config border_width         4
 bspc config window_gap          12
 
-bspc config top_padding         45
+bspc config top_padding         50
 
 bsp config split_ratio          0.52
 bspc config borderless_monocle   true

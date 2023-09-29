@@ -5,7 +5,7 @@ local mail_icons = {
 	 unread = '',
 }
 
-local handleNm = io.popen("notmuch search tag:unread and tag:inbox | wc -l")
+local handleNm = io.popen("mu find flag:unread | wc -l")
 local unreadMail = handleNm:read('*a')
 unreadMail = unreadMail:gsub("\n","")
 handleNm:close()

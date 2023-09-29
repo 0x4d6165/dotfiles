@@ -56,11 +56,15 @@ setxkbmap -option compose:ralt
 #pgrep -x mpd > /dev/null || mpd &
 #pgrep -x wylt > /dev/null || wylt &
 
+pgrep -x dunst > /dev/null || dunst &
+pgrep -x nextcloud > /dev/null || nextcloud &
+pgrep -x syncthing > /dev/null || syncthing &
+kwalletd5
 
-#pgrep -x powerkit > /dev/null || powerkit &
+#echo WOBSOCK="$XDG_RUNTIME_DIR/wob.sock"
+#rm -f "$WOBSOCK" && mkfifo "$WOBSOCK" && tail -f "$WOBSOCK" | wob &
 
-export VISUAL=emacsclient
-export EDITOR="$VISUAL"
+"$HOME/.lemonbar.sh" | lemonbar -f "JetBrainsMono NerdFont" -B "#24273a" &
 
 # Finally launch emacs.
-exec dbus-launch --exit-with-session emacs
+exec emacs --eval '(exwm-init)'
