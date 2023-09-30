@@ -104,12 +104,12 @@ while read -r line; do
     esac
     buf="%{l}"
     buf="${buf} ${groups}"
-    buf="${buf}%{r}%{F#8bd5ca}${web}%{F-}  "
-    buf="${buf}%{F#eed49f}${org_label} ${org}%{F-}  "
-    buf="${buf}${F#f5bde6}${mem_label} ${memused}%{F-}  "
-    buf="${buf}%{F#b7bdf8}${volume_label} ${volume}%{F-}  "
-    buf="${buf}%{F#7dc4e4}${clock}%{F-} "
-    buf="${buf} ${BAT} "
+    buf="${buf}%{r}%{B#8bd5ca}%{F#24273a} ${web}  %{B-}"
+    buf="${buf}%{B#eed49f} ${org_label} ${org}   %{B-}"
+    buf="${buf}%{B#f5bde6} ${mem_label} ${memused}   %{B-}"
+    buf="${buf}%{B#b7bdf8} ${volume_label} ${volume}   %{B-}"
+    buf="${buf}%{B#7dc4e4}${clock}%{B-}%{F-} "
+    buf="${buf} ${BAT}% "
     printf "%s\n" "${buf}"
 done < $fifo
 

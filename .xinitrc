@@ -57,9 +57,9 @@ setxkbmap -option compose:ralt
 #pgrep -x wylt > /dev/null || wylt &
 
 pgrep -x dunst > /dev/null || dunst &
-pgrep -x nextcloud > /dev/null || nextcloud &
+#pgrep -x nextcloud > /dev/null || nextcloud &
 pgrep -x syncthing > /dev/null || syncthing &
-kwalletd5
+kwalletd5 &
 
 #echo WOBSOCK="$XDG_RUNTIME_DIR/wob.sock"
 #rm -f "$WOBSOCK" && mkfifo "$WOBSOCK" && tail -f "$WOBSOCK" | wob &
@@ -67,4 +67,4 @@ kwalletd5
 "$HOME/.lemonbar.sh" | lemonbar -f "JetBrainsMono NerdFont" -B "#24273a" &
 
 # Finally launch emacs.
-exec emacs --eval '(exwm-init)'
+exec startlxqt

@@ -2,7 +2,7 @@ IMAPStore posteo-remote
 Host posteo.de
 Port 993
 User maeborow@posteo.net
-PassCmd "cat /home/maedayscout/.mail-pass"
+PassCmd "gpg -d /home/maedayscout/.mail-pass.gpg"
 SSLType IMAPS
 
 MaildirStore posteo-local
