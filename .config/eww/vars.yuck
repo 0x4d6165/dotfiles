@@ -1,0 +1,4 @@
+; vars
+(defvar hover_vol false)
+(defvar batterywidget-hover false)
+(defvar eww "eww -c ~/.config/eww/bar")

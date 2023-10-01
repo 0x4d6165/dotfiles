@@ -1,251 +1,270 @@
-// Catppuccin
-$rosewater: #f4dbd6;
-$flamingo: #f0c6c6;
-$pink: #f5bde6;
-$mauve: #c6a0f6;
-$red: #ed8796;
-$maroon: #ee99a0;
-$peach: #f5a97f;
-$yellow: #eed49f;
-$green: #a6da95;
-$teal: #8bd5ca;
-$sky: #91d7e3;
-$sapphire: #7dc4e4;
-$blue: #89b4fa;
-$lavender: #b7bdf8;
-$text: #cad3f5;
-$subtext1: #b8c0e0;
-$subtext0: #a5adcb;
-$overlay2: #939ab7;
-$overlay1: #8087a2;
-$ov: #6e738d;
-$surface2: #5b6078;
-$surface1: #494d64;
-$surface0: #363a4f;
-$base: #24273a;
-$mantle: #1e2030;
-$crust: #181926;
-
-* {
-  all: unset; //Unsets everything so you can style everything from scratch
-  font-size: 22px;
-  font-family: Inter, JetBrainsMono Nerd Font;
-  padding-top: 1px;
-  padding-bottom: 1px;
+*
+{
+    all: unset;
 }
 
-.bar { 
-  border-radius: 20px;
-  background-color: $mantle;
-  color: $subtext1;
+/* separator */
+
+.sepbar
+{
+    color: #D9E0EE;
+    font-family: JetBrainsMono Nerd Font;
+    font-size: 24px;
+    margin-right: 19px;
+    margin-left: 19px;
 }
 
-.workspaceoverlay {
-    background-color: transparent;
+/* tooltip */
+tooltip
+{
+    background-color: #161320;
+    font-family: JetBrainsMono Nerd Font;
+    font-size: 12px;
 }
 
-// .hover-widget {
-//   padding-right: 5px;
-//   padding-left: 5px;
-// }
-
-scale > contents > trough {
-  background-color: $surface2;
-  border-radius: 50px;
-  min-height: 3px;
-  min-width: 75px;
-  margin-left: 10px;
-  margin-right: 20px;
+/* bar */
+.bar
+{
+    background-color: #161320;
 }
 
-scale > contents > trough > slider {
-  background-color: $text;
-  border-radius: 50px;
-  min-height: 10px;
-  min-width: 15px;
+/* time*/
+.time-cpu-mem
+{
+    margin-right: 15px;
+}
+.time-label
+{
+    color: #D9E0EE;
+    font-family: JetBrainsMono Nerd Font;
+    font-size: 18px;
 }
 
-.time {
-  background-color: $blue;
-  color: $mantle;
-  border-bottom-right-radius: 30px;
-  border-top-right-radius: 30px;
-  padding-left: 5px;
-  padding-right: 10px;
+/* mem cpu */
+.mem
+{
+    color: #FAE3B0;
+    background-color: #302D41;
+    border-radius: 10px;
+}
+.cpu
+{
+    color: #F5C2E7;
+    background-color: #302D41;
+    border-radius: 10px;
+    margin-right: 30px;
+}
+.cpu-and-mem
+{
+    background-color: #161320;
+    border-radius: 16px;
+    margin-right: 20px;
 }
 
-.battery {
-  background-color: $pink;
-  color: $mantle;
-  padding-right: 8px;
-  padding-left: 5px;
+/* volume and mic */
+
+.vol
+{
+    margin-left: 10px
+}
+.vol-icon
+{
+    font-size: 20px;
+    margin-right: 10px;
+}
+.mic-icon
+{
+    font-size: 20px;
+    margin-right: 10px;
 }
 
-.ram {
-  background-color: $rosewater;
-  color: $mantle;
-  padding-left: 8px;
+.micvol
+{
+    margin-left: 10px;
 }
 
-.cpu {
-  background-color: $flamingo;
-  color: $mantle;
-  padding-left: 8px;
+.volbar trough highlight
+{
+    background-color: #F5C2E7;
+    border-radius: 10px;
+}
+.micbar trough highlight
+{
+    background-color: #FAE3B0;
+    border-radius: 10px;
 }
 
-.mail {
-  background-color: $peach;
-  color: $mantle;
-  padding-left: 8px;
-  padding-right: 8px;
+scale trough
+{
+    border-radius: 10px;
+    background-color: #302D41;
+    min-height: 10px;
+    min-width: 100px;
 }
 
-.temp {
-  background-color: $yellow;
-  color: $mantle;
-  padding-left: 5px;
+/* power */
+
+.power-icon
+{
+    font-size: 20px;
 }
 
-.net {
-  background-color: $green;
- // border-top-left-radius: 30px;
- // border-bottom-left-radius: 30px;
-  color: $mantle;
-  padding-left: 5px;
-  padding-right: 15px;
+/* music */
+
+.music-label
+{
+    color: #D9E0EE;
+    font-family: JetBrainsMono Nerd Font;
+    font-size: 15px;
+    margin-right: 19px;
 }
 
-.bluetooth {
-  background-color: $mauve;
-  color: $mantle;
-  padding-left: 10px;
-  padding-right: 10px;
+.song_btn_prev
+{
+    color: #D9E0EE;
+    font-family: JetBrainsMono Nerd Font;
+    font-size: 20px;
+    margin-left: 0px;
 }
 
-.stats {
-  background-color: $rosewater;
+.song_btn_play
+{
+    color: #D9E0EE;
+    font-family: JetBrainsMono Nerd Font;
+    font-size: 20px;
+    margin-left: 10px;
 }
 
-.volume {
-		padding-left: 10px;
-		padding-right: 10px;
-		background-color: $sky;
-		color: $mantle;
-  border-top-left-radius: 30px;
-  border-bottom-left-radius: 30px;
+.song_btn_next
+{
+    color: #D9E0EE;
+    font-family: JetBrainsMono Nerd Font;
+    font-size: 20px;
+    margin-left: 10px;
 }
 
-// .music {
-// 		padding-left: 10px;
-// 		padding-right: 10px;
-// 		background-color: $lavender;
-// 		color: $mantle;
-// }
+/* workspaces */
 
-.title {
-  padding-left: 10px;
-  padding-right: 10px;
-  // background-color: $lavender;
-  // color: $crust;
-  // border-top-left-radius: 30px;
-  // border-bottom-left-radius: 30px;
-  // border-top-right-radius: 30px;
-  // border-bottom-right-radius: 30px;
+.active
+{
+    color: #F5C2E7;
 }
 
-.weather {
-  padding-left: 10px;
-  padding-right: 10px;
+.workspaces
+{
+    padding-top: 14px;
+    font-size: 18px;
 }
 
-.workspaces {
-  padding-left: 15px;
+/* power */
+
+.power-icon
+{
+    color: #F28FAD;
+    font-family: JetBrainsMono Nerd Font;
+    font-size: 20px;
+    margin-right: 10px;
 }
 
-.bold {
-  font-weight: bold;
+.lock-btn
+{
+    color: #D9E0EE;
+    font-family: JetBrainsMono Nerd Font;
+    font-size: 50px;
 }
 
-.selected {
-  color: $lavender;
+.lock-btn:hover
+{
+    color: #F28FAD;
+    font-family: JetBrainsMono Nerd Font;
+    font-size: 50px;
 }
 
-.selected .number {
-    font-weight: bold;
+.power-btn
+{
+    color: #D9E0EE;
+    font-family: JetBrainsMono Nerd Font;
+    font-size: 50px;
 }
 
-.process {
-    font-style: oblique;
+.power-btn:hover
+{
+    color: #F28FAD;
+    font-family: JetBrainsMono Nerd Font;
+    font-size: 50px;
 }
 
-// Calendar
-.cal {
-  background-color: $base;
-  font-family: JetBrainsMono Nerd Font;
-  font-size: 18px;
-  font-weight: normal;
-
-.cal-in {
-    padding: 0px 10px 0px 10px;
-    color: $teal;
-
-.cal {
-     &.highlight {
-          padding: 20px;
-      }
-      padding: 5px 5px 5px 5px;
-      margin-left: 10px;
-			margin-right: 10px;
-    }
-  }
+.restart-btn
+{
+    color: #D9E0EE;
+    font-family: JetBrainsMono Nerd Font;
+    font-size: 50px;
 }
 
-calender {
-    color: $teal;
-}
-calendar:selected {
-  color: $green;
-}
-
-calendar.header {
-color: $teal;
-font-weight: bold;
+.restart-btn:hover
+{
+    color: #F28FAD;
+    font-family: JetBrainsMono Nerd Font;
+    font-size: 50px;
 }
 
-calendar.button {
-color: $green;
+.powermenu
+{
+    background-color: #161320;
+    border-radius: 15px;
+    border: 5px solid #302D41;
 }
 
-calendar.highlight {
-color: $teal;
-font-weight: bold;
+/* menu */
+
+.menu-box
+{
+    margin-right: 65px;
+    font-size: 20px;
 }
 
-calendar:indeterminate {
-color: $teal;
+/* launcher */
+
+.launchermenu
+{
+    background-color: #161320;
+    border-radius: 15px;
+    border: 5px solid #302D41;
 }
 
-weather {
-    color: $teal;
-}
-weather:selected {
-  color: $green;
-}
-
-weather.header {
-color: $teal;
-font-weight: bold;
+.launcher-icon
+{
+    margin-top: 10px;
+    margin-left: 10px;
 }
 
-weather.button {
-color: $green;
+.launcher-pfp-label
+{
+    font-family: JetBrainsMono Nerd Font;
+    font-size: 20px;
+    margin-left: 10px;
 }
 
-weather.highlight {
-color: $teal;
-font-weight: bold;
+.launcher-pfp-label2
+{
+    font-family: JetBrainsMono Nerd Font;
+    font-size: 25px;
+    margin-left: 10px;
+    margin-top: 20px;
 }
 
-weather:indeterminate {
-color: $teal;
+.launcher-btn
+{
+    color: #D9E0EE;
+    font-family: JetBrainsMono Nerd Font;
+    font-size: 50px;
+    margin-top: 80px;
+}
+
+.launcher-btn:hover
+{
+    color: #F28FAD;
+    font-family: JetBrainsMono Nerd Font;
+    font-size: 50px;
+    margin-top: 80px;
 }

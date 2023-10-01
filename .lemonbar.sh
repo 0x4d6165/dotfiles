@@ -107,8 +107,8 @@ while read -r line; do
     buf="${buf}%{r}%{B#8bd5ca}%{F#24273a} ${web}  %{B-}"
     buf="${buf}%{B#eed49f} ${org_label} ${org}   %{B-}"
     buf="${buf}%{B#f5bde6} ${mem_label} ${memused}   %{B-}"
-    buf="${buf}%{B#b7bdf8} ${volume_label} ${volume}   %{B-}"
-    buf="${buf}%{B#7dc4e4}${clock}%{B-}%{F-} "
+    buf="${buf}%{B#b7bdf8} ${volume_label} ${volume}  %{B-}"
+    buf="${buf}%{B#7dc4e4} ${clock}%{B-}%{F-} "
     buf="${buf} ${BAT}% "
     printf "%s\n" "${buf}"
 done < $fifo
